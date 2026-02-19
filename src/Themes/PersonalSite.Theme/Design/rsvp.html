@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP | Klara and Krisztian</title>
+  <link rel="stylesheet" href="styles/tailwind.generated.css">
+</head>
+<body>
+  <div class="paper-texture" aria-hidden="true"></div>
+  <div class="relative z-20">
+    <header class="site-nav">
+      <div class="page-container flex items-center justify-between py-4">
+        <a href="home.html" class="font-cinzel text-sm uppercase tracking-widest text-gold-dark">K and K</a>
+        <nav class="hidden items-center gap-5 md:flex">
+          <a class="nav-link" href="home.html#top">Home</a>
+          <a class="nav-link nav-link-active" href="home.html#rsvp">RSVP</a>
+          <a class="nav-link" href="home.html#details">Details</a>
+          <a class="nav-link" href="home.html#gifts">Gifts</a>
+          <a class="nav-link" href="home.html#story">Story</a>
+          <a class="nav-link" href="home.html#gallery">Gallery</a>
+          <a class="nav-link" href="home.html#traditions">Traditions</a>
+          <a class="nav-link" href="home.html#further-details">Further</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-dark section-shell">
+        <div class="page-container">
+          <div class="mx-auto max-w-xl text-center">
+            <h1 class="section-title text-gold-light">R.S.V.P.</h1>
+            <p class="mt-6 section-intro text-paper/80">Kindly respond by 01 May 2027</p>
+          </div>
+          <div class="mx-auto mt-12 max-w-2xl card-dark">
+            <form class="space-y-8" action="#" method="post">
+              <div>
+                <label class="section-kicker mb-2 block text-gold-light" for="email">Email Address</label>
+                <input id="email" type="email" required class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="section-kicker mb-2 block text-gold-light" for="guest-count">Number of Guests</label>
+                <select id="guest-count" class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper focus:border-gold-light focus:outline-none">
+                  <option class="text-bronze">1 Guest</option>
+                  <option class="text-bronze">2 Guests</option>
+                  <option class="text-bronze">3 Guests</option>
+                </select>
+              </div>
+              <div>
+                <label class="section-kicker mb-2 block text-gold-light" for="message">A Note to the Couple</label>
+                <textarea id="message" rows="3" class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none" placeholder="Share your well wishes..."></textarea>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-ghost-inverse" type="submit">Send Reply</button>
+              </div>
+            </form>
+          </div>
+          <div class="mt-10 text-center">
+            <a class="btn btn-ghost-inverse btn-sm" href="home.html#rsvp">Back to Full Page Section</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-container text-center">
+        <p class="font-cinzel text-xs uppercase tracking-widest text-bronze-light">Klara and Krisztian</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
