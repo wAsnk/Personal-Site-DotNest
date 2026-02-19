@@ -1,0 +1,32 @@
+    <section id="rsvp" class="bg-garden-dark px-6 py-24 text-paper md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-light md:text-4xl">R.S.V.P.</h2>
+        <p class="mt-4 text-lg italic text-paper/80">Kindly respond by 01 May 2027</p>
+      </div>
+      <div class="mx-auto mt-12 max-w-xl card-dark">
+        <form class="space-y-6" action="#" method="post">
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="email">Email Address</label>
+            <input class="wedding-input-dark" id="email" name="email" type="email" placeholder="your@email.com" />
+          </div>
+          <fieldset>
+            <legend class="mb-3 text-center font-display text-sm uppercase tracking-widest text-gold-light">Will you be attending?</legend>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="yes" /> Accepts with pleasure</label>
+              <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="no" /> Declines with regret</label>
+            </div>
+          </fieldset>
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="guestCount">Number of Guests</label>
+            <select class="wedding-input-dark" id="guestCount" name="guestCount">
+              <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5 Guests</option><option>6 Guests</option><option>7 Guests</option>
+            </select>
+          </div>
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="message">A Note to the Couple</label>
+            <textarea class="wedding-input-dark" id="message" name="message" rows="3" placeholder="Share your well wishes..."></textarea>
+          </div>
+          <div class="pt-2 text-center"><button class="btn btn-ghost-inverse btn-md" type="submit">Send Reply</button></div>
+        </form>
+      </div>
+    </section>

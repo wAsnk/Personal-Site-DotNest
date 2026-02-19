@@ -1,0 +1,51 @@
+{% assign heading = Model.ContentItem.Content.WeddingRsvp.Heading.Text %}
+{% assign deadline = Model.ContentItem.Content.WeddingRsvp.Deadline.Text %}
+{% assign submit_text = Model.ContentItem.Content.WeddingRsvp.SubmitText.Text %}
+{% assign post_url = Model.ContentItem.Content.WeddingRsvp.PostUrl.Text %}
+{% assign note = Model.ContentItem.Content.WeddingRsvp.Note.Text %}
+
+<section id="rsvp" class="px-6 py-24 md:py-32">
+    <div class="page-container">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="wedding-heading text-gold-light">{{ heading }}</h2>
+            {% if deadline != blank %}<p class="mt-4 text-lg italic text-paper/80">{{ deadline }}</p>{% endif %}
+        </div>
+
+        <div class="mx-auto mt-12 max-w-xl card-dark">
+            <form class="space-y-6" method="post"{% if post_url != blank %} action="{{ post_url }}"{% endif %}>
+                <div>
+                    <label class="mb-2 block wedding-kicker text-gold-light" for="rsvp-email">Email Address</label>
+                    <input class="wedding-input-dark" id="rsvp-email" name="email" type="email" placeholder="your@email.com">
+                </div>
+
+                <fieldset>
+                    <legend class="mb-3 text-center wedding-kicker text-gold-light">Will you be attending?</legend>
+                    <div class="flex flex-wrap items-center justify-center gap-4">
+                        <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="yes"> Accepts with pleasure</label>
+                        <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="no"> Declines with regret</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label class="mb-2 block wedding-kicker text-gold-light" for="rsvp-guests">Number of Guests</label>
+                    <select class="wedding-input-dark" id="rsvp-guests" name="guestCount">
+                        <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5 Guests</option><option>6 Guests</option><option>7 Guests</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="mb-2 block wedding-kicker text-gold-light" for="rsvp-message">A Note to the Couple</label>
+                    <textarea class="wedding-input-dark" id="rsvp-message" name="message" rows="3" placeholder="Share your well wishes..."></textarea>
+                </div>
+
+                {% if note != blank %}
+                    <p class="text-center text-sm italic text-paper/75">{{ note }}</p>
+                {% endif %}
+
+                <div class="pt-2 text-center">
+                    <button class="btn btn-ghost-inverse btn-md" type="submit">{{ submit_text }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

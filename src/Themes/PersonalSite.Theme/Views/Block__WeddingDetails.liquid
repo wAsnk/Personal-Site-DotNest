@@ -1,0 +1,48 @@
+{% assign heading = Model.ContentItem.Content.WeddingDetails.Heading.Text %}
+{% assign ceremony_title = Model.ContentItem.Content.WeddingDetails.CeremonyTitle.Text %}
+{% assign ceremony_venue = Model.ContentItem.Content.WeddingDetails.CeremonyVenue.Text %}
+{% assign ceremony_datetime = Model.ContentItem.Content.WeddingDetails.CeremonyDateTime.Text %}
+{% assign ceremony_address = Model.ContentItem.Content.WeddingDetails.CeremonyAddress.Text %}
+{% assign ceremony_map = Model.ContentItem.Content.WeddingDetails.CeremonyMap.Text %}
+{% assign reception_title = Model.ContentItem.Content.WeddingDetails.ReceptionTitle.Text %}
+{% assign reception_venue = Model.ContentItem.Content.WeddingDetails.ReceptionVenue.Text %}
+{% assign reception_address = Model.ContentItem.Content.WeddingDetails.ReceptionAddress.Text %}
+{% assign reception_region = Model.ContentItem.Content.WeddingDetails.ReceptionRegion.Text %}
+{% assign reception_map = Model.ContentItem.Content.WeddingDetails.ReceptionMap.Text %}
+{% assign note = Model.ContentItem.Content.WeddingDetails.Note.Text %}
+
+<section id="details" class="px-6 py-24 md:py-32">
+    <div class="page-container">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="wedding-heading text-gold-dark">{{ heading }}</h2>
+        </div>
+
+        <div class="mx-auto mt-12 max-w-2xl card">
+            <div class="space-y-10 text-center">
+                <div>
+                    <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">{{ ceremony_title }}</h3>
+                    <p class="mt-2 text-lg">{{ ceremony_venue }}</p>
+                    <p class="text-base text-bronze/80">{{ ceremony_datetime }}</p>
+                    <p class="text-base text-bronze/80">{{ ceremony_address }}</p>
+                    {% if ceremony_map != blank %}
+                        <a class="btn btn-outline btn-sm mt-3" target="_blank" rel="noopener noreferrer" href="{{ ceremony_map }}">View Map</a>
+                    {% endif %}
+                </div>
+
+                <div class="wedding-divider"></div>
+
+                <div>
+                    <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">{{ reception_title }}</h3>
+                    <p class="mt-2 text-lg">{{ reception_venue }}</p>
+                    <p class="text-base text-bronze/80">{{ reception_address }}</p>
+                    <p class="text-sm text-bronze/70">{{ reception_region }}</p>
+                    {% if reception_map != blank %}
+                        <a class="btn btn-outline btn-sm mt-3" target="_blank" rel="noopener noreferrer" href="{{ reception_map }}">View Map</a>
+                    {% endif %}
+                </div>
+
+                {% if note != blank %}<p class="text-lg italic">{{ note }}</p>{% endif %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+{% assign icon = Model.ContentItem.Content.WeddingFact.Icon.Text | default: "heart" %}
+{% assign text = Model.ContentItem.Content.WeddingFact.Text.Text %}
+
+<div class="inline-flex items-center gap-2 rounded border border-gold-light/30 bg-black/20 px-3 py-2 text-xs uppercase tracking-widest text-gold-light">
+    <i data-lucide="{{ icon }}" class="h-4 w-4" aria-hidden="true"></i>
+    <span>{{ text }}</span>
+</div>

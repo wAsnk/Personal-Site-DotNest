@@ -1,0 +1,18 @@
+{% assign caption = Model.ContentItem.Content.WeddingPhoto.Caption.Text %}
+{% assign photo_paths = Model.ContentItem.Content.WeddingPhoto.Image.Paths %}
+{% assign photo_path = "" %}
+{% if photo_paths and photo_paths.size > 0 %}
+    {% assign photo_path = photo_paths.first | asset_url %}
+{% endif %}
+
+<figure class="overflow-hidden rounded border border-gold-light/30 bg-paper-dark/60">
+    {% if photo_path != blank %}
+        <img src="{{ photo_path }}" alt="{{ caption | default: Model.ContentItem.DisplayText }}" class="h-full w-full object-cover aspect-4-5">
+    {% else %}
+        <div class="aspect-4-5 bg-gradient-to-br from-gold/35 via-gold-dark/25 to-bronze/15"></div>
+    {% endif %}
+
+    {% if caption != blank %}
+        <figcaption class="px-3 py-2 text-xs italic text-paper/80">{{ caption }}</figcaption>
+    {% endif %}
+</figure>

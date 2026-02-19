@@ -39,6 +39,7 @@ export function App() {
     </div>
   )
 }
+
 ```
 
 ```index.css
@@ -713,6 +714,13 @@ export function GiftRegistry({ theme = 'dark' }: GiftRegistryProps) {
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ANIM } from '../utils/animConfig'
+/**
+ * Hero background image URL.
+ * Replace with your own photo — ideally a high-res landscape/portrait
+ * of the couple or the venue.
+ */
+const HERO_IMAGE =
+  'https://cdn.magicpatterns.com/uploads/7Q1BZdeJT94annecS5TuZq/IMG_1283.jpg'
 export function Hero() {
   const d = ANIM.DURATION
   const e = ANIM.EASE
@@ -736,19 +744,31 @@ export function Hero() {
   }, [])
   const contentOpacity = Math.max(0, 1 - scrollY / 600)
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-paper">
-      {/* Subtle dot pattern */}
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      {/* Background image with parallax */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-5 pointer-events-none"
+        className="absolute inset-0 bg-cover"
         style={{
-          backgroundImage: `radial-gradient(circle, var(--gold) 1px, transparent 1px)`,
-          backgroundSize: '20px 20px',
+          backgroundImage: `url(${HERO_IMAGE})`,
+          backgroundPosition: 'center 20%',
+          backgroundAttachment: 'fixed',
+          transform: `translateY(${scrollY * 0.15}px)`,
         }}
+        aria-hidden="true"
       />
 
-      {/* Border frame */}
-      <div className="absolute top-0 left-0 w-full h-full border-[12px] border-paper z-20 pointer-events-none" />
-      <div className="absolute top-3 left-3 right-3 bottom-3 border border-gold z-20 pointer-events-none" />
+      {/* Dark overlay — gradient for depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(30,28,22,0.55) 0%, rgba(30,28,22,0.7) 50%, rgba(30,28,22,0.85) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Subtle border frame */}
+      <div className="absolute top-3 left-3 right-3 bottom-3 border border-gold-light/30 z-20 pointer-events-none" />
 
       {/* Main content */}
       <motion.div
@@ -770,7 +790,7 @@ export function Hero() {
         }}
       >
         <motion.p
-          className="font-display text-sm md:text-base tracking-[0.25em] uppercase text-gold-dark mb-12"
+          className="font-display text-sm md:text-base tracking-[0.25em] uppercase text-white/70 mb-12"
           initial={{
             opacity: 0,
           }}
@@ -781,21 +801,13 @@ export function Hero() {
             delay: s,
             duration: d,
           }}
-          style={{
-            transform: `translateY(${scrollY * 0.1}px)`,
-          }}
         >
           Please join us to celebrate the wedding of
         </motion.p>
 
-        <div
-          className="relative mb-12"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        >
+        <div className="relative mb-12">
           <motion.h1
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-gold-text leading-tight tracking-widest uppercase"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-gold-light leading-tight tracking-widest uppercase"
             initial={{
               opacity: 0,
               y: 10,
@@ -828,13 +840,13 @@ export function Hero() {
               duration: d,
             }}
           >
-            <span className="font-display text-2xl md:text-3xl text-gold italic">
+            <span className="font-display text-2xl md:text-3xl text-gold-light/80 italic">
               &
             </span>
           </motion.div>
 
           <motion.h1
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-gold-text leading-tight tracking-widest uppercase"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-gold-light leading-tight tracking-widest uppercase"
             initial={{
               opacity: 0,
               y: 10,
@@ -867,30 +879,45 @@ export function Hero() {
             delay: s * 5,
             duration: d,
           }}
-          style={{
-            transform: `translateY(${scrollY * 0.15}px)`,
-          }}
         >
           <div className="flex flex-col items-center gap-2">
-            <p className="font-display text-xl md:text-2xl tracking-[0.15em] text-gold-dark uppercase">
+            <p className="font-display text-xl md:text-2xl tracking-[0.15em] text-gold-light uppercase">
               03 July 2027
             </p>
-            <p className="font-serif text-base md:text-lg text-bronze italic">
+            <p className="font-serif text-base md:text-lg text-white/60 italic">
               at three o'clock in the afternoon
             </p>
           </div>
 
-          <div className="w-16 h-px bg-gold mx-auto my-6" />
+          <div className="w-16 h-px bg-gold-light/50 mx-auto my-6" />
 
           <div className="flex flex-col items-center gap-1">
-            <p className="font-display text-base md:text-lg tracking-[0.2em] text-gold-dark uppercase">
+            <p className="font-display text-base md:text-lg tracking-[0.2em] text-gold-light uppercase">
               Budapest
             </p>
-            <p className="font-serif text-base text-bronze/70 italic">
-              Hungary
-            </p>
+            <p className="font-serif text-base text-white/50 italic">Hungary</p>
           </div>
         </motion.div>
+      </motion.div>
+
+      {/* Scroll fade indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator"
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          delay: s * 8,
+          duration: d,
+        }}
+        style={{
+          opacity: contentOpacity,
+        }}
+      >
+        <div className="w-px h-8 bg-gold-light/40 mx-auto" />
       </motion.div>
     </section>
   )

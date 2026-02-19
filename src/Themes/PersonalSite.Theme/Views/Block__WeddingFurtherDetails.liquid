@@ -1,0 +1,14 @@
+{% assign heading = Model.ContentItem.Content.WeddingFurtherDetails.Heading.Text %}
+{% assign lead = Model.ContentItem.Content.WeddingFurtherDetails.Lead.Text %}
+{% assign body = Model.ContentItem.Content.WeddingFurtherDetails.Body.Text %}
+
+<section id="further" class="px-6 py-24 md:py-32">
+    <div class="page-container">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="wedding-heading text-gold-light">{{ heading }}</h2>
+            <div class="mt-6 flex justify-center"><i data-lucide="clock-3" class="h-5 w-5 text-gold-light" aria-hidden="true"></i></div>
+            {% if lead != blank %}<p class="mx-auto mt-6 max-w-md text-lg italic">{{ lead }}</p>{% endif %}
+            {% if body != blank %}<p class="mx-auto mt-6 max-w-sm text-lg text-paper/85">{{ body }}</p>{% endif %}
+        </div>
+    </div>
+</section>

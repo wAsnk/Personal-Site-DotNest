@@ -1,0 +1,20 @@
+{% assign heading = Model.ContentItem.Content.WeddingTraditions.Heading.Text %}
+{% assign intro = Model.ContentItem.Content.WeddingTraditions.Intro.Text %}
+{% assign items = Model.ContentItem.Content.Items.ContentItems %}
+
+<section id="traditions" class="px-6 py-24 md:py-32">
+    <div class="page-container">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="wedding-heading text-gold-dark">{{ heading }}</h2>
+            {% if intro != blank %}<p class="mx-auto mt-4 max-w-md text-lg italic text-bronze/80">{{ intro }}</p>{% endif %}
+
+            {% if items and items.size > 0 %}
+                <div class="mt-12 space-y-10">
+                    {% for item in items %}
+                        {{ item | shape_build_display: "Detail" | shape_render }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

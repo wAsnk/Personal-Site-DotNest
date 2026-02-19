@@ -1,456 +1,222 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Klara and Krisztian | Wedding</title>
-  <link rel="stylesheet" href="styles/tailwind.generated.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klara and Krisztian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="./styles/tailwind.generated.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="paper-texture" aria-hidden="true"></div>
-  <div class="relative z-20">
-    <header class="site-nav">
-      <div class="page-container flex items-center justify-between py-4">
-        <a href="home.html" class="font-cinzel text-sm uppercase tracking-widest text-gold-dark">K and K</a>
-        <nav class="hidden items-center gap-5 md:flex">
-          <a class="nav-link nav-link-active" href="#top">Home</a>
-          <a class="nav-link" href="#rsvp">RSVP</a>
-          <a class="nav-link" href="#details">Details</a>
-          <a class="nav-link" href="#gifts">Gifts</a>
-          <a class="nav-link" href="#story">Story</a>
-          <a class="nav-link" href="#gallery">Gallery</a>
-          <a class="nav-link" href="#traditions">Traditions</a>
-          <a class="nav-link" href="#further-details">Further</a>
+  <div class="paper-texture"></div>
+
+  <header class="site-nav">
+    <div class="page-container py-4">
+      <div class="flex items-center justify-between gap-6">
+        <a href="home.html" class="font-cinzel text-sm uppercase tracking-widest text-gold-dark">Klara and Krisztian</a>
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Main">
+          <a class="nav-link nav-link-active" href="home.html#home">Home</a>
+          <a class="nav-link" href="home.html#rsvp">RSVP</a>
+          <a class="nav-link" href="home.html#details">Details</a>
+          <a class="nav-link" href="home.html#story">Story</a>
+          <a class="nav-link" href="home.html#gallery">Gallery</a>
         </nav>
-        <details class="relative md:hidden">
-          <summary class="btn btn-outline btn-sm">Menu</summary>
-          <nav class="absolute right-0 mt-3 w-44 rounded-sm border border-gold/30 bg-paper p-2 shadow-sm">
-            <a class="nav-link-mobile" href="#top">Home</a>
-            <a class="nav-link-mobile" href="#rsvp">RSVP</a>
-            <a class="nav-link-mobile" href="#details">Details</a>
-            <a class="nav-link-mobile" href="#gifts">Gifts</a>
-            <a class="nav-link-mobile" href="#story">Story</a>
-            <a class="nav-link-mobile" href="#gallery">Gallery</a>
-            <a class="nav-link-mobile" href="#traditions">Traditions</a>
-            <a class="nav-link-mobile" href="#further-details">Further</a>
-          </nav>
-        </details>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section id="top" class="section-light relative flex min-h-screen items-center overflow-hidden border-b border-gold/20">
-        <div class="pointer-events-none absolute inset-0">
-          <div class="absolute inset-8 border border-gold/35"></div>
-          <div class="absolute inset-0 border-8 border-paper"></div>
-        </div>
-        <div class="page-container relative text-center">
-          <p class="section-kicker text-gold-dark">Please join us to celebrate the wedding of</p>
-          <div class="mt-10 space-y-4">
-            <h1 class="font-display text-6xl font-normal uppercase tracking-widest text-gold-text sm:text-7xl md:text-8xl">Klara</h1>
-            <p class="font-display text-3xl italic text-gold">and</p>
-            <h1 class="font-display text-6xl font-normal uppercase tracking-widest text-gold-text sm:text-7xl md:text-8xl">Krisztian</h1>
-          </div>
-          <div class="mx-auto mt-12 max-w-lg space-y-3">
-            <p class="font-cinzel text-lg uppercase tracking-widest text-gold-dark">03 July 2027</p>
-            <p class="section-intro text-bronze-light">at three o'clock in the afternoon</p>
-            <div class="ornament-row" aria-hidden="true">
-              <span class="ornament-line"></span>
-              <span class="ornament-diamond"></span>
-              <span class="ornament-line"></span>
-            </div>
-            <p class="font-cinzel text-sm uppercase tracking-widest text-gold-dark">Budapest, Hungary</p>
-          </div>
-        </div>
-      </section>
+  <main class="pt-16" id="home">
 
-      <section id="rsvp" class="section-dark section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-xl text-center">
-            <h2 class="section-title text-gold-light">R.S.V.P.</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-diamond-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-line-light"></span>
-            </div>
-            <p class="mt-6 section-intro text-paper/75">Kindly respond by 01 May 2027</p>
-          </div>
-
-          <div class="mx-auto mt-14 max-w-2xl card-dark">
-            <form class="space-y-8" action="#" method="post">
-              <div>
-                <label for="email" class="section-kicker mb-2 block text-gold-light">Email Address</label>
-                <input id="email" name="email" type="email" placeholder="your@email.com" required class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none">
-              </div>
-
-              <fieldset>
-                <legend class="section-kicker mb-4 text-center text-gold-light">Will you be attending?</legend>
-                <div class="flex flex-wrap justify-center gap-6 text-sm text-paper/80">
-                  <label class="inline-flex items-center gap-2">
-                    <input type="radio" name="attending" value="yes" required>
-                    <span class="uppercase tracking-wide">Accepts with Pleasure</span>
-                  </label>
-                  <label class="inline-flex items-center gap-2">
-                    <input type="radio" name="attending" value="no">
-                    <span class="uppercase tracking-wide">Declines with Regret</span>
-                  </label>
-                </div>
-              </fieldset>
-
-              <div>
-                <label for="guest-count" class="section-kicker mb-2 block text-gold-light">Number of Guests</label>
-                <select id="guest-count" name="guest-count" class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper focus:border-gold-light focus:outline-none">
-                  <option value="1" class="text-bronze">1 Guest</option>
-                  <option value="2" class="text-bronze">2 Guests</option>
-                  <option value="3" class="text-bronze">3 Guests</option>
-                  <option value="4" class="text-bronze">4 Guests</option>
-                  <option value="5" class="text-bronze">5 Guests</option>
-                  <option value="6" class="text-bronze">6 Guests</option>
-                  <option value="7" class="text-bronze">7 Guests</option>
-                </select>
-              </div>
-
-              <div class="space-y-4">
-                <p class="section-kicker text-center text-gold-light">Guest Details and Dietary Requirements</p>
-                <div class="space-y-4">
-                  <div class="border border-gold-light/45 p-4">
-                    <p class="section-kicker mb-2 text-gold-light/75">Guest 1</p>
-                    <input type="text" placeholder="Guest name" class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none">
-                    <input type="text" placeholder="Allergies or dietary needs" class="mt-3 w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none">
-                  </div>
-                  <div class="border border-gold-light/45 p-4">
-                    <p class="section-kicker mb-2 text-gold-light/75">Guest 2</p>
-                    <input type="text" placeholder="Guest name" class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none">
-                    <input type="text" placeholder="Allergies or dietary needs" class="mt-3 w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none">
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label for="message" class="section-kicker mb-2 block text-gold-light">A Note to the Couple</label>
-                <textarea id="message" name="message" rows="3" placeholder="Share your well wishes..." class="w-full border-b border-gold-light/60 bg-transparent px-4 py-3 text-paper placeholder:text-paper/45 focus:border-gold-light focus:outline-none"></textarea>
-              </div>
-
-              <div class="pt-4 text-center">
-                <button class="btn btn-ghost-inverse btn-md" type="submit">Send Reply</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(30,28,22,0.5), rgba(30,28,22,0.82)), url('https://cdn.magicpatterns.com/uploads/7Q1BZdeJT94annecS5TuZq/IMG_1283.jpg');"></div>
+      <div class="absolute inset-3 border border-gold-light/30"></div>
+      <div class="relative z-10 flex min-h-screen items-center justify-center px-6 py-16 text-center">
+        <div>
+          <p class="font-display text-sm uppercase tracking-widest text-white/75">Please join us to celebrate the wedding of</p>
+          <h1 class="mt-10 font-display text-5xl uppercase tracking-widest text-gold-light sm:text-6xl md:text-7xl">Klara</h1>
+          <p class="my-4 font-display text-2xl text-gold-light/90">&amp;</p>
+          <h1 class="font-display text-5xl uppercase tracking-widest text-gold-light sm:text-6xl md:text-7xl">Krisztian</h1>
+          <div class="mx-auto mt-10 h-px w-16 bg-gold-light/50"></div>
+          <p class="mt-6 font-display text-xl uppercase tracking-widest text-gold-light">03 July 2027</p>
+          <p class="mt-2 text-lg italic text-white/65">at three o'clock in the afternoon</p>
+          <p class="mt-6 font-display text-base uppercase tracking-widest text-gold-light">Budapest</p>
+          <p class="text-base italic text-white/60">Hungary</p>
+          <div class="mt-10">
+            <a class="btn btn-ghost-inverse btn-md" href="home.html#rsvp">Respond</a>
           </div>
         </div>
       </div>
+    </section>
 
-      <section id="details" class="section-light section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-xl text-center">
-            <h2 class="section-title text-gold-dark">The Details</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-diamond"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-line"></span>
+    <section id="rsvp" class="bg-garden-dark px-6 py-24 text-paper md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-light md:text-4xl">R.S.V.P.</h2>
+        <p class="mt-4 text-lg italic text-paper/80">Kindly respond by 01 May 2027</p>
+      </div>
+      <div class="mx-auto mt-12 max-w-xl card-dark">
+        <form class="space-y-6" action="#" method="post">
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="email">Email Address</label>
+            <input class="wedding-input-dark" id="email" name="email" type="email" placeholder="your@email.com" />
+          </div>
+          <fieldset>
+            <legend class="mb-3 text-center font-display text-sm uppercase tracking-widest text-gold-light">Will you be attending?</legend>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="yes" /> Accepts with pleasure</label>
+              <label class="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-paper"><input type="radio" name="attending" value="no" /> Declines with regret</label>
             </div>
+          </fieldset>
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="guestCount">Number of Guests</label>
+            <select class="wedding-input-dark" id="guestCount" name="guestCount">
+              <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5 Guests</option><option>6 Guests</option><option>7 Guests</option>
+            </select>
           </div>
-
-          <div class="mx-auto mt-14 max-w-2xl card">
-            <div class="space-y-12 text-center">
-              <article>
-                <h3 class="font-display text-3xl uppercase tracking-wide text-gold-dark">Ceremony</h3>
-                <p class="mt-3 text-xl text-bronze">Mariaremete Kisboldogasszony Bazilika Plebania</p>
-                <p class="mt-1 text-lg text-bronze-light">Saturday, 03 July 2027 at 3:00 PM</p>
-                <p class="mt-1 text-lg text-bronze-light">1029 Budapest, Templom kert 1.</p>
-                <a class="btn btn-ghost btn-sm mt-4" href="https://www.google.com/maps/search/?api=1&query=47.56082341824489,18.945057936598808" target="_blank" rel="noopener noreferrer">View Map</a>
-              </article>
-
-              <div class="ornament-row" aria-hidden="true">
-                <span class="ornament-diamond"></span>
-              </div>
-
-              <article>
-                <h3 class="font-display text-3xl uppercase tracking-wide text-gold-dark">Reception</h3>
-                <p class="mt-3 text-xl text-bronze">Csillagkert Budapest</p>
-                <p class="mt-1 text-lg text-bronze-light">1029 Budapest, Feketefej utca 2.</p>
-                <p class="mt-1 text-base text-bronze-light/80">Budakeszi District, Hungary</p>
-                <a class="btn btn-ghost btn-sm mt-4" href="https://www.google.com/maps/search/?api=1&query=47.541447915110226,18.93606702217123" target="_blank" rel="noopener noreferrer">View Map</a>
-              </article>
-
-              <div class="ornament-row" aria-hidden="true">
-                <span class="ornament-diamond"></span>
-              </div>
-
-              <p class="section-intro text-bronze">Dinner, dancing, and celebration into the night</p>
-            </div>
+          <div>
+            <label class="mb-2 block font-display text-sm uppercase tracking-widest text-gold-light" for="message">A Note to the Couple</label>
+            <textarea class="wedding-input-dark" id="message" name="message" rows="3" placeholder="Share your well wishes..."></textarea>
           </div>
-        </div>
-      </section>
+          <div class="pt-2 text-center"><button class="btn btn-ghost-inverse btn-md" type="submit">Send Reply</button></div>
+        </form>
+      </div>
+    </section>
 
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
+    <div class="wedding-divider"></div>
+
+    <section id="details" class="bg-paper px-6 py-24 md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-dark md:text-4xl">The Details</h2>
+      </div>
+      <div class="mx-auto mt-12 max-w-2xl card">
+        <div class="space-y-10 text-center">
+          <div>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">Ceremony</h3>
+            <p class="mt-2 text-lg">Mariaremete Kisboldogasszony Bazilika Plebania</p>
+            <p class="text-base text-bronze/80">Saturday, 03 July 2027 at 3:00 PM</p>
+            <p class="text-base text-bronze/80">1029 Budapest, Templom kert 1.</p>
+            <a class="btn btn-outline btn-sm mt-3" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=47.56082341824489,18.945057936598808">View Map</a>
           </div>
+          <div class="wedding-divider"></div>
+          <div>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">Reception</h3>
+            <p class="mt-2 text-lg">Csillagkert Budapest</p>
+            <p class="text-base text-bronze/80">1029 Budapest, Feketefej utca 2.</p>
+            <p class="text-sm text-bronze/70">Budakeszi District, Hungary</p>
+            <a class="btn btn-outline btn-sm mt-3" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=47.541447915110226,18.93606702217123">View Map</a>
+          </div>
+          <p class="text-lg italic">Dinner, dancing, and celebration into the night</p>
         </div>
       </div>
+    </section>
 
-      <section id="gifts" class="section-dark section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="section-title text-gold-light">Gifts</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-diamond-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-line-light"></span>
-            </div>
-            <div class="mt-8 flex justify-center" aria-hidden="true">
-              <i data-lucide="gift" class="h-5 w-5 text-gold-light"></i>
-            </div>
-            <p class="mt-6 section-intro text-paper/85">Your presence at our celebration is the most meaningful gift we could receive.</p>
-            <div class="mt-7 flex justify-center" aria-hidden="true">
-              <span class="ornament-line-light"></span>
-            </div>
-            <p class="mx-auto mt-8 max-w-xl text-xl text-paper/90">If you would like to give us a gift, we would be truly grateful for a monetary contribution towards our future together.</p>
-          </div>
-        </div>
-      </section>
+    <section id="gifts" class="bg-garden-dark px-6 py-24 text-paper md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-light md:text-4xl">Gifts</h2>
+        <div class="mt-6 flex justify-center"><i data-lucide="gift" class="h-5 w-5 text-gold-light" aria-hidden="true"></i></div>
+        <p class="mx-auto mt-6 max-w-lg text-lg italic">Your presence at our celebration is the most meaningful gift we could receive.</p>
+        <p class="mx-auto mt-6 max-w-md text-lg">If you would like to give us a gift, we would be truly grateful for a monetary contribution towards our future together.</p>
+      </div>
+    </section>
 
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
-          </div>
+    <div class="wedding-divider"></div>
+
+    <section id="story" class="bg-paper px-6 py-24 md:py-32">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-center font-display text-3xl uppercase tracking-widest text-gold-dark md:text-4xl">Our Story</h2>
+        <div class="mt-12 space-y-10">
+          <article class="card-compact card-hover">
+            <p class="tag">2019</p>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-widest text-gold-dark">First Met</h3>
+            <p class="mt-2 text-lg">A chance encounter that neither of us expected, but one that changed everything.</p>
+          </article>
+          <article class="card-compact card-hover">
+            <p class="tag">2020</p>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-widest text-gold-dark">First Adventure Together</h3>
+            <p class="mt-2 text-lg">We discovered that the best journeys are the ones shared with someone special.</p>
+          </article>
+          <article class="card-compact card-hover">
+            <p class="tag">2023</p>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-widest text-gold-dark">A New Chapter</h3>
+            <p class="mt-2 text-lg">Building a home together and learning what it truly means to be a team.</p>
+          </article>
+          <article class="card-compact card-hover">
+            <p class="tag">2025</p>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-widest text-gold-dark">The Proposal</h3>
+            <p class="mt-2 text-lg">A question asked, a joyful yes, and the beginning of forever.</p>
+          </article>
+          <article class="card-compact card-hover">
+            <p class="tag">2027</p>
+            <h3 class="mt-3 font-display text-2xl uppercase tracking-widest text-gold-dark">Forever Begins</h3>
+            <p class="mt-2 text-lg">The day we say "I do", surrounded by the people we love most.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <section id="story" class="section-light section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-3xl text-center">
-            <h2 class="section-title text-gold-dark">Our Story</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-diamond"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-line"></span>
-            </div>
-          </div>
+    <section id="gallery" class="bg-garden-dark px-6 py-24 text-paper md:py-32">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-light md:text-4xl">Moments</h2>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="aspect-3-4 rounded border border-gold-light/30 bg-gradient-to-br from-gold/35 via-gold-dark/25 to-bronze/15"></div>
+        <div class="aspect-square rounded border border-gold-light/30 bg-gradient-to-br from-bronze/20 via-gold/20 to-paper-dark/30"></div>
+        <div class="aspect-4-3 rounded border border-gold-light/30 bg-gradient-to-br from-gold-dark/30 via-bronze/20 to-gold-light/25"></div>
+        <div class="aspect-4-3 rounded border border-gold-light/30 bg-gradient-to-br from-paper-dark/35 via-gold/25 to-bronze/20"></div>
+        <div class="aspect-square rounded border border-gold-light/30 bg-gradient-to-br from-gold-light/35 via-gold-dark/25 to-bronze/20"></div>
+        <div class="aspect-3-4 rounded border border-gold-light/30 bg-gradient-to-br from-bronze/20 via-gold/30 to-gold-light/20"></div>
+      </div>
+      <p class="mt-8 text-center text-sm italic text-paper/70">Your photos will appear here</p>
+    </section>
 
-          <div class="relative mx-auto mt-16 max-w-4xl">
-            <div class="absolute bottom-0 left-6 top-0 w-px bg-gold/35 md:hidden" aria-hidden="true"></div>
-            <div class="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-gold/35 md:block" aria-hidden="true"></div>
-
-            <div class="space-y-16">
-              <article class="relative pl-14 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
-                <span class="absolute left-6 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-gold/70 bg-paper md:left-1/2"></span>
-                <div class="md:pr-12 md:text-right">
-                  <p class="section-kicker text-gold">2019</p>
-                  <h3 class="mt-2 text-3xl uppercase tracking-wide text-gold-dark">First Met</h3>
-                  <p class="mt-3 text-xl text-bronze">A chance encounter that neither of us expected, but one that changed everything.</p>
-                </div>
-                <div class="hidden md:block"></div>
-              </article>
-
-              <article class="relative pl-14 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
-                <span class="absolute left-6 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-gold/70 bg-paper md:left-1/2"></span>
-                <div class="hidden md:block"></div>
-                <div class="md:pl-12">
-                  <p class="section-kicker text-gold">2020</p>
-                  <h3 class="mt-2 text-3xl uppercase tracking-wide text-gold-dark">First Adventure Together</h3>
-                  <p class="mt-3 text-xl text-bronze">We discovered that the best journeys are the ones shared with someone special.</p>
-                </div>
-              </article>
-
-              <article class="relative pl-14 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
-                <span class="absolute left-6 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-gold/70 bg-paper md:left-1/2"></span>
-                <div class="md:pr-12 md:text-right">
-                  <p class="section-kicker text-gold">2023</p>
-                  <h3 class="mt-2 text-3xl uppercase tracking-wide text-gold-dark">A New Chapter</h3>
-                  <p class="mt-3 text-xl text-bronze">Building a home together and learning what it truly means to be a team.</p>
-                </div>
-                <div class="hidden md:block"></div>
-              </article>
-
-              <article class="relative pl-14 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
-                <span class="absolute left-6 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-gold/70 bg-paper md:left-1/2"></span>
-                <div class="hidden md:block"></div>
-                <div class="md:pl-12">
-                  <p class="section-kicker text-gold">2025</p>
-                  <h3 class="mt-2 text-3xl uppercase tracking-wide text-gold-dark">The Proposal</h3>
-                  <p class="mt-3 text-xl text-bronze">A question asked, a joyful yes, and the beginning of forever.</p>
-                </div>
-              </article>
-
-              <article class="relative pl-14 md:grid md:grid-cols-2 md:gap-12 md:pl-0">
-                <span class="absolute left-6 top-1 h-3 w-3 -translate-x-1/2 rotate-45 border border-gold/70 bg-paper md:left-1/2"></span>
-                <div class="md:pr-12 md:text-right">
-                  <p class="section-kicker text-gold">2027</p>
-                  <h3 class="mt-2 text-3xl uppercase tracking-wide text-gold-dark">Forever Begins</h3>
-                  <p class="mt-3 text-xl text-bronze">The day we say I do, surrounded by the people we love most.</p>
-                </div>
-                <div class="hidden md:block"></div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
-          </div>
+    <section id="traditions" class="bg-paper px-6 py-24 md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-dark md:text-4xl">Hungarian Traditions</h2>
+        <p class="mx-auto mt-4 max-w-md text-lg italic text-bronze/80">A glimpse into the customs that make a Hungarian wedding truly unforgettable</p>
+        <div class="mt-12 space-y-10">
+          <article>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">The Bride's Dance</h3>
+            <p class="mt-2 text-lg">Guests queue to dance with the bride for a short moment while placing money into a basket as a joyful wish for prosperity.</p>
+          </article>
+          <article>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">The Stealing of the Bride</h3>
+            <p class="mt-2 text-lg">Friends playfully kidnap the bride and the groom must complete humorous tasks to win her back.</p>
+          </article>
+          <article>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">The Bouquet Toss</h3>
+            <p class="mt-2 text-lg">The bouquet is tossed to unmarried women and the one who catches it is said to be next to marry.</p>
+          </article>
+          <article>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">Clinking Glasses and Tapping Plates</h3>
+            <p class="mt-2 text-lg">When guests clink and tap in unison, the newlyweds kiss. The louder the crowd, the longer the kiss.</p>
+          </article>
+          <article>
+            <h3 class="font-display text-2xl uppercase tracking-widest text-gold-dark">Cutting the Cake</h3>
+            <p class="mt-2 text-lg">The couple cuts the cake together as their first shared act as husband and wife.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <section id="gallery" class="section-dark section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-3xl text-center">
-            <h2 class="section-title text-gold-light">Moments</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-diamond-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-line-light"></span>
-            </div>
-          </div>
-
-          <div class="mx-auto mt-14 max-w-5xl columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-gold/35 via-gold-dark/25 to-bronze/15 aspect-3-4"></div>
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-bronze/30 via-gold/20 to-paper-dark/30 aspect-square"></div>
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-gold-dark/30 via-bronze/20 to-gold-light/20 aspect-4-3"></div>
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-paper-dark/35 via-gold/25 to-bronze/20 aspect-4-3"></div>
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-gold-light/30 via-gold-dark/25 to-bronze/15 aspect-square"></div>
-            <div class="break-inside-avoid rounded-sm border border-gold-light/25 bg-gradient-to-br from-bronze/25 via-gold/30 to-gold-light/20 aspect-3-4"></div>
-          </div>
-
-          <p class="mt-12 text-center text-lg italic text-paper/70">Your photos will appear here</p>
-        </div>
-      </section>
-
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
-          </div>
-        </div>
+    <section id="further" class="bg-garden-dark px-6 py-24 text-paper md:py-32">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl uppercase tracking-widest text-gold-light md:text-4xl">Further Details</h2>
+        <div class="mt-6 flex justify-center"><i data-lucide="clock-3" class="h-5 w-5 text-gold-light" aria-hidden="true"></i></div>
+        <p class="mx-auto mt-6 max-w-md text-lg italic">More details about the day will follow in due course.</p>
+        <p class="mx-auto mt-6 max-w-sm text-lg text-paper/85">Information regarding accommodation, transport, and the evening programme will be shared closer to the date.</p>
       </div>
+    </section>
 
-      <section id="traditions" class="section-light section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-3xl text-center">
-            <h2 class="section-title text-gold-dark">Hungarian Traditions</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-diamond"></span>
-              <span class="ornament-diamond ornament-diamond-sm"></span>
-              <span class="ornament-line"></span>
-            </div>
-            <p class="mx-auto mt-6 max-w-xl section-intro text-bronze-light">A glimpse into the customs that make a Hungarian wedding truly unforgettable</p>
-          </div>
+  </main>
 
-          <div class="mx-auto mt-14 max-w-3xl space-y-12 text-center">
-            <article>
-              <h3 class="text-3xl uppercase tracking-wide text-gold-dark">The Bride's Dance</h3>
-              <p class="mt-3 text-xl text-bronze">The bride's dance is a beloved tradition where guests queue to dance with the bride for a very short time, each placing money into a basket.</p>
-            </article>
-            <div class="ornament-row" aria-hidden="true"><span class="ornament-diamond"></span></div>
-
-            <article>
-              <h3 class="text-3xl uppercase tracking-wide text-gold-dark">The Stealing of the Bride</h3>
-              <p class="mt-3 text-xl text-bronze">During the celebration, friends playfully kidnap the bride. The groom must search for her, often completing humorous tasks to win her back.</p>
-            </article>
-            <div class="ornament-row" aria-hidden="true"><span class="ornament-diamond"></span></div>
-
-            <article>
-              <h3 class="text-3xl uppercase tracking-wide text-gold-dark">The Bouquet Toss</h3>
-              <p class="mt-3 text-xl text-bronze">The bride tosses her bouquet to the unmarried women. Whoever catches it is said to be the next to marry.</p>
-            </article>
-            <div class="ornament-row" aria-hidden="true"><span class="ornament-diamond"></span></div>
-
-            <article>
-              <h3 class="text-3xl uppercase tracking-wide text-gold-dark">Clinking Glasses and Tapping Plates</h3>
-              <p class="mt-3 text-xl text-bronze">When guests clink glasses or tap plates in unison, the newlyweds must kiss. The louder the clinking, the longer the kiss.</p>
-            </article>
-            <div class="ornament-row" aria-hidden="true"><span class="ornament-diamond"></span></div>
-
-            <article>
-              <h3 class="text-3xl uppercase tracking-wide text-gold-dark">Cutting the Cake</h3>
-              <p class="mt-3 text-xl text-bronze">The couple cuts the wedding cake together, hand over hand, symbolising their first shared act as husband and wife.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-light">
-        <div class="page-container">
-          <div class="divider-row" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="ornament-diamond flex items-center justify-center"><span class="h-2 w-2 border border-gold/60 bg-paper"></span></span>
-            <span class="divider-line"></span>
-          </div>
-        </div>
-      </div>
-
-      <section id="further-details" class="section-dark section-shell">
-        <div class="page-container">
-          <div class="mx-auto max-w-2xl text-center">
-            <h2 class="section-title text-gold-light">Further Details</h2>
-            <div class="mt-5 ornament-row" aria-hidden="true">
-              <span class="ornament-line-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-diamond-light"></span>
-              <span class="ornament-diamond-light ornament-diamond-sm"></span>
-              <span class="ornament-line-light"></span>
-            </div>
-            <div class="mt-8 flex justify-center" aria-hidden="true">
-              <i data-lucide="clock-3" class="h-5 w-5 text-gold-light"></i>
-            </div>
-            <p class="mx-auto mt-6 max-w-lg section-intro text-paper/80">More details about the day will follow in due course.</p>
-            <div class="mt-7 flex justify-center" aria-hidden="true"><span class="ornament-line-light"></span></div>
-            <p class="mx-auto mt-8 max-w-lg text-xl text-paper/85">Information regarding accommodation, transport, and the evening programme will be shared closer to the date.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="page-container text-center">
-        <div class="ornament-row" aria-hidden="true">
-          <span class="ornament-line"></span>
-          <span class="ornament-diamond ornament-diamond-sm"></span>
-          <span class="ornament-diamond"></span>
-          <span class="ornament-diamond ornament-diamond-sm"></span>
-          <span class="ornament-line"></span>
-        </div>
-        <h2 class="mt-8 text-4xl uppercase tracking-widest text-gold-dark">Klara and Krisztian</h2>
-        <p class="mt-3 font-cinzel text-xs uppercase tracking-widest text-bronze-light">03 . 07 . 2027</p>
-        <p class="mt-4 font-cinzel text-xs uppercase tracking-widest text-bronze-light/80">Budapest, Hungary</p>
-      </div>
-    </footer>
-  </div>
+  <footer class="site-footer">
+    <div class="page-container text-center">
+      <h2 class="font-display text-3xl uppercase tracking-widest text-gold-dark md:text-4xl">Klara and Krisztian</h2>
+      <p class="mt-3 font-display text-sm uppercase tracking-widest text-bronze/75">03 . 07 . 2027</p>
+      <p class="mt-2 text-sm uppercase tracking-widest text-bronze/60">Budapest, Hungary</p>
+    </div>
+  </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
