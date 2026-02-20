@@ -31,7 +31,7 @@
                   "Title": "RSVP Submitted"
                 },
                 "HttpMethod": "POST",
-                "Url": "/rsvp/submit",
+                "Url": "/workflows/Invoke?token=replace-on-import",
                 "ValidateAntiforgeryToken": false,
                 "TokenLifeSpan": 0,
                 "FormLocationKey": ""
@@ -47,7 +47,7 @@
                 "ContentType": "RsvpResponse",
                 "Publish": true,
                 "ContentProperties": {
-                  "Expression": "{\n  \"DisplayText\": {{ \"RSVP from \" | append: Request.Form[\"email\"] | json }},\n  \"TitlePart\": {\n    \"Title\": {{ \"RSVP from \" | append: Request.Form[\"email\"] | json }}\n  },\n  \"ContainedPart\": {\n    \"ListContentItemId\": \"4rsvpresponseslistitem0000\",\n    \"ListContentType\": \"RsvpResponsesList\"\n  },\n  \"RsvpResponse\": {\n    \"Email\": {\n      \"Text\": {{ Request.Form[\"email\"] | json }}\n    },\n    \"Attending\": {\n      \"Text\": {{ Request.Form[\"attending\"] | json }}\n    },\n    \"GuestCount\": {\n      \"Value\": {{ Request.Form[\"guestCount\"] | default: 1 }}\n    },\n    \"GuestDetails\": {\n      \"Text\": {{ Request.Form[\"guestDetails\"] | default: \"\" | json }}\n    },\n    \"Message\": {\n      \"Text\": {{ Request.Form[\"message\"] | default: \"\" | json }}\n    },\n    \"SubmittedAt\": {\n      \"Text\": {{ \"now\" | date: \"%Y-%m-%d %H:%M:%S\" | json }}\n    }\n  }\n}"
+                  "Expression": "{\"DisplayText\": \"RSVP from {{ Request.Form.email | default: '' | escape }}\", \"TitlePart\": {\"Title\": \"RSVP from {{ Request.Form.email | default: '' | escape }}\"}, \"ContainedPart\": {\"ListContentItemId\": \"4rsvpresponseslistitem0000\", \"ListContentType\": \"RsvpResponsesList\"}, \"RsvpResponse\": {\"Email\": {\"Text\": \"{{ Request.Form.email | default: '' | escape }}\"}, \"Attending\": {\"Text\": \"{{ Request.Form.attending | default: '' | escape }}\"}, \"GuestCount\": {\"Value\": {{ Request.Form.guestCount | default: 1 | plus: 0 }}}, \"GuestDetails\": {\"Text\": \"{{ Request.Form.guestDetails | default: '' | escape }}\"}, \"Message\": {\"Text\": \"{{ Request.Form.message | default: '' | escape }}\"}, \"SubmittedAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}}}"
                 },
                 "ActivityMetadata": {
                   "Title": "Create RSVP Response"
@@ -62,9 +62,11 @@
               "IsStart": false,
               "Properties": {
                 "Publish": true,
-                "ContentItemIdExpression": "4rsvpresponseslistitem0000",
+                "Content": {
+                  "Expression": "'4rsvpresponseslistitem0000'"
+                },
                 "ContentProperties": {
-                  "Expression": "{\n  \"DisplayText\": \"RSVP Responses\",\n  \"TitlePart\": {\n    \"Title\": \"RSVP Responses\"\n  },\n  \"RsvpResponsesList\": {\n    \"LastSubmissionAt\": {\n      \"Text\": {{ \"now\" | date: \"%Y-%m-%d %H:%M:%S\" | json }}\n    },\n    \"LastSubmissionBy\": {\n      \"Text\": {{ Request.Form[\"email\"] | json }}\n    }\n  }\n}"
+                  "Expression": "{\"DisplayText\": \"RSVP Responses\", \"TitlePart\": {\"Title\": \"RSVP Responses\"}, \"RsvpResponsesList\": {\"LastSubmissionAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}, \"LastSubmissionBy\": {\"Text\": \"{{ Request.Form.email | default: '' | escape }}\"}}}"
                 },
                 "ActivityMetadata": {
                   "Title": "Update RSVP Collector"

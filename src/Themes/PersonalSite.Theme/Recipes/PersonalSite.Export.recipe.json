@@ -1650,7 +1650,7 @@
                     "Text": "Guest details and dietary requirements"
                   },
                   "PostUrl": {
-                    "Text": "/rsvp/submit"
+                    "Text": ""
                   }
                 }
               },
