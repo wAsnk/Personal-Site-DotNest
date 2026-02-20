@@ -1,0 +1,619 @@
+{
+  "name": "PersonalSite.Export",
+  "displayName": "Personal Site - Export",
+  "description": "Wedding theme content model and starter content.",
+  "author": "Krisztian Nemeth",
+  "website": "https://markbartha.com",
+  "version": "1.0",
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Settings",
+      "SiteName": "Klara and Krisztian",
+      "PageTitleFormat": "{% page_title Site.SiteName, position: \"after\", separator: \" - \" %}",
+      "HomeRoute": {
+        "Area": "OrchardCore.Contents",
+        "Controller": "Item",
+        "Action": "Display",
+        "contentItemId": "4aaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "AppendVersion": true,
+      "CacheMode": "FromConfiguration"
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
+                  "ShowHomepageOption": true
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "BagPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Sections",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedStereotypes": [
+                    "Block"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Hero",
+          "DisplayName": "Hero",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RsvpSection",
+          "DisplayName": "RSVP Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "WhenWhereSection",
+          "DisplayName": "When and Where Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GiftRegistrySection",
+          "DisplayName": "Gift Registry Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "OurStorySection",
+          "DisplayName": "Our Story Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PhotoGallerySection",
+          "DisplayName": "Photo Gallery Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HungarianTraditionsSection",
+          "DisplayName": "Hungarian Traditions Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FurtherDetailsSection",
+          "DisplayName": "Further Details Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "BlockCommon",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Theme",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Theme",
+                  "Editor": "PredefinedList",
+                  "Position": "0"
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Light",
+                      "value": "light"
+                    },
+                    {
+                      "name": "Dark",
+                      "value": "dark"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "light"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "4bbbbbbbbbbbbbbbbbbbbbbbbb",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Menu",
+          "DisplayText": "Main Menu",
+          "Latest": true,
+          "Published": true,
+          "TitlePart": {
+            "Title": "Main Menu"
+          },
+          "AliasPart": {
+            "Alias": "main-menu"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": [
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "RSVP",
+                "Latest": true,
+                "Published": true,
+                "LinkMenuItemPart": {
+                  "Url": "/#rsvp",
+                  "Target": null
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Details",
+                "Latest": true,
+                "Published": true,
+                "LinkMenuItemPart": {
+                  "Url": "/#details",
+                  "Target": null
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Story",
+                "Latest": true,
+                "Published": true,
+                "LinkMenuItemPart": {
+                  "Url": "/#story",
+                  "Target": null
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "LinkMenuItem",
+                "DisplayText": "Traditions",
+                "Latest": true,
+                "Published": true,
+                "LinkMenuItemPart": {
+                  "Url": "/#traditions",
+                  "Target": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "4aaaaaaaaaaaaaaaaaaaaaaaaa",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Page",
+          "DisplayText": "Wedding Day",
+          "Latest": true,
+          "Published": true,
+          "TitlePart": {
+            "Title": "Wedding Day"
+          },
+          "AutoroutePart": {
+            "SetHomepage": true,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false,
+            "Path": ""
+          },
+          "BagPart": {
+            "ContentItems": [
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "Hero",
+                "DisplayText": "Hero",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Hero"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "dark"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "RsvpSection",
+                "DisplayText": "RSVP",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "RSVP"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "dark"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "WhenWhereSection",
+                "DisplayText": "When and Where",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "When and Where"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "light"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "GiftRegistrySection",
+                "DisplayText": "Gifts",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Gifts"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "dark"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "OurStorySection",
+                "DisplayText": "Our Story",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Our Story"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "light"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "PhotoGallerySection",
+                "DisplayText": "Moments",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Moments"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "dark"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "HungarianTraditionsSection",
+                "DisplayText": "Hungarian Traditions",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Hungarian Traditions"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "light"
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "FurtherDetailsSection",
+                "DisplayText": "Further Details",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Further Details"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "dark"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "TargetPath": "Site/IMG_1283.jpg",
+          "SourcePath": "Media/Site/IMG_1283.jpg"
+        }
+      ]
+    }
+  ]
+}

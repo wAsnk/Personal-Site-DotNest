@@ -1,0 +1,39 @@
+<section id="gallery" class="section-shell">
+    <div class="section-inner max-w-5xl">
+        <div class="mb-16 text-center">
+            <h2 class="section-heading">Moments</h2>
+
+            <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+                <line x1="162" y1="5" x2="300" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+                <path d="M 140 3 L 142 5 L 140 7 L 138 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+                <path d="M 150 2.5 L 152.5 5 L 150 7.5 L 147.5 5 Z" class="theme-light:fill-gold/40 theme-light:stroke-gold/60 theme-dark:fill-gold-light/60 theme-dark:stroke-gold-light/90" stroke-width="0.7"></path>
+                <path d="M 160 3 L 162 5 L 160 7 L 158 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+            </svg>
+        </div>
+
+        <div class="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
+            {% assign hero_image = "~/media/Site/IMG_1283.jpg" | href %}
+            <div class="break-inside-avoid">
+                <img src="{{ hero_image }}" alt="Engagement photo" class="aspect-[3/4] w-full rounded-sm border object-cover theme-light:border-gold/20 theme-dark:border-gold-light/20">
+            </div>
+            <div class="break-inside-avoid">
+                <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-bronze/20 via-gold/15 to-paper-dark/30 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+            </div>
+            <div class="break-inside-avoid">
+                <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-gold-dark/25 via-bronze/15 to-gold-light/20 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+            </div>
+            <div class="break-inside-avoid">
+                <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-paper-dark/30 via-gold/20 to-bronze/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+            </div>
+            <div class="break-inside-avoid">
+                <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-gold-light/25 via-gold-dark/20 to-bronze/10 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+            </div>
+            <div class="break-inside-avoid">
+                <div class="aspect-[3/4] w-full rounded-sm border bg-gradient-to-br from-bronze/15 via-gold/25 to-gold-light/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+            </div>
+        </div>
+
+        <p class="section-faint mt-12 text-center italic">Your photos will appear here</p>
+    </div>
+</section>

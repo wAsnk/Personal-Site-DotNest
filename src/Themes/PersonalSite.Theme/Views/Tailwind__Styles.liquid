@@ -1,0 +1,274 @@
+<style type="text/tailwindcss">
+@custom-variant theme-light (&:where([data-theme="light"] *));
+@custom-variant theme-dark (&:where([data-theme="dark"] *));
+
+@theme {
+  --color-paper: #f5f2ea;
+  --color-paper-dark: #ebe6d8;
+  --color-gold: #b49b57;
+  --color-gold-light: #d4c494;
+  --color-gold-dark: #7a6530;
+  --color-bronze: #3d3322;
+  --color-bronze-light: #5c4e38;
+  --color-garden: #5b6b4a;
+  --color-garden-dark: #3e4a33;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-ui: "Cinzel", Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-bronze font-serif;
+  }
+
+  [data-theme="light"] {
+    @apply bg-paper text-bronze;
+  }
+
+  [data-theme="dark"] {
+    @apply bg-garden-dark text-paper;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline outline-1 outline-offset-2 outline-gold;
+  }
+}
+
+@utility page-container {
+  @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+}
+
+@layer components {
+  .section-shell {
+    @apply px-6 py-24 md:py-32;
+  }
+
+  .section-inner {
+    @apply mx-auto w-full max-w-3xl;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl font-normal uppercase tracking-[0.16em] md:text-4xl;
+  }
+
+  [data-theme="light"] .section-heading {
+    @apply text-gold-dark;
+  }
+
+  [data-theme="dark"] .section-heading {
+    @apply text-gold-light;
+  }
+
+  .section-body {
+    @apply text-lg leading-relaxed;
+  }
+
+  [data-theme="light"] .section-body {
+    @apply text-bronze;
+  }
+
+  [data-theme="dark"] .section-body {
+    @apply text-paper/90;
+  }
+
+  .section-muted {
+    @apply text-base leading-relaxed italic;
+  }
+
+  [data-theme="light"] .section-muted {
+    @apply text-bronze/80;
+  }
+
+  [data-theme="dark"] .section-muted {
+    @apply text-paper/70;
+  }
+
+  .section-faint {
+    @apply text-sm leading-relaxed;
+  }
+
+  [data-theme="light"] .section-faint {
+    @apply text-bronze/65;
+  }
+
+  [data-theme="dark"] .section-faint {
+    @apply text-paper/55;
+  }
+
+  .section-card {
+    @apply p-8 md:p-12;
+  }
+
+  [data-theme="light"] .section-card {
+    background: var(--color-paper);
+    border: 1px solid rgba(180, 155, 87, 0.85);
+    box-shadow: 0 0 0 4px rgba(245, 242, 234, 1), 0 0 0 5px rgba(180, 155, 87, 0.85);
+  }
+
+  [data-theme="dark"] .section-card {
+    background: var(--color-garden-dark);
+    border: 1px solid rgba(212, 196, 148, 0.6);
+    box-shadow: 0 0 0 4px rgba(62, 74, 51, 1), 0 0 0 5px rgba(212, 196, 148, 0.6);
+  }
+
+  .map-link {
+    @apply inline-flex items-center gap-2 border-b pb-0.5 text-sm uppercase tracking-[0.12em] transition-colors;
+  }
+
+  [data-theme="light"] .map-link {
+    @apply border-gold/30 text-gold-dark hover:text-gold;
+  }
+
+  [data-theme="dark"] .map-link {
+    @apply border-gold-light/40 text-gold-light hover:text-gold;
+  }
+
+  .wedding-input,
+  .wedding-select,
+  .wedding-textarea {
+    @apply w-full border-b bg-transparent px-4 py-3 font-serif text-base outline-none transition-colors;
+  }
+
+  [data-theme="light"] .wedding-input,
+  [data-theme="light"] .wedding-select,
+  [data-theme="light"] .wedding-textarea {
+    @apply border-gold text-bronze placeholder:text-bronze/40 focus:border-gold-dark;
+  }
+
+  [data-theme="dark"] .wedding-input,
+  [data-theme="dark"] .wedding-select,
+  [data-theme="dark"] .wedding-textarea {
+    @apply border-gold-light/60 text-paper placeholder:text-paper/40 focus:border-gold-light;
+  }
+
+  .wedding-radio {
+    @apply flex items-center gap-3 font-serif text-sm uppercase tracking-[0.1em];
+  }
+
+  [data-theme="light"] .wedding-radio {
+    @apply text-bronze/85;
+  }
+
+  [data-theme="dark"] .wedding-radio {
+    @apply text-paper/85;
+  }
+
+  .wedding-radio-dot {
+    @apply h-2 w-2;
+  }
+
+  [data-theme="light"] .wedding-radio-dot {
+    @apply bg-gold;
+  }
+
+  [data-theme="dark"] .wedding-radio-dot {
+    @apply bg-gold-light;
+  }
+
+  .timeline-line {
+    @apply absolute top-0 bottom-0 w-px;
+  }
+
+  [data-theme="light"] .timeline-line {
+    @apply bg-gold/30;
+  }
+
+  [data-theme="dark"] .timeline-line {
+    @apply bg-gold-light/30;
+  }
+
+  .timeline-dot {
+    @apply absolute h-3 w-3 rotate-45 border;
+  }
+
+  [data-theme="light"] .timeline-dot {
+    @apply border-gold bg-paper;
+  }
+
+  [data-theme="dark"] .timeline-dot {
+    @apply border-gold-light bg-garden-dark;
+  }
+
+  .section-divider {
+    @apply relative h-0 w-full;
+  }
+
+  .section-divider-line {
+    @apply absolute left-0 right-0 top-0 h-px -translate-y-1/2;
+    background-color: rgba(180, 155, 87, 0.4);
+  }
+
+  .section-divider-diamond {
+    @apply absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 border border-gold/60;
+    background-color: var(--color-paper);
+    box-shadow: 0 0 0 3px var(--color-paper), 0 0 0 4px rgba(180, 155, 87, 0.4);
+  }
+
+  .section-divider-diamond::after {
+    content: "";
+    @apply absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 border border-gold/60 bg-paper;
+  }
+
+  .rich-text {
+    @apply text-base leading-relaxed;
+  }
+
+  .rich-text > :first-child {
+    @apply mt-0;
+  }
+
+  .rich-text > :last-child {
+    @apply mb-0;
+  }
+
+  .rich-text p {
+    @apply mb-4;
+  }
+
+  .rich-text h2 {
+    @apply mb-4 mt-8 font-display text-3xl font-normal;
+  }
+
+  .rich-text ul {
+    @apply mb-4 list-disc space-y-2 pl-6;
+  }
+}
+
+.paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+@keyframes gentle-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.8;
+  }
+}
+
+.scroll-indicator {
+  animation: gentle-bounce 3s ease-in-out infinite;
+}
+</style>

@@ -1,0 +1,85 @@
+{
+  "name": "PersonalSite.Development.Setup",
+  "displayName": "Personal Site - Development - Setup",
+  "description": "Development setup for the wedding site theme.",
+  "author": "Krisztian Nemeth",
+  "website": "https://markbartha.com",
+  "version": "1.0",
+  "issetuprecipe": true,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "OrchardCore.Admin",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Alias",
+        "OrchardCore.Autoroute",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Contents",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Flows",
+        "OrchardCore.Forms",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Html",
+        "OrchardCore.Liquid",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.Placements",
+        "OrchardCore.Placements.FileStorage",
+        "OrchardCore.Recipes",
+        "OrchardCore.Resources",
+        "OrchardCore.Roles",
+        "OrchardCore.Settings",
+        "OrchardCore.Themes",
+        "OrchardCore.Title",
+        "OrchardCore.Users",
+        "OrchardCore.Widgets",
+        "Lombiq.Hosting.MediaTheme",
+        "TheAdmin",
+        "PersonalSite.Theme"
+      ]
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous role",
+          "Permissions": [
+            "ViewContent"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "PersonalSite.Theme"
+    },
+    {
+      "name": "mediatheme",
+      "ClearMediaThemeFolder": false
+    },
+    {
+      "name": "recipes",
+      "Values": [
+        {
+          "executionid": "PersonalSite.Theme",
+          "name": "PersonalSite.Export"
+        }
+      ]
+    }
+  ]
+}

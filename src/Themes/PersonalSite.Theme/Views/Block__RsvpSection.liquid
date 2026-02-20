@@ -1,0 +1,71 @@
+<section id="rsvp" class="section-shell">
+    <div class="section-inner max-w-xl">
+        <div class="mb-14 text-center">
+            <h2 class="section-heading">R.S.V.P.</h2>
+
+            <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+                <line x1="162" y1="5" x2="300" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+                <path d="M 140 3 L 142 5 L 140 7 L 138 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+                <path d="M 150 2.5 L 152.5 5 L 150 7.5 L 147.5 5 Z" class="theme-light:fill-gold/40 theme-light:stroke-gold/60 theme-dark:fill-gold-light/60 theme-dark:stroke-gold-light/90" stroke-width="0.7"></path>
+                <path d="M 160 3 L 162 5 L 160 7 L 158 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+            </svg>
+
+            <p class="section-faint mt-5 italic">Kindly respond by 01 May 2027</p>
+        </div>
+
+        <div class="section-card">
+            <form class="space-y-8" method="post" action="#" novalidate>
+                <div>
+                    <label for="rsvp-email" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Email Address</label>
+                    <input id="rsvp-email" name="email" type="email" required placeholder="your@email.com" class="wedding-input">
+                </div>
+
+                <fieldset>
+                    <legend class="mb-4 block w-full text-center font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">
+                        Will you be attending?
+                    </legend>
+                    <div class="flex flex-wrap items-center justify-center gap-6">
+                        <label class="wedding-radio">
+                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light"><span class="wedding-radio-dot"></span></span>
+                            <input type="radio" name="attending" value="yes" class="sr-only" checked>
+                            <span>Accepts with pleasure</span>
+                        </label>
+                        <label class="wedding-radio">
+                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light"></span>
+                            <input type="radio" name="attending" value="no" class="sr-only">
+                            <span>Declines with regret</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label for="guest-count" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Number of guests</label>
+                    <select id="guest-count" name="guestCount" class="wedding-select">
+                        <option value="1">1 guest</option>
+                        <option value="2">2 guests</option>
+                        <option value="3">3 guests</option>
+                        <option value="4">4 guests</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="guest-details" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Guest details and dietary requirements</label>
+                    <textarea id="guest-details" name="guestDetails" rows="3" class="wedding-textarea" placeholder="Names and allergies (if any)"></textarea>
+                </div>
+
+                <div>
+                    <label for="rsvp-message" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">A note to the couple</label>
+                    <textarea id="rsvp-message" name="message" rows="2" class="wedding-textarea" placeholder="Share your well wishes..."></textarea>
+                </div>
+
+                <div class="pt-4 text-center">
+                    <button type="submit" class="inline-flex items-center gap-2 border px-10 py-3 font-display text-sm uppercase tracking-[0.16em] transition-colors theme-light:border-gold/70 theme-light:text-gold-dark theme-light:hover:bg-gold/10 theme-dark:border-gold-light/60 theme-dark:text-gold-light theme-dark:hover:bg-gold-light/10">
+                        <i data-lucide="heart" class="h-4 w-4" aria-hidden="true"></i>
+                        Send reply
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

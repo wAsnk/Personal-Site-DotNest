@@ -1,0 +1,26 @@
+{% assign bag_items = Model.ContentItem.Content.BagPart.ContentItems %}
+
+{% if bag_items %}
+    {% for item in bag_items %}
+        {% if forloop.index > 2 %}
+            <div class="section-divider" aria-hidden="true">
+                <div class="section-divider-line">
+                    <div class="section-divider-diamond"></div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% assign theme_key = "light" %}
+        {% assign theme_value = item.BlockCommon.Theme.Text | default: "" | downcase %}
+
+        {% if item.ContentType == "Hero" %}
+            {% assign theme_key = "dark" %}
+        {% elsif theme_value == "dark" %}
+            {% assign theme_key = "dark" %}
+        {% endif %}
+
+        <div data-theme="{{ theme_key }}" data-section="{{ item.ContentType | downcase }}">
+            {{ item | shape_build_display: "Detail" | shape_render }}
+        </div>
+    {% endfor %}
+{% endif %}
