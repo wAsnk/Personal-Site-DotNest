@@ -1210,12 +1210,22 @@
               }
             },
             {
-              "FieldName": "GeoPointField",
-              "Name": "Location",
+              "FieldName": "TextField",
+              "Name": "Latitude",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Location",
+                  "DisplayName": "Latitude",
                   "Position": "5"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Longitude",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Longitude",
+                  "Position": "6"
                 }
               }
             }
@@ -1690,9 +1700,11 @@
                         "MapUrl": {
                           "Text": "https://www.google.com/maps/search/?api=1&query=47.56082341824489,18.945057936598808"
                         },
-                        "Location": {
-                          "Latitude": 47.56082341824489,
-                          "Longitude": 18.945057936598808
+                        "Latitude": {
+                          "Text": "47.56082341824489"
+                        },
+                        "Longitude": {
+                          "Text": "18.945057936598808"
                         }
                       }
                     },
@@ -1722,9 +1734,11 @@
                         "MapUrl": {
                           "Text": "https://www.google.com/maps/search/?api=1&query=47.541447915110226,18.93606702217123"
                         },
-                        "Location": {
-                          "Latitude": 47.541447915110226,
-                          "Longitude": 18.93606702217123
+                        "Latitude": {
+                          "Text": "47.541447915110226"
+                        },
+                        "Longitude": {
+                          "Text": "18.93606702217123"
                         }
                       }
                     }
