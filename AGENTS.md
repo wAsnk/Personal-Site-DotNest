@@ -18,7 +18,6 @@ This repo is a DotNest Core SDK Orchard Core site with a custom Liquid theme and
 - The legacy Tailwind v3 pipeline (`src/Themes/PersonalSite.Theme/Assets/css/site.css` and `src/Themes/PersonalSite.Theme/Targets/RunTailwindBuild.targets`) is unused while CDN is active.
 - Page output is driven by BagPart blocks: `src/Themes/PersonalSite.Theme/Views/Content__Page.liquid`.
 - Block and widget overrides live in `src/Themes/PersonalSite.Theme/Views/Block__*.liquid` and `src/Themes/PersonalSite.Theme/Views/Widget__*.liquid`.
-- Hero left column uses a flex column stack in `src/Themes/PersonalSite.Theme/Views/Block__Hero.liquid`; the badge widget is `self-start` with no bottom margin.
 - No light/dark toggle or `scheme-light` class; use data-theme wrappers instead of toggles.
 
 ## Styling notes
@@ -34,17 +33,6 @@ This repo is a DotNest Core SDK Orchard Core site with a custom Liquid theme and
 - Content item IDs must be `[js:uuid()]` or 26-character lowercase alphanumeric strings when stable IDs are required; do not use GUIDs.
 - DisplayText is the reliable title; `TitlePart.Title` is for UI only and must not be used for display in templates.
 - AdminMenu parent items must use `PlaceholderAdminNode`; content-type list links use `~/Admin/Contents/ContentItems/{ContentTypeId}`; singleton links should point to `.../Edit` instead of `.../Display`.
-- Page BagPart uses `ContainedStereotypes: ["Block"]`.
-- BlockCommon part stores the theme (PredefinedList): `DarkBlue`, `DarkPanel`, `LightGray`, `White`, mapped to `data-theme` values `dark-blue`, `dark-panel`, `light-gray`, `white`.
-- ButtonGroup supports alignment via `ButtonGroup.Alignment` (Left/Center).
-- CTA uses `StackSection` with `StackSection.HeaderAlignment = Center`; items render stacked (not a grid).
-- Hero adds `Hero.BackgroundLabel` plus a `Background` BagPart for `IconText` items.
-- GridWidget columns are `Two`, `Three`, or `Four` only; use `StackSection` for single-column layouts. GridWidget stores its items in the `Items` BagPart.
-- Current key types in `PersonalSite.Export.recipe.json`:
-  - Blocks: `Hero`, `SplitSection`, `StackSection`, `ContactForm`, `ContactOptions`.
-  - Widgets: `Badge`, `RichText`, `Markdown`, `ButtonGroup`, `IconBlurb`, `FeatureCard`, `ServiceCard`, `BulletItem`, `Stat`, `Testimonial`, `HighlightCard`, `BenefitItem`, `ProcessStep`, `Callout`, `TextNote`, `ArrowLink`, `GridWidget`, `IconText`, `FaqList`, `FaqItem`, `ContactOption`.
-  - Buttons: `Button` (no stereotype), used by `ButtonGroup`.
-  - BlogPost summary field is named `Excerpt`.
 
 ## Local development
 - Run the site from `src/DotNest.Core.SDK.Web` with `dotnet run`.

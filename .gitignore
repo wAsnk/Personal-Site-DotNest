@@ -32,3 +32,4 @@ _MediaTheme/
 *.MediaTheme.recipe.json
 wwwroot/
 .env
+.agents
