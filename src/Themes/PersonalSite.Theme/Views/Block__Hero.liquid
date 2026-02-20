@@ -1,5 +1,7 @@
 {% assign hero_data = Model.ContentItem.Content.Hero %}
-{% assign hero_image = "~/media/Site/IMG_1283.jpg" | href %}
+{% assign hero_image_paths = hero_data.BackgroundImage.Paths %}
+{% assign hero_image_path = hero_image_paths | first %}
+{% assign hero_image = hero_image_path | asset_url %}
 {% assign intro_text = hero_data.IntroText.Text %}
 {% assign bride_name = hero_data.BrideName.Text %}
 {% assign groom_name = hero_data.GroomName.Text %}

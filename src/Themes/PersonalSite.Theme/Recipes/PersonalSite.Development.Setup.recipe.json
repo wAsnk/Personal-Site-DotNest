@@ -26,6 +26,7 @@
         "OrchardCore.HomeRoute",
         "OrchardCore.Html",
         "OrchardCore.Liquid",
+        "OrchardCore.Lists",
         "OrchardCore.Media",
         "OrchardCore.Menu",
         "OrchardCore.Navigation",
@@ -40,6 +41,9 @@
         "OrchardCore.Title",
         "OrchardCore.Users",
         "OrchardCore.Widgets",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "OrchardCore.Contents.Workflows",
         "Lombiq.Hosting.MediaTheme",
         "TheAdmin",
         "PersonalSite.Theme"
@@ -76,6 +80,10 @@
     {
       "name": "recipes",
       "Values": [
+        {
+          "executionid": "PersonalSite.Theme",
+          "name": "PersonalSite.Workflows"
+        },
         {
           "executionid": "PersonalSite.Theme",
           "name": "PersonalSite.Export"

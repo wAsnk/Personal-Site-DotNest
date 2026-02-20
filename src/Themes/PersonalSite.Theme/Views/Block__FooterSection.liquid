@@ -1,0 +1,12 @@
+{% assign footer = Model.ContentItem.Content.FooterSection %}
+{% assign names_text = footer.NamesText.Text %}
+{% assign date_text = footer.DateText.Text %}
+{% assign location_text = footer.LocationText.Text %}
+
+<section class="border-t border-gold/30 bg-paper py-16">
+    <div class="page-container text-center">
+        <h2 class="font-display text-3xl font-normal uppercase tracking-[0.18em] text-gold-dark md:text-4xl">{{ names_text }}</h2>
+        <p class="mt-4 font-display text-xs uppercase tracking-[0.18em] text-bronze/70">{{ date_text }}</p>
+        <p class="mt-6 font-serif text-sm uppercase tracking-[0.12em] text-bronze/60">{{ location_text }}</p>
+    </div>
+</section>

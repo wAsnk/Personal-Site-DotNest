@@ -164,6 +164,89 @@
           ]
         },
         {
+          "Name": "RsvpResponsesList",
+          "DisplayName": "RSVP Responses List",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": true,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "ListPart",
+              "Name": "ListPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "ListPartSettings": {
+                  "PageSize": 100,
+                  "ContainedContentTypes": [
+                    "RsvpResponse"
+                  ],
+                  "EnableOrdering": false,
+                  "ShowHeader": false
+                }
+              }
+            },
+            {
+              "PartName": "RsvpResponsesList",
+              "Name": "RsvpResponsesList",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RsvpResponse",
+          "DisplayName": "RSVP Response",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": true,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "RsvpResponse",
+              "Name": "RsvpResponse",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
           "Name": "WhenWhereSection",
           "DisplayName": "When and Where Section",
           "Settings": {
@@ -665,6 +748,49 @@
               }
             }
           ]
+        },
+        {
+          "Name": "FooterSection",
+          "DisplayName": "Footer Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FooterSection",
+              "Name": "FooterSection",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -694,6 +820,19 @@
                   ],
                   "Editor": 1,
                   "DefaultValue": "light"
+                }
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "VisibleInMenu",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Visible In Menu",
+                  "Position": "1"
+                },
+                "BooleanFieldSettings": {
+                  "DefaultValue": true
                 }
               }
             }
@@ -773,6 +912,20 @@
                   "Position": "6"
                 }
               }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "BackgroundImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Background Image",
+                  "Position": "7"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false,
+                  "AllowAnchors": true
+                }
+              }
             }
           ]
         },
@@ -780,6 +933,16 @@
           "Name": "RsvpSection",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "PostUrl",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Post Url",
+                  "Position": "0"
+                }
+              }
+            },
             {
               "FieldName": "TextField",
               "Name": "ResponseByText",
@@ -888,6 +1051,100 @@
                 "ContentPartFieldSettings": {
                   "DisplayName": "Submit Button Text",
                   "Position": "11"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RsvpResponsesList",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "LastSubmissionAt",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Last Submission At",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LastSubmissionBy",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Last Submission By",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "RsvpResponse",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Email",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Email",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Attending",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Attending",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "NumericField",
+              "Name": "GuestCount",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Guest Count",
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "GuestDetails",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Guest Details",
+                  "Position": "3",
+                  "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Message",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Message",
+                  "Position": "4",
+                  "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "SubmittedAt",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Submitted At",
+                  "Position": "5"
                 }
               }
             }
@@ -1126,6 +1383,42 @@
               }
             }
           ]
+        },
+        {
+          "Name": "FooterSection",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "NamesText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Names Text",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DateText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Date Text",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LocationText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Location Text",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -1200,6 +1493,26 @@
           }
         },
         {
+          "ContentItemId": "4rsvpresponseslistitem0000",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "RsvpResponsesList",
+          "DisplayText": "RSVP Responses",
+          "Latest": true,
+          "Published": true,
+          "TitlePart": {
+            "Title": "RSVP Responses"
+          },
+          "ListPart": {},
+          "RsvpResponsesList": {
+            "LastSubmissionAt": {
+              "Text": ""
+            },
+            "LastSubmissionBy": {
+              "Text": ""
+            }
+          }
+        },
+        {
           "ContentItemId": "4aaaaaaaaaaaaaaaaaaaaaaaaa",
           "ContentItemVersionId": "[js:uuid()]",
           "ContentType": "Page",
@@ -1231,6 +1544,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "dark"
+                  },
+                  "VisibleInMenu": {
+                    "Value": false
                   }
                 },
                 "Hero": {
@@ -1254,6 +1570,20 @@
                   },
                   "Country": {
                     "Text": "Hungary"
+                  },
+                  "BackgroundImage": {
+                    "Anchors": [
+                      {
+                        "X": 0.5,
+                        "Y": 0.5
+                      }
+                    ],
+                    "Paths": [
+                      "Site/IMG_1283.jpg"
+                    ],
+                    "MediaTexts": [
+                      ""
+                    ]
                   }
                 }
               },
@@ -1270,6 +1600,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "dark"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "RsvpSection": {
@@ -1305,6 +1638,9 @@
                   },
                   "GuestDetailsLabel": {
                     "Text": "Guest details and dietary requirements"
+                  },
+                  "PostUrl": {
+                    "Text": "/rsvp/submit"
                   }
                 }
               },
@@ -1321,6 +1657,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "light"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "Details": {
@@ -1405,6 +1744,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "dark"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "GiftItems": {
@@ -1444,6 +1786,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "light"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "Milestones": {
@@ -1559,6 +1904,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "dark"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "PhotoGallerySection": {
@@ -1611,6 +1959,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "light"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "HungarianTraditionsSection": {
@@ -1716,6 +2067,9 @@
                 "BlockCommon": {
                   "Theme": {
                     "Text": "dark"
+                  },
+                  "VisibleInMenu": {
+                    "Value": true
                   }
                 },
                 "FurtherDetailsSection": {
@@ -1724,6 +2078,36 @@
                   },
                   "DetailsText": {
                     "Text": "Information regarding accommodation, transport, and the evening programme will be shared closer to the date."
+                  }
+                }
+              },
+              {
+                "ContentItemId": "[js:uuid()]",
+                "ContentItemVersionId": "[js:uuid()]",
+                "ContentType": "FooterSection",
+                "DisplayText": "Footer",
+                "Latest": true,
+                "Published": true,
+                "TitlePart": {
+                  "Title": "Footer"
+                },
+                "BlockCommon": {
+                  "Theme": {
+                    "Text": "light"
+                  },
+                  "VisibleInMenu": {
+                    "Value": false
+                  }
+                },
+                "FooterSection": {
+                  "NamesText": {
+                    "Text": "Klara & Krisztian"
+                  },
+                  "DateText": {
+                    "Text": "03 . 07 . 2027"
+                  },
+                  "LocationText": {
+                    "Text": "Budapest, Hungary"
                   }
                 }
               }
@@ -1743,4 +2127,3 @@
     }
   ]
 }
-

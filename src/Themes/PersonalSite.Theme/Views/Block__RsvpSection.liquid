@@ -1,5 +1,6 @@
 {% assign rsvp = Model.ContentItem.Content.RsvpSection %}
 {% assign title = Model.ContentItem.DisplayText %}
+{% assign post_url = rsvp.PostUrl.Text %}
 {% assign response_by = rsvp.ResponseByText.Text %}
 {% assign email_label = rsvp.EmailLabel.Text %}
 {% assign attend_question = rsvp.AttendQuestion.Text %}
@@ -29,7 +30,7 @@
         </div>
 
         <div class="section-card">
-            <form class="space-y-8" method="post" action="#" novalidate>
+            <form class="space-y-8" method="post"{% if post_url != blank %} action="{{ post_url }}"{% endif %} data-rsvp-form>
                 <div>
                     <label for="rsvp-email" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ email_label }}</label>
                     <input id="rsvp-email" name="email" type="email" required placeholder="your@email.com" class="wedding-input">
@@ -55,17 +56,13 @@
 
                 <div>
                     <label for="guest-count" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_count_label }}</label>
-                    <select id="guest-count" name="guestCount" class="wedding-select">
-                        <option value="1">1 guest</option>
-                        <option value="2">2 guests</option>
-                        <option value="3">3 guests</option>
-                        <option value="4">4 guests</option>
-                    </select>
+                    <input id="guest-count" name="guestCount" type="number" min="1" max="10" value="1" class="wedding-input" data-guest-count>
                 </div>
 
                 <div>
-                    <label for="guest-details" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_details_label }}</label>
-                    <textarea id="guest-details" name="guestDetails" rows="3" class="wedding-textarea" placeholder="{{ guest_details_placeholder }}"></textarea>
+                    <p class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_details_label }}</p>
+                    <div class="space-y-3" data-guest-inputs data-placeholder="{{ guest_details_placeholder | escape }}"></div>
+                    <input type="hidden" name="guestDetails" value="" data-guest-details-hidden>
                 </div>
 
                 <div>
@@ -83,3 +80,78 @@
         </div>
     </div>
 </section>
+<script>
+    (function () {
+        const form = document.querySelector("[data-rsvp-form]");
+
+        if (!form) {
+            return;
+        }
+
+        const guestCountInput = form.querySelector("[data-guest-count]");
+        const guestInputsContainer = form.querySelector("[data-guest-inputs]");
+        const guestDetailsHidden = form.querySelector("[data-guest-details-hidden]");
+
+        if (!guestCountInput || !guestInputsContainer || !guestDetailsHidden) {
+            return;
+        }
+
+        const placeholder = guestInputsContainer.getAttribute("data-placeholder") || "";
+        const minGuests = 1;
+        const maxGuests = 10;
+
+        const normalizeCount = (value) => {
+            const parsed = Number.parseInt(value, 10);
+
+            if (Number.isNaN(parsed)) {
+                return minGuests;
+            }
+
+            return Math.min(maxGuests, Math.max(minGuests, parsed));
+        };
+
+        const syncGuestDetails = () => {
+            const values = Array.from(guestInputsContainer.querySelectorAll("input[data-guest-name]"))
+                .map((input) => input.value.trim())
+                .filter((value) => value.length > 0);
+
+            guestDetailsHidden.value = values.join("\n");
+        };
+
+        const renderGuestInputs = () => {
+            const count = normalizeCount(guestCountInput.value);
+            guestCountInput.value = count;
+            guestInputsContainer.innerHTML = "";
+
+            for (let index = 1; index <= count; index++) {
+                const wrapper = document.createElement("div");
+                const label = document.createElement("label");
+                const input = document.createElement("input");
+
+                label.setAttribute("for", "rsvp-guest-" + index);
+                label.className = "mb-2 block font-display text-xs uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light";
+                label.textContent = "Guest " + index;
+
+                input.id = "rsvp-guest-" + index;
+                input.type = "text";
+                input.className = "wedding-input";
+                input.placeholder = placeholder;
+                input.required = true;
+                input.setAttribute("data-guest-name", "true");
+
+                input.addEventListener("input", syncGuestDetails);
+                wrapper.appendChild(label);
+                wrapper.appendChild(input);
+                guestInputsContainer.appendChild(wrapper);
+            }
+
+            syncGuestDetails();
+        };
+
+        guestCountInput.addEventListener("change", renderGuestInputs);
+        guestCountInput.addEventListener("input", renderGuestInputs);
+        form.addEventListener("submit", syncGuestDetails);
+
+        renderGuestInputs();
+    })();
+</script>

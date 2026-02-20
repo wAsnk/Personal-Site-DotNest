@@ -1,0 +1,128 @@
+{
+  "name": "PersonalSite.Workflows",
+  "displayName": "Personal Site - Workflows",
+  "description": "Workflow definitions for RSVP processing.",
+  "author": "Krisztian Nemeth",
+  "website": "https://markbartha.com",
+  "version": "1.0",
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "WorkflowType",
+      "data": [
+        {
+          "WorkflowTypeId": "4rsvpworkflowtypeid0000000",
+          "Name": "RSVP Submission",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "LockTimeout": 0,
+          "LockExpiration": 0,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4rsvphttprequestactivity00",
+              "Name": "HttpRequestEvent",
+              "X": 40,
+              "Y": 60,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "RSVP Submitted"
+                },
+                "HttpMethod": "POST",
+                "Url": "/rsvp/submit",
+                "ValidateAntiforgeryToken": false,
+                "TokenLifeSpan": 0,
+                "FormLocationKey": ""
+              }
+            },
+            {
+              "ActivityId": "4rsvpcreatecontenttask0000",
+              "Name": "CreateContentTask",
+              "X": 360,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "ContentType": "RsvpResponse",
+                "Publish": true,
+                "ContentProperties": {
+                  "Expression": "{\n  \"DisplayText\": {{ \"RSVP from \" | append: Request.Form[\"email\"] | json }},\n  \"TitlePart\": {\n    \"Title\": {{ \"RSVP from \" | append: Request.Form[\"email\"] | json }}\n  },\n  \"ContainedPart\": {\n    \"ListContentItemId\": \"4rsvpresponseslistitem0000\",\n    \"ListContentType\": \"RsvpResponsesList\"\n  },\n  \"RsvpResponse\": {\n    \"Email\": {\n      \"Text\": {{ Request.Form[\"email\"] | json }}\n    },\n    \"Attending\": {\n      \"Text\": {{ Request.Form[\"attending\"] | json }}\n    },\n    \"GuestCount\": {\n      \"Value\": {{ Request.Form[\"guestCount\"] | default: 1 }}\n    },\n    \"GuestDetails\": {\n      \"Text\": {{ Request.Form[\"guestDetails\"] | default: \"\" | json }}\n    },\n    \"Message\": {\n      \"Text\": {{ Request.Form[\"message\"] | default: \"\" | json }}\n    },\n    \"SubmittedAt\": {\n      \"Text\": {{ \"now\" | date: \"%Y-%m-%d %H:%M:%S\" | json }}\n    }\n  }\n}"
+                },
+                "ActivityMetadata": {
+                  "Title": "Create RSVP Response"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpupdatecontenttask0000",
+              "Name": "UpdateContentTask",
+              "X": 690,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "Publish": true,
+                "ContentItemIdExpression": "4rsvpresponseslistitem0000",
+                "ContentProperties": {
+                  "Expression": "{\n  \"DisplayText\": \"RSVP Responses\",\n  \"TitlePart\": {\n    \"Title\": \"RSVP Responses\"\n  },\n  \"RsvpResponsesList\": {\n    \"LastSubmissionAt\": {\n      \"Text\": {{ \"now\" | date: \"%Y-%m-%d %H:%M:%S\" | json }}\n    },\n    \"LastSubmissionBy\": {\n      \"Text\": {{ Request.Form[\"email\"] | json }}\n    }\n  }\n}"
+                },
+                "ActivityMetadata": {
+                  "Title": "Update RSVP Collector"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpredirecttask000000000",
+              "Name": "HttpRedirectTask",
+              "X": 1010,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Redirect to RSVP"
+                },
+                "Location": {
+                  "Expression": "/#rsvp"
+                },
+                "Permanent": false
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvphttprequestactivity00",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpcreatecontenttask0000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpcreatecontenttask0000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpupdatecontenttask0000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpcreatecontenttask0000",
+              "SourceOutcomeName": "Failed",
+              "DestinationActivityId": "4rsvpredirecttask000000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpupdatecontenttask0000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpredirecttask000000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpupdatecontenttask0000",
+              "SourceOutcomeName": "Failed",
+              "DestinationActivityId": "4rsvpredirecttask000000000"
+            }
+          ],
+          "Properties": {}
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,11 @@
 
     {% assign main_menu = Content["alias:main-menu"] %}
     {% assign menu_items = main_menu.Content.MenuItemsListPart.MenuItems %}
+    {% assign generated_menu_items = nil %}
+    {% if menu_items == blank %}
+        {% assign home_page = Content["4aaaaaaaaaaaaaaaaaaaaaaaaa"] %}
+        {% assign generated_menu_items = home_page.Content.BagPart.ContentItems %}
+    {% endif %}
 
     <header class="fixed inset-x-0 top-0 z-50">
         <div class="page-container pt-4">
@@ -51,6 +56,18 @@
                                 <a href="{{ link_url }}" class="font-display text-xs uppercase tracking-[0.18em] text-paper/80 transition-colors hover:text-gold-light"{% if link_target %} target="{{ link_target }}"{% endif %}>
                                     {{ link_text }}
                                 </a>
+                            {% endfor %}
+                        {% elsif generated_menu_items %}
+                            {% for item in generated_menu_items %}
+                                {% if item.DisplayText != blank and item.ContentType != "Hero" %}
+                                    {% assign show_in_menu = item.BlockCommon.VisibleInMenu.Value %}
+                                    {% if show_in_menu != false and show_in_menu != "false" %}
+                                        {% assign section_anchor = item.DisplayText | slugify %}
+                                        <a href="/#{{ section_anchor }}" class="font-display text-xs uppercase tracking-[0.18em] text-paper/80 transition-colors hover:text-gold-light">
+                                            {{ item.DisplayText }}
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -80,6 +97,18 @@
                                     {{ link_text }}
                                 </a>
                             {% endfor %}
+                        {% elsif generated_menu_items %}
+                            {% for item in generated_menu_items %}
+                                {% if item.DisplayText != blank and item.ContentType != "Hero" %}
+                                    {% assign show_in_menu = item.BlockCommon.VisibleInMenu.Value %}
+                                    {% if show_in_menu != false and show_in_menu != "false" %}
+                                        {% assign section_anchor = item.DisplayText | slugify %}
+                                        <a href="/#{{ section_anchor }}" class="font-display text-xs uppercase tracking-[0.18em] text-paper/85">
+                                            {{ item.DisplayText }}
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     </div>
                 </div>
@@ -95,14 +124,6 @@
 
         {% render_section "AfterContent", required: false %}
     </main>
-
-    <footer class="border-t border-gold/30 bg-paper py-16">
-        <div class="page-container text-center">
-            <h2 class="font-display text-3xl font-normal uppercase tracking-[0.18em] text-gold-dark md:text-4xl">Klara & Krisztian</h2>
-            <p class="mt-4 font-display text-xs uppercase tracking-[0.18em] text-bronze/70">03 . 07 . 2027</p>
-            <p class="mt-6 font-serif text-sm uppercase tracking-[0.12em] text-bronze/60">Budapest, Hungary</p>
-        </div>
-    </footer>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
