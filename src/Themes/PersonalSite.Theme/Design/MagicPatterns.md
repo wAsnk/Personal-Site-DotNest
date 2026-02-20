@@ -41,309 +41,6 @@ export function App() {
 }
 
 ```
-
-```index.css
-/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap');
-
-/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
-
-:root {
-  --paper: #F5F2EA;
-  --gold: #B49B57;
-  --bronze: #3D3322;
-  --garden: #5B6B4A;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  background-color: var(--paper);
-  color: var(--bronze);
-  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
-  font-weight: 500;
-  overflow-x: hidden;
-}
-/* Paper texture overlay */
-.paper-texture {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-}
-/* Scroll indicator animation */
-@keyframes gentleBounce {
-  0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(6px); opacity: 0.8; }
-}
-.scroll-indicator {
-  animation: gentleBounce 3s ease-in-out infinite;
-}
-/* Focus styles */
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 1px solid var(--gold);
-  outline-offset: 2px;
-}
-button:focus-visible {
-  outline: 1px solid var(--gold);
-  outline-offset: 2px;
-}
-/* Gold foil text effect */
-.text-gold-foil {
-  background: linear-gradient(to bottom right, #D4C494, #B49B57, #8C7638, #B49B57);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% auto;
-  animation: shine 5s linear infinite;
-}
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-/* Card border style */
-.card-border {
-  border: 1px solid rgba(180, 155, 87, 1);
-  box-shadow: 0 0 0 4px rgba(245, 242, 234, 1), 0 0 0 5px rgba(180, 155, 87, 1);
-}
-/* Card border style — dark theme variant */
-.card-border-dark {
-  border: 1px solid rgba(212, 196, 148, 0.6);
-  box-shadow: 0 0 0 4px rgba(62, 74, 51, 1), 0 0 0 5px rgba(212, 196, 148, 0.6);
-}
-
-```
-
-```index.tsx
-import './index.css';
-import "./index.css";
-import React from "react";
-import { render } from "react-dom";
-import { App } from "./App";
-render(<App />, document.getElementById("root"));
-```
-
-```tailwind.config.js
-export default {
-  theme: {
-    extend: {
-      colors: {
-        paper: {
-          DEFAULT: '#F5F2EA',
-          dark: '#EBE6D8',
-        },
-        gold: {
-          DEFAULT: '#B49B57',
-          light: '#D4C494',
-          dark: '#7A6530',
-          text: '#6B5520',
-        },
-        bronze: {
-          DEFAULT: '#3D3322',
-          dark: '#2A2215',
-          light: '#5C4E38',
-        },
-        garden: {
-          DEFAULT: '#5B6B4A',
-          light: '#7A8C66',
-          dark: '#3E4A33',
-          pale: '#E8EBE2',
-          accent: '#6E8258',
-        },
-      },
-      fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        serif: ['"EB Garamond"', 'Georgia', '"Times New Roman"', 'serif'],
-      },
-    },
-  },
-}
-```
-
-```utils/animConfig.ts
-/**
- * Central animation configuration.
- * Change DURATION to control all animation speeds across the site.
- * All values are in seconds.
- */
-export const ANIM = {
-  /** Max duration for any entrance animation */
-  DURATION: 1,
-  /** Ease curve for all entrance animations */
-  EASE: 'easeOut' as const,
-  /** Base delay step for staggered hero elements */
-  STAGGER: 0.1,
-}
-
-```
-
-```utils/mapLink.ts
-/**
- * Opens the best map application based on the user's platform.
- * - iOS: Apple Maps URL (works reliably on all iOS versions)
- * - Android: geo: URI (triggers OS app chooser)
- * - macOS: Apple Maps app (via maps:// protocol)
- * - Windows/Linux: Google Maps in browser
- */
-export function openMap(
-  e: React.MouseEvent,
-  options: {
-    lat: number
-    lng: number
-    label: string
-  },
-) {
-  e.preventDefault()
-
-  const { lat, lng, label } = options
-  const encodedLabel = encodeURIComponent(label)
-  const userAgent = navigator.userAgent || ''
-
-  const isIOS = /iPad|iPhone|iPod/.test(userAgent)
-  const isAndroid = /Android/.test(userAgent)
-  const isMac = /Macintosh|MacIntel/.test(userAgent) && !isIOS
-
-  if (isIOS) {
-    // iOS: Use Apple Maps HTTP URL — this opens Apple Maps natively on iPhone/iPad.
-    // If Google Maps is installed, users can still copy the address and open it there,
-    // but iOS does not support an app chooser for map links.
-    window.location.href = `https://maps.apple.com/?q=${encodedLabel}&ll=${lat},${lng}&z=16`
-  } else if (isAndroid) {
-    // Android: geo: URI triggers the OS "open with" dialog
-    window.location.href = `geo:${lat},${lng}?q=${lat},${lng}(${encodedLabel})`
-  } else if (isMac) {
-    // macOS: open native Apple Maps app
-    window.location.href = `maps://?q=${encodedLabel}&ll=${lat},${lng}`
-  } else {
-    // Windows/Linux: Google Maps in browser
-    window.open(
-      `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
-      '_blank',
-    )
-  }
-}
-
-```
-
-```utils/themeConfig.tsx
-import React, { createContext, useContext } from 'react'
-export type SectionTheme = 'light' | 'dark'
-const SectionThemeContext = createContext<SectionTheme>('light')
-export function useSectionTheme(): SectionTheme {
-  return useContext(SectionThemeContext)
-}
-interface SectionThemeProviderProps {
-  theme: SectionTheme
-  children: React.ReactNode
-}
-export function SectionThemeProvider({
-  theme,
-  children,
-}: SectionThemeProviderProps) {
-  return (
-    <SectionThemeContext.Provider value={theme}>
-      {children}
-    </SectionThemeContext.Provider>
-  )
-}
-/**
- * Returns all semantic class names for a given theme.
- * Use these in section components to auto-adapt colors.
- *
- * Cards now match the section theme instead of always being paper-colored.
- */
-export function getThemeClasses(theme: SectionTheme) {
-  if (theme === 'dark') {
-    return {
-      bg: 'bg-garden-dark',
-      heading: 'text-gold-light',
-      body: 'text-paper/90',
-      bodyMuted: 'text-paper/70',
-      bodyFaint: 'text-paper/50',
-      accent: 'text-gold-light',
-      accentMuted: 'text-gold-light/60',
-      italic: 'text-paper/70',
-      link: 'text-gold-light hover:text-gold transition-colors duration-300 border-b border-gold-light/30 pb-0.5',
-      botanicalVariant: 'light' as const,
-      /** Card classes — match the dark section theme */
-      cardBg: 'bg-garden-dark',
-      cardBorderClass: 'card-border-dark',
-      cardHeading: 'text-gold-light',
-      cardBody: 'text-paper/90',
-      cardBodyMuted: 'text-paper/70',
-      cardBodyFaint: 'text-paper/50',
-      cardAccent: 'text-gold-light',
-      cardLink:
-        'text-gold-light hover:text-gold transition-colors duration-300 border-b border-gold-light/30 pb-0.5',
-      cardBotanicalVariant: 'light' as const,
-      /** Form input classes for dark cards */
-      cardInputClasses:
-        'w-full px-4 py-3 bg-transparent border-b border-gold-light/50 font-serif text-paper placeholder:text-paper/30 focus:border-gold-light focus:ring-0 transition-colors duration-300 rounded-none',
-      cardInputBorder: 'border-gold-light/40',
-      cardRadioActive: 'text-gold-light',
-      cardRadioInactive: 'text-paper/50 hover:text-paper/70',
-      cardRadioBorder: 'border-gold-light',
-      cardRadioFill: 'bg-gold-light/10',
-      cardRadioDot: 'bg-gold-light',
-      cardButtonBg: 'bg-transparent',
-      cardButtonText: 'text-gold-light',
-      cardButtonHover: 'hover:bg-gold-light/10',
-      cardButtonBorder: 'border border-gold-light/60',
-    }
-  }
-  return {
-    bg: 'bg-paper',
-    heading: 'text-gold-dark',
-    body: 'text-bronze',
-    bodyMuted: 'text-bronze/80',
-    bodyFaint: 'text-bronze/60',
-    accent: 'text-gold',
-    accentMuted: 'text-gold/60',
-    italic: 'text-bronze',
-    link: 'text-gold-dark hover:text-gold transition-colors duration-300 border-b border-gold/30 pb-0.5',
-    botanicalVariant: 'default' as const,
-    /** Card classes — match the light section theme */
-    cardBg: 'bg-paper',
-    cardBorderClass: 'card-border',
-    cardHeading: 'text-gold-dark',
-    cardBody: 'text-bronze',
-    cardBodyMuted: 'text-bronze/80',
-    cardBodyFaint: 'text-bronze/70',
-    cardAccent: 'text-gold',
-    cardLink:
-      'text-gold-dark hover:text-gold transition-colors duration-300 border-b border-gold/30 pb-0.5',
-    cardBotanicalVariant: 'default' as const,
-    /** Form input classes for light cards */
-    cardInputClasses:
-      'w-full px-4 py-3 bg-paper border-b border-gold font-serif text-bronze placeholder:text-bronze/30 focus:border-gold-dark focus:ring-0 transition-colors duration-300 rounded-none',
-    cardInputBorder: 'border-gold',
-    cardRadioActive: 'text-gold-dark',
-    cardRadioInactive: 'text-bronze/50 hover:text-bronze',
-    cardRadioBorder: 'border-gold',
-    cardRadioFill: 'bg-gold/10',
-    cardRadioDot: 'bg-gold',
-    cardButtonBg: 'bg-transparent',
-    cardButtonText: 'text-gold-dark',
-    cardButtonHover: 'hover:bg-gold/10',
-    cardButtonBorder: 'border border-gold/60',
-  }
-}
-
-```
-
 ```components/BotanicalAccents.tsx
 import React from 'react'
 /* ── Diamond ornament ── */
@@ -469,7 +166,6 @@ export function BranchLine({
 }
 
 ```
-
 ```components/Footer.tsx
 import React from 'react'
 import { BranchLine } from './BotanicalAccents'
@@ -518,7 +214,6 @@ export function Footer({ theme = 'dark' }: FooterProps) {
 }
 
 ```
-
 ```components/FurtherDetails.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -602,7 +297,6 @@ export function FurtherDetails({ theme = 'light' }: FurtherDetailsProps) {
 }
 
 ```
-
 ```components/GiftRegistry.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -708,8 +402,6 @@ export function GiftRegistry({ theme = 'dark' }: GiftRegistryProps) {
 }
 
 ```
-
-
 ```components/Hero.tsx
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
@@ -924,7 +616,6 @@ export function Hero() {
 }
 
 ```
-
 ```components/HungarianTraditions.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -1065,8 +756,6 @@ export function HungarianTraditions({
 }
 
 ```
-
-
 ```components/OurStory.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -1240,7 +929,6 @@ export function OurStory({ theme = 'light' }: OurStoryProps) {
 }
 
 ```
-
 ```components/PhotoGallery.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -1386,7 +1074,6 @@ export function PhotoGallery({ theme = 'dark' }: PhotoGalleryProps) {
 }
 
 ```
-
 ```components/RsvpForm.tsx
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -1916,8 +1603,6 @@ export function RsvpForm({ theme = 'light' }: RsvpFormProps) {
 }
 
 ```
-
-
 ```components/SectionDivider.tsx
 import React from 'react'
 export function SectionDivider() {
@@ -1951,8 +1636,6 @@ export function SectionDivider() {
 }
 
 ```
-
-
 ```components/ThemedSection.tsx
 import React from 'react'
 import { SectionThemeProvider, getThemeClasses } from '../utils/themeConfig'
@@ -1995,8 +1678,6 @@ export function ThemedSection({
 }
 
 ```
-
-
 ```components/WhenWhere.tsx
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -2162,6 +1843,302 @@ export function WhenWhere({ theme = 'dark' }: WhenWhereProps) {
       <WhenWhereContent />
     </ThemedSection>
   )
+}
+
+```
+```index.css
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+:root {
+  --paper: #F5F2EA;
+  --gold: #B49B57;
+  --bronze: #3D3322;
+  --garden: #5B6B4A;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--paper);
+  color: var(--bronze);
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  overflow-x: hidden;
+}
+/* Paper texture overlay */
+.paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+/* Scroll indicator animation */
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(6px); opacity: 0.8; }
+}
+.scroll-indicator {
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+/* Focus styles */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+button:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+/* Gold foil text effect */
+.text-gold-foil {
+  background: linear-gradient(to bottom right, #D4C494, #B49B57, #8C7638, #B49B57);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+/* Card border style */
+.card-border {
+  border: 1px solid rgba(180, 155, 87, 1);
+  box-shadow: 0 0 0 4px rgba(245, 242, 234, 1), 0 0 0 5px rgba(180, 155, 87, 1);
+}
+/* Card border style — dark theme variant */
+.card-border-dark {
+  border: 1px solid rgba(212, 196, 148, 0.6);
+  box-shadow: 0 0 0 4px rgba(62, 74, 51, 1), 0 0 0 5px rgba(212, 196, 148, 0.6);
+}
+
+```
+```index.tsx
+import './index.css';
+import "./index.css";
+import React from "react";
+import { render } from "react-dom";
+import { App } from "./App";
+render(<App />, document.getElementById("root"));
+```
+```tailwind.config.js
+export default {
+  theme: {
+    extend: {
+      colors: {
+        paper: {
+          DEFAULT: '#F5F2EA',
+          dark: '#EBE6D8',
+        },
+        gold: {
+          DEFAULT: '#B49B57',
+          light: '#D4C494',
+          dark: '#7A6530',
+          text: '#6B5520',
+        },
+        bronze: {
+          DEFAULT: '#3D3322',
+          dark: '#2A2215',
+          light: '#5C4E38',
+        },
+        garden: {
+          DEFAULT: '#5B6B4A',
+          light: '#7A8C66',
+          dark: '#3E4A33',
+          pale: '#E8EBE2',
+          accent: '#6E8258',
+        },
+      },
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif: ['"EB Garamond"', 'Georgia', '"Times New Roman"', 'serif'],
+      },
+    },
+  },
+}
+```
+```utils/animConfig.ts
+/**
+ * Central animation configuration.
+ * Change DURATION to control all animation speeds across the site.
+ * All values are in seconds.
+ */
+export const ANIM = {
+  /** Max duration for any entrance animation */
+  DURATION: 1,
+  /** Ease curve for all entrance animations */
+  EASE: 'easeOut' as const,
+  /** Base delay step for staggered hero elements */
+  STAGGER: 0.1,
+}
+
+```
+```utils/mapLink.ts
+/**
+ * Opens the best map application based on the user's platform.
+ * - iOS: Apple Maps URL (works reliably on all iOS versions)
+ * - Android: geo: URI (triggers OS app chooser)
+ * - macOS: Apple Maps app (via maps:// protocol)
+ * - Windows/Linux: Google Maps in browser
+ */
+export function openMap(
+  e: React.MouseEvent,
+  options: {
+    lat: number
+    lng: number
+    label: string
+  },
+) {
+  e.preventDefault()
+
+  const { lat, lng, label } = options
+  const encodedLabel = encodeURIComponent(label)
+  const userAgent = navigator.userAgent || ''
+
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent)
+  const isAndroid = /Android/.test(userAgent)
+  const isMac = /Macintosh|MacIntel/.test(userAgent) && !isIOS
+
+  if (isIOS) {
+    // iOS: Use Apple Maps HTTP URL — this opens Apple Maps natively on iPhone/iPad.
+    // If Google Maps is installed, users can still copy the address and open it there,
+    // but iOS does not support an app chooser for map links.
+    window.location.href = `https://maps.apple.com/?q=${encodedLabel}&ll=${lat},${lng}&z=16`
+  } else if (isAndroid) {
+    // Android: geo: URI triggers the OS "open with" dialog
+    window.location.href = `geo:${lat},${lng}?q=${lat},${lng}(${encodedLabel})`
+  } else if (isMac) {
+    // macOS: open native Apple Maps app
+    window.location.href = `maps://?q=${encodedLabel}&ll=${lat},${lng}`
+  } else {
+    // Windows/Linux: Google Maps in browser
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
+      '_blank',
+    )
+  }
+}
+
+```
+```utils/themeConfig.tsx
+import React, { createContext, useContext } from 'react'
+export type SectionTheme = 'light' | 'dark'
+const SectionThemeContext = createContext<SectionTheme>('light')
+export function useSectionTheme(): SectionTheme {
+  return useContext(SectionThemeContext)
+}
+interface SectionThemeProviderProps {
+  theme: SectionTheme
+  children: React.ReactNode
+}
+export function SectionThemeProvider({
+  theme,
+  children,
+}: SectionThemeProviderProps) {
+  return (
+    <SectionThemeContext.Provider value={theme}>
+      {children}
+    </SectionThemeContext.Provider>
+  )
+}
+/**
+ * Returns all semantic class names for a given theme.
+ * Use these in section components to auto-adapt colors.
+ *
+ * Cards now match the section theme instead of always being paper-colored.
+ */
+export function getThemeClasses(theme: SectionTheme) {
+  if (theme === 'dark') {
+    return {
+      bg: 'bg-garden-dark',
+      heading: 'text-gold-light',
+      body: 'text-paper/90',
+      bodyMuted: 'text-paper/70',
+      bodyFaint: 'text-paper/50',
+      accent: 'text-gold-light',
+      accentMuted: 'text-gold-light/60',
+      italic: 'text-paper/70',
+      link: 'text-gold-light hover:text-gold transition-colors duration-300 border-b border-gold-light/30 pb-0.5',
+      botanicalVariant: 'light' as const,
+      /** Card classes — match the dark section theme */
+      cardBg: 'bg-garden-dark',
+      cardBorderClass: 'card-border-dark',
+      cardHeading: 'text-gold-light',
+      cardBody: 'text-paper/90',
+      cardBodyMuted: 'text-paper/70',
+      cardBodyFaint: 'text-paper/50',
+      cardAccent: 'text-gold-light',
+      cardLink:
+        'text-gold-light hover:text-gold transition-colors duration-300 border-b border-gold-light/30 pb-0.5',
+      cardBotanicalVariant: 'light' as const,
+      /** Form input classes for dark cards */
+      cardInputClasses:
+        'w-full px-4 py-3 bg-transparent border-b border-gold-light/50 font-serif text-paper placeholder:text-paper/30 focus:border-gold-light focus:ring-0 transition-colors duration-300 rounded-none',
+      cardInputBorder: 'border-gold-light/40',
+      cardRadioActive: 'text-gold-light',
+      cardRadioInactive: 'text-paper/50 hover:text-paper/70',
+      cardRadioBorder: 'border-gold-light',
+      cardRadioFill: 'bg-gold-light/10',
+      cardRadioDot: 'bg-gold-light',
+      cardButtonBg: 'bg-transparent',
+      cardButtonText: 'text-gold-light',
+      cardButtonHover: 'hover:bg-gold-light/10',
+      cardButtonBorder: 'border border-gold-light/60',
+    }
+  }
+  return {
+    bg: 'bg-paper',
+    heading: 'text-gold-dark',
+    body: 'text-bronze',
+    bodyMuted: 'text-bronze/80',
+    bodyFaint: 'text-bronze/60',
+    accent: 'text-gold',
+    accentMuted: 'text-gold/60',
+    italic: 'text-bronze',
+    link: 'text-gold-dark hover:text-gold transition-colors duration-300 border-b border-gold/30 pb-0.5',
+    botanicalVariant: 'default' as const,
+    /** Card classes — match the light section theme */
+    cardBg: 'bg-paper',
+    cardBorderClass: 'card-border',
+    cardHeading: 'text-gold-dark',
+    cardBody: 'text-bronze',
+    cardBodyMuted: 'text-bronze/80',
+    cardBodyFaint: 'text-bronze/70',
+    cardAccent: 'text-gold',
+    cardLink:
+      'text-gold-dark hover:text-gold transition-colors duration-300 border-b border-gold/30 pb-0.5',
+    cardBotanicalVariant: 'default' as const,
+    /** Form input classes for light cards */
+    cardInputClasses:
+      'w-full px-4 py-3 bg-paper border-b border-gold font-serif text-bronze placeholder:text-bronze/30 focus:border-gold-dark focus:ring-0 transition-colors duration-300 rounded-none',
+    cardInputBorder: 'border-gold',
+    cardRadioActive: 'text-gold-dark',
+    cardRadioInactive: 'text-bronze/50 hover:text-bronze',
+    cardRadioBorder: 'border-gold',
+    cardRadioFill: 'bg-gold/10',
+    cardRadioDot: 'bg-gold',
+    cardButtonBg: 'bg-transparent',
+    cardButtonText: 'text-gold-dark',
+    cardButtonHover: 'hover:bg-gold/10',
+    cardButtonBorder: 'border border-gold/60',
+  }
 }
 
 ```
