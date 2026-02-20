@@ -1,0 +1,30 @@
+{% assign header_items = Model.ContentItem.Content.Header.ContentItems %}
+{% assign items = Model.ContentItem.Content.Items.ContentItems %}
+{% assign alignment = Model.ContentItem.Content.StackSection.HeaderAlignment.Text %}
+
+{% assign header_class = "mb-8 max-w-2xl" %}
+{% assign items_class = "flex flex-col gap-8" %}
+{% if alignment == "Center" %}
+    {% assign header_class = "text-center max-w-3xl mx-auto mb-10" %}
+    {% assign items_class = "flex flex-col items-center gap-10 text-center" %}
+{% endif %}
+
+<section class="w-full py-24">
+    <div class="page-container">
+        {% if header_items %}
+            <div class="{{ header_class }}">
+                {% for item in header_items %}
+                    {{ item | shape_build_display: "Detail" | shape_render }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if items %}
+            <div class="{{ items_class }}">
+                {% for item in items %}
+                    {{ item | shape_build_display: "Detail" | shape_render }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>

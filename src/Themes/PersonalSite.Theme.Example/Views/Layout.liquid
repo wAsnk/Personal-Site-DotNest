@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="{{ Culture.Name }}" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ "PageTitle" | shape_new | shape_stringify }}</title>
+
+    {% resources type: "Meta" %}
+
+    {% link type:"image/png", rel: "icon", href: "~/mediatheme/favicon/favicon-96x96.png" %}
+    {% link type:"image/svg+xml", rel: "icon", href: "~/mediatheme/favicon/favicon.svg" %}
+    {% link type:"image/x-icon", rel: "shortcut icon", href: "~/mediatheme/favicon/favicon.ico" %}
+    {% link type:"image/png", rel: "apple-touch-icon", href: "~/mediatheme/favicon/apple-touch-icon.png" %}
+    {% link rel:"manifest", href: "~/mediatheme/favicon/site.webmanifest" %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    {% shape "Tailwind__Styles" %}
+
+    {% resources type: "HeadScript" %}
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+    {% render_section "HeadMeta", required: false %}
+</head>
+
+<body id="page-top" dir="{{ Culture.Dir }}" class="bg-dark-blue text-light-text font-sans antialiased">
+    <div class="fixed inset-x-0 top-0 z-[60] h-10 border-b border-light-blue/30 bg-light-blue/95 text-dark-blue backdrop-blur-sm">
+        <div class="page-container flex h-full items-center justify-center">
+            <p class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs font-mono font-medium uppercase tracking-[0.08em]">
+                Development preview - this site currently uses sample content.
+            </p>
+        </div>
+    </div>
+
+    {% assign main_menu = Content["alias:main-menu"] %}
+    {% assign menu_items = main_menu.Content.MenuItemsListPart.MenuItems %}
+    <nav class="fixed top-10 left-0 right-0 z-50 bg-dark-blue/95 backdrop-blur-md shadow-lg py-4">
+        <div class="page-container">
+            <div class="flex items-center justify-between">
+                <a href="{{ "~/" | href }}" class="text-2xl font-bold text-white font-figtree tracking-tight">
+                    Mark Bartha
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8" aria-label="Primary">
+                    {% if menu_items %}
+                        {% for item in menu_items %}
+                            {% assign link_text = item.DisplayText %}
+                            {% assign raw_url = item.LinkMenuItemPart.Url %}
+                            {% assign link_url = raw_url %}
+                            {% if raw_url %}
+                                {% assign url_prefix = raw_url | slice: 0, 2 %}
+                                {% if url_prefix == "~/" %}
+                                    {% assign link_url = raw_url | href %}
+                                {% endif %}
+                            {% endif %}
+                            {% assign link_target = item.LinkMenuItemPart.Target %}
+
+                            {% if link_text == "Contact" %}
+                                <a href="{{ link_url }}" class="btn btn-primary btn-sm"{% if link_target %} target="{{ link_target }}"{% endif %}>
+                                    {{ link_text }}
+                                </a>
+                            {% else %}
+                                <a href="{{ link_url }}" class="text-sm font-medium text-light-text/80 hover:text-light-blue transition-colors"{% if link_target %} target="{{ link_target }}"{% endif %}>
+                                    {{ link_text }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <button
+                    type="button"
+                    class="md:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
+                    data-menu-toggle
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                >
+                    <span class="sr-only">Toggle menu</span>
+                    <span data-menu-icon="open">
+                        <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
+                    </span>
+                    <span data-menu-icon="close" class="hidden">
+                        <i data-lucide="x" class="w-6 h-6" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+
+            <div id="mobile-menu" data-mobile-menu class="hidden md:hidden mt-4 border-t border-white/10 pt-4 space-y-4">
+                {% if menu_items %}
+                    {% for item in menu_items %}
+                        {% assign link_text = item.DisplayText %}
+                        {% assign raw_url = item.LinkMenuItemPart.Url %}
+                        {% assign link_url = raw_url %}
+                        {% if raw_url %}
+                            {% assign url_prefix = raw_url | slice: 0, 2 %}
+                            {% if url_prefix == "~/" %}
+                                {% assign link_url = raw_url | href %}
+                            {% endif %}
+                        {% endif %}
+                        {% assign link_target = item.LinkMenuItemPart.Target %}
+
+                        {% if link_text == "Contact" %}
+                            <div class="pt-2">
+                                <a href="{{ link_url }}" class="btn btn-primary btn-sm w-full"{% if link_target %} target="{{ link_target }}"{% endif %}>
+                                    {{ link_text }}
+                                </a>
+                            </div>
+                        {% else %}
+                            <a href="{{ link_url }}" class="block py-2 text-lg font-medium text-light-text hover:text-light-blue transition-colors"{% if link_target %} target="{{ link_target }}"{% endif %}>
+                                {{ link_text }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main id="top" class="min-h-screen w-full overflow-x-hidden bg-dark-blue pt-10">
+        {% render_section "Messages", required: false %}
+        {% render_section "BeforeContent", required: false %}
+
+        {% render_section "Content" %}
+        {% render_section "AfterContent", required: false %}
+    </main>
+
+    <footer class="bg-dark-blue text-light-text/40 py-8 text-center text-sm border-t border-white/10">
+        <div class="page-container">
+            <p>&copy; 2025 Mark Bartha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script>
+        const mobileMenuToggle = document.querySelector("[data-menu-toggle]");
+        const mobileMenu = document.querySelector("[data-mobile-menu]");
+
+        if (mobileMenuToggle && mobileMenu) {
+            const openIcon = mobileMenuToggle.querySelector('[data-menu-icon="open"]');
+            const closeIcon = mobileMenuToggle.querySelector('[data-menu-icon="close"]');
+
+            const setMobileMenuState = (isOpen) => {
+                mobileMenuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                mobileMenu.classList.toggle("hidden", !isOpen);
+
+                if (openIcon) {
+                    openIcon.classList.toggle("hidden", isOpen);
+                }
+                if (closeIcon) {
+                    closeIcon.classList.toggle("hidden", !isOpen);
+                }
+            };
+
+            setMobileMenuState(false);
+
+            mobileMenuToggle.addEventListener("click", () => {
+                const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+                setMobileMenuState(!isOpen);
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("click", (event) => {
+            const toggle = event.target.closest("[data-faq-toggle]");
+            if (!toggle) {
+                return;
+            }
+
+            const root = toggle.closest("[data-faq-root]");
+            const item = toggle.closest("[data-faq-item]");
+            if (!root || !item) {
+                return;
+            }
+
+            const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+            root.querySelectorAll("[data-faq-item]").forEach((entry) => {
+                const entryToggle = entry.querySelector("[data-faq-toggle]");
+                const answer = entry.querySelector("[data-faq-answer]");
+                const openIcon = entry.querySelector('[data-faq-icon="open"]');
+                const closedIcon = entry.querySelector('[data-faq-icon="closed"]');
+                const shouldOpen = entry === item && !isOpen;
+
+                if (entryToggle) {
+                    entryToggle.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+                }
+                if (answer) {
+                    answer.classList.toggle("is-open", shouldOpen);
+                }
+                if (openIcon) {
+                    openIcon.classList.toggle("hidden", !shouldOpen);
+                }
+                if (closedIcon) {
+                    closedIcon.classList.toggle("hidden", shouldOpen);
+                }
+            });
+        });
+    </script>
+
+    {% resources type: "FootScript" %}
+</body>
+</html>

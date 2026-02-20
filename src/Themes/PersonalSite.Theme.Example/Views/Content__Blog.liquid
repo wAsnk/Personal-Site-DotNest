@@ -1,0 +1,32 @@
+{% assign content_item = Model.ContentItem %}
+{% assign title = content_item.DisplayText %}
+{% assign intro_markdown = content_item.Content.Blog.Summary.Markdown %}
+{% assign list_style = "Default" %}
+{% if content_item.Content.Blog.PostListStyle and content_item.Content.Blog.PostListStyle.Text != blank %}
+    {% assign list_style = content_item.Content.Blog.PostListStyle.Text %}
+{% endif %}
+{% httpcontext_add_items blog_list_style: list_style %}
+
+<section class="hero-backdrop w-full pt-32 pb-20" data-theme="dark-blue">
+    <div class="page-container relative z-10">
+        <div class="max-w-3xl">
+            <span class="pill mb-6">{{ "Blog" | t }}</span>
+
+            {% if title != blank %}
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-hero mb-6 tracking-tight text-balance">
+                    {{ title }}
+                </h1>
+            {% endif %}
+
+            {% if intro_markdown != blank %}
+                <div class="rich-text text-light-text/80 max-w-2xl">
+                    {{ intro_markdown | markdownify | shortcode | raw }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% shape_remove_item Model.Content "Blog-Summary" %}
+{% shape_remove_item Model.Content "Blog-PostListStyle" %}
+{{ Model.Content | shape_render }}
