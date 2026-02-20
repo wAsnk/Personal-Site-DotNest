@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalSite.Theme", "src\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalSite.Theme.Example", "src\Themes\PersonalSite.Theme.Example\PersonalSite.Theme.Example.csproj", "{6207B834-5BAC-4BC3-BED2-EF7FB51495E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalSite.Theme.Starter", "src\Themes\PersonalSite.Theme.Starter\PersonalSite.Theme.Starter.csproj", "{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{6207B834-5BAC-4BC3-BED2-EF7FB51495E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6207B834-5BAC-4BC3-BED2-EF7FB51495E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6207B834-5BAC-4BC3-BED2-EF7FB51495E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{13764086-2125-4C44-AFC2-665AC3C89AC0} = {7BE78863-16CE-4AA3-8C46-7761183142DB}
 		{D099365F-36B3-4B3C-A00A-AC1D293CB3AD} = {4415DF94-4550-45C4-85DA-2741284D2C01}
 		{6207B834-5BAC-4BC3-BED2-EF7FB51495E0} = {4415DF94-4550-45C4-85DA-2741284D2C01}
+		{20C2D254-4DFB-4C1F-9D12-8BA3D15FCE88} = {4415DF94-4550-45C4-85DA-2741284D2C01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E281D9A-C9FF-49D6-A7E7-192EB8DC0074}
