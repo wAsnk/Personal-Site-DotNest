@@ -1,7 +1,18 @@
+{% assign gallery = Model.ContentItem.Content.PhotoGallerySection %}
+{% assign heading = gallery.Heading.Text %}
+{% assign caption = gallery.Caption.Text %}
+{% assign primary_image_raw = gallery.PrimaryImageUrl.Text %}
+{% assign primary_image = primary_image_raw %}
+{% assign image_prefix = primary_image_raw | slice: 0, 2 %}
+{% if image_prefix == "~/" %}
+    {% assign primary_image = primary_image_raw | href %}
+{% endif %}
+{% assign primary_image_alt = gallery.PrimaryImageAlt.Text %}
+
 <section id="gallery" class="section-shell">
     <div class="section-inner max-w-5xl">
         <div class="mb-16 text-center">
-            <h2 class="section-heading">Moments</h2>
+            <h2 class="section-heading">{{ heading }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -13,9 +24,8 @@
         </div>
 
         <div class="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
-            {% assign hero_image = "~/media/Site/IMG_1283.jpg" | href %}
             <div class="break-inside-avoid">
-                <img src="{{ hero_image }}" alt="Engagement photo" class="aspect-[3/4] w-full rounded-sm border object-cover theme-light:border-gold/20 theme-dark:border-gold-light/20">
+                <img src="{{ primary_image }}" alt="{{ primary_image_alt }}" class="aspect-[3/4] w-full rounded-sm border object-cover theme-light:border-gold/20 theme-dark:border-gold-light/20">
             </div>
             <div class="break-inside-avoid">
                 <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-bronze/20 via-gold/15 to-paper-dark/30 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
@@ -34,6 +44,6 @@
             </div>
         </div>
 
-        <p class="section-faint mt-12 text-center italic">Your photos will appear here</p>
+        <p class="section-faint mt-12 text-center italic">{{ caption }}</p>
     </div>
 </section>

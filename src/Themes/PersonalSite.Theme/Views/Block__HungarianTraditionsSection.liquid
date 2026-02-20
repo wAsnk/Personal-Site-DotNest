@@ -1,7 +1,22 @@
+{% assign traditions = Model.ContentItem.Content.HungarianTraditionsSection %}
+{% assign heading = traditions.Heading.Text %}
+{% assign intro_text = traditions.IntroText.Text %}
+
+{% assign tradition1_title = traditions.Tradition1Title.Text %}
+{% assign tradition1_description = traditions.Tradition1Description.Text %}
+{% assign tradition2_title = traditions.Tradition2Title.Text %}
+{% assign tradition2_description = traditions.Tradition2Description.Text %}
+{% assign tradition3_title = traditions.Tradition3Title.Text %}
+{% assign tradition3_description = traditions.Tradition3Description.Text %}
+{% assign tradition4_title = traditions.Tradition4Title.Text %}
+{% assign tradition4_description = traditions.Tradition4Description.Text %}
+{% assign tradition5_title = traditions.Tradition5Title.Text %}
+{% assign tradition5_description = traditions.Tradition5Description.Text %}
+
 <section id="traditions" class="section-shell">
     <div class="section-inner max-w-2xl">
         <div class="mb-14 text-center">
-            <h2 class="section-heading">Hungarian Traditions</h2>
+            <h2 class="section-heading">{{ heading }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -11,42 +26,48 @@
                 <path d="M 160 3 L 162 5 L 160 7 L 158 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
             </svg>
 
-            <p class="section-muted mx-auto mt-6 max-w-md">A glimpse into the customs that make a Hungarian wedding truly unforgettable</p>
+            <p class="section-muted mx-auto mt-6 max-w-md">{{ intro_text }}</p>
         </div>
 
         <div class="space-y-10 text-center">
-            <div>
-                <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">The Bride's Dance</h3>
-                <p class="section-body mx-auto mt-3 max-w-xl">Guests queue to dance with the bride for a brief moment, each placing money into a basket to wish the couple prosperity.</p>
-            </div>
+            {% if tradition1_title %}
+                <div>
+                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition1_title }}</h3>
+                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition1_description }}</p>
+                </div>
+            {% endif %}
 
-            <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+            {% if tradition2_title %}
+                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+                <div>
+                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition2_title }}</h3>
+                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition2_description }}</p>
+                </div>
+            {% endif %}
 
-            <div>
-                <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">The Stealing of the Bride</h3>
-                <p class="section-body mx-auto mt-3 max-w-xl">Friends playfully "kidnap" the bride, and the groom must complete humorous tasks or pay a ransom to win her back.</p>
-            </div>
+            {% if tradition3_title %}
+                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+                <div>
+                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition3_title }}</h3>
+                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition3_description }}</p>
+                </div>
+            {% endif %}
 
-            <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+            {% if tradition4_title %}
+                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+                <div>
+                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition4_title }}</h3>
+                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition4_description }}</p>
+                </div>
+            {% endif %}
 
-            <div>
-                <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">The Bouquet Toss</h3>
-                <p class="section-body mx-auto mt-3 max-w-xl">The bride tosses her bouquet to unmarried women, and the one who catches it is said to be the next to marry.</p>
-            </div>
-
-            <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-
-            <div>
-                <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Clinking Glasses and Tapping Plates</h3>
-                <p class="section-body mx-auto mt-3 max-w-xl">When guests clink and tap in unison, the newlyweds must kiss. The louder the clinking, the longer the kiss.</p>
-            </div>
-
-            <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-
-            <div>
-                <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Cutting the Cake</h3>
-                <p class="section-body mx-auto mt-3 max-w-xl">The couple cuts the wedding cake together, hand over hand, symbolizing their first shared act as husband and wife.</p>
-            </div>
+            {% if tradition5_title %}
+                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+                <div>
+                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition5_title }}</h3>
+                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition5_description }}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>

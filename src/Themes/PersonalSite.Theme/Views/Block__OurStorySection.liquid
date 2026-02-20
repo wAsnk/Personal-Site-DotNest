@@ -1,7 +1,30 @@
+{% assign story = Model.ContentItem.Content.OurStorySection %}
+{% assign heading = story.Heading.Text %}
+
+{% assign milestone1_year = story.Milestone1Year.Text %}
+{% assign milestone1_title = story.Milestone1Title.Text %}
+{% assign milestone1_description = story.Milestone1Description.Text %}
+
+{% assign milestone2_year = story.Milestone2Year.Text %}
+{% assign milestone2_title = story.Milestone2Title.Text %}
+{% assign milestone2_description = story.Milestone2Description.Text %}
+
+{% assign milestone3_year = story.Milestone3Year.Text %}
+{% assign milestone3_title = story.Milestone3Title.Text %}
+{% assign milestone3_description = story.Milestone3Description.Text %}
+
+{% assign milestone4_year = story.Milestone4Year.Text %}
+{% assign milestone4_title = story.Milestone4Title.Text %}
+{% assign milestone4_description = story.Milestone4Description.Text %}
+
+{% assign milestone5_year = story.Milestone5Year.Text %}
+{% assign milestone5_title = story.Milestone5Title.Text %}
+{% assign milestone5_description = story.Milestone5Description.Text %}
+
 <section id="story" class="section-shell">
     <div class="section-inner max-w-4xl">
         <div class="mb-20 text-center">
-            <h2 class="section-heading">Our Story</h2>
+            <h2 class="section-heading">{{ heading }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -17,55 +40,65 @@
             <div class="timeline-line left-6 md:hidden" aria-hidden="true"></div>
 
             <div class="space-y-16 md:space-y-20">
-                <div class="relative">
-                    <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
-                    <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
-                    <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
-                        <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">2019</p>
-                        <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">First Met</h3>
-                        <p class="section-body mt-3">A chance encounter that neither of us expected, but one that changed everything.</p>
+                {% if milestone1_title %}
+                    <div class="relative">
+                        <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
+                        <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
+                        <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
+                            <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">{{ milestone1_year }}</p>
+                            <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ milestone1_title }}</h3>
+                            <p class="section-body mt-3">{{ milestone1_description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
-                <div class="relative">
-                    <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
-                    <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
-                    <div class="pl-14 md:ml-auto md:w-[calc(50%-2rem)] md:pl-12 md:text-left">
-                        <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">2020</p>
-                        <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">First Adventure Together</h3>
-                        <p class="section-body mt-3">We discovered that the best journeys are the ones shared with someone special.</p>
+                {% if milestone2_title %}
+                    <div class="relative">
+                        <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
+                        <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
+                        <div class="pl-14 md:ml-auto md:w-[calc(50%-2rem)] md:pl-12 md:text-left">
+                            <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">{{ milestone2_year }}</p>
+                            <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ milestone2_title }}</h3>
+                            <p class="section-body mt-3">{{ milestone2_description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
-                <div class="relative">
-                    <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
-                    <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
-                    <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
-                        <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">2023</p>
-                        <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">A New Chapter</h3>
-                        <p class="section-body mt-3">Building a home together and learning what it truly means to be a team.</p>
+                {% if milestone3_title %}
+                    <div class="relative">
+                        <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
+                        <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
+                        <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
+                            <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">{{ milestone3_year }}</p>
+                            <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ milestone3_title }}</h3>
+                            <p class="section-body mt-3">{{ milestone3_description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
-                <div class="relative">
-                    <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
-                    <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
-                    <div class="pl-14 md:ml-auto md:w-[calc(50%-2rem)] md:pl-12 md:text-left">
-                        <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">2025</p>
-                        <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">The Proposal</h3>
-                        <p class="section-body mt-3">A question asked, a joyful yes, and the beginning of forever.</p>
+                {% if milestone4_title %}
+                    <div class="relative">
+                        <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
+                        <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
+                        <div class="pl-14 md:ml-auto md:w-[calc(50%-2rem)] md:pl-12 md:text-left">
+                            <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">{{ milestone4_year }}</p>
+                            <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ milestone4_title }}</h3>
+                            <p class="section-body mt-3">{{ milestone4_description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
-                <div class="relative">
-                    <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
-                    <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
-                    <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
-                        <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">2027</p>
-                        <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">Forever Begins</h3>
-                        <p class="section-body mt-3">The day we say "I do" surrounded by the people we love most.</p>
+                {% if milestone5_title %}
+                    <div class="relative">
+                        <div class="timeline-dot left-1/2 top-1 hidden -translate-x-1/2 md:block" aria-hidden="true"></div>
+                        <div class="timeline-dot left-6 top-1 -translate-x-1/2 md:hidden" aria-hidden="true"></div>
+                        <div class="pl-14 md:mr-auto md:w-[calc(50%-2rem)] md:pr-12 md:pl-0 md:text-right">
+                            <p class="font-display text-sm uppercase tracking-[0.2em] theme-light:text-gold theme-dark:text-gold-light">{{ milestone5_year }}</p>
+                            <h3 class="mt-2 font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ milestone5_title }}</h3>
+                            <p class="section-body mt-3">{{ milestone5_description }}</p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>

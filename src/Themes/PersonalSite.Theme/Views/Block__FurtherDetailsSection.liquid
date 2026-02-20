@@ -1,6 +1,11 @@
+{% assign further = Model.ContentItem.Content.FurtherDetailsSection %}
+{% assign heading = further.Heading.Text %}
+{% assign intro_text = further.IntroText.Text %}
+{% assign details_text = further.DetailsText.Text %}
+
 <section id="further-details" class="section-shell">
     <div class="section-inner max-w-2xl text-center">
-        <h2 class="section-heading">Further Details</h2>
+        <h2 class="section-heading">{{ heading }}</h2>
 
         <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
             <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -15,13 +20,13 @@
         </div>
 
         <p class="section-body mx-auto mt-8 max-w-lg italic">
-            More details about the day will follow in due course.
+            {{ intro_text }}
         </p>
 
         <div class="mx-auto mt-6 h-px w-8 theme-light:bg-gold/30 theme-dark:bg-gold-light/60" aria-hidden="true"></div>
 
         <p class="section-muted mx-auto mt-6 max-w-md not-italic">
-            Information regarding accommodation, transport, and the evening programme will be shared closer to the date.
+            {{ details_text }}
         </p>
     </div>
 </section>

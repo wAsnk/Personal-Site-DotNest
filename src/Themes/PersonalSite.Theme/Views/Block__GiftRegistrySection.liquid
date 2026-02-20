@@ -1,7 +1,12 @@
+{% assign gifts = Model.ContentItem.Content.GiftRegistrySection %}
+{% assign heading = gifts.Heading.Text %}
+{% assign lead_text = gifts.LeadText.Text %}
+{% assign body_text = gifts.BodyText.Text %}
+
 <section id="gifts" class="section-shell">
     <div class="section-inner max-w-2xl text-center">
         <div class="mb-14">
-            <h2 class="section-heading">Gifts</h2>
+            <h2 class="section-heading">{{ heading }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -17,13 +22,13 @@
         </div>
 
         <p class="section-body mx-auto mt-6 max-w-xl italic">
-            Your presence at our celebration is the most meaningful gift we could receive.
+            {{ lead_text }}
         </p>
 
         <div class="mx-auto mt-8 h-px w-8 theme-light:bg-gold/30 theme-dark:bg-gold-light/60" aria-hidden="true"></div>
 
         <p class="section-body mx-auto mt-8 max-w-lg">
-            If you would like to give us a gift, we would be truly grateful for a monetary contribution towards our future together.
+            {{ body_text }}
         </p>
     </div>
 </section>

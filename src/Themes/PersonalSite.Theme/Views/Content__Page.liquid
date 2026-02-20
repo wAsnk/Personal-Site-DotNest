@@ -11,7 +11,7 @@
         {% endif %}
 
         {% assign theme_key = "light" %}
-        {% assign theme_value = item.BlockCommon.Theme.Text | default: "" | downcase %}
+        {% assign theme_value = item.BlockCommon.Theme.Text | downcase %}
 
         {% if item.ContentType == "Hero" %}
             {% assign theme_key = "dark" %}

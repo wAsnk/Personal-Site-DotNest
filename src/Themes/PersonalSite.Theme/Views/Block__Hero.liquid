@@ -1,4 +1,12 @@
+{% assign hero_data = Model.ContentItem.Content.Hero %}
 {% assign hero_image = "~/media/Site/IMG_1283.jpg" | href %}
+{% assign intro_text = hero_data.IntroText.Text %}
+{% assign bride_name = hero_data.BrideName.Text %}
+{% assign groom_name = hero_data.GroomName.Text %}
+{% assign wedding_date = hero_data.WeddingDate.Text %}
+{% assign wedding_time = hero_data.WeddingTime.Text %}
+{% assign city = hero_data.City.Text %}
+{% assign country = hero_data.Country.Text %}
 
 <section id="hero" class="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
     <div
@@ -18,12 +26,12 @@
 
     <div data-hero-content class="relative z-10 px-6 py-12 text-center">
         <p class="mb-10 font-display text-sm uppercase tracking-[0.24em] text-white/70 md:text-base">
-            Please join us to celebrate the wedding of
+            {{ intro_text }}
         </p>
 
         <div class="mb-12">
             <h1 class="font-display text-5xl font-normal uppercase leading-tight tracking-[0.16em] text-gold-light sm:text-6xl md:text-7xl lg:text-8xl">
-                Klara
+                {{ bride_name }}
             </h1>
 
             <div class="my-4 flex items-center justify-center">
@@ -31,21 +39,21 @@
             </div>
 
             <h1 class="font-display text-5xl font-normal uppercase leading-tight tracking-[0.16em] text-gold-light sm:text-6xl md:text-7xl lg:text-8xl">
-                Krisztian
+                {{ groom_name }}
             </h1>
         </div>
 
         <div class="space-y-6">
             <div class="flex flex-col items-center gap-2">
-                <p class="font-display text-xl uppercase tracking-[0.14em] text-gold-light md:text-2xl">03 July 2027</p>
-                <p class="font-serif text-base italic text-white/60 md:text-lg">at three o'clock in the afternoon</p>
+                <p class="font-display text-xl uppercase tracking-[0.14em] text-gold-light md:text-2xl">{{ wedding_date }}</p>
+                <p class="font-serif text-base italic text-white/60 md:text-lg">{{ wedding_time }}</p>
             </div>
 
             <div class="mx-auto my-6 h-px w-16 bg-gold-light/50"></div>
 
             <div class="flex flex-col items-center gap-1">
-                <p class="font-display text-base uppercase tracking-[0.2em] text-gold-light md:text-lg">Budapest</p>
-                <p class="font-serif text-base italic text-white/50">Hungary</p>
+                <p class="font-display text-base uppercase tracking-[0.2em] text-gold-light md:text-lg">{{ city }}</p>
+                <p class="font-serif text-base italic text-white/50">{{ country }}</p>
             </div>
         </div>
     </div>
