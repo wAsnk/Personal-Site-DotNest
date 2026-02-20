@@ -35,6 +35,7 @@
         "OrchardCore.Resources",
         "OrchardCore.Roles",
         "OrchardCore.Settings",
+        "OrchardCore.Spatial",
         "OrchardCore.Themes",
         "OrchardCore.Title",
         "OrchardCore.Users",

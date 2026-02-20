@@ -1,22 +1,12 @@
 {% assign traditions = Model.ContentItem.Content.HungarianTraditionsSection %}
-{% assign heading = traditions.Heading.Text %}
+{% assign title = Model.ContentItem.DisplayText %}
 {% assign intro_text = traditions.IntroText.Text %}
+{% assign tradition_items = Model.ContentItem.Content.Traditions.ContentItems %}
 
-{% assign tradition1_title = traditions.Tradition1Title.Text %}
-{% assign tradition1_description = traditions.Tradition1Description.Text %}
-{% assign tradition2_title = traditions.Tradition2Title.Text %}
-{% assign tradition2_description = traditions.Tradition2Description.Text %}
-{% assign tradition3_title = traditions.Tradition3Title.Text %}
-{% assign tradition3_description = traditions.Tradition3Description.Text %}
-{% assign tradition4_title = traditions.Tradition4Title.Text %}
-{% assign tradition4_description = traditions.Tradition4Description.Text %}
-{% assign tradition5_title = traditions.Tradition5Title.Text %}
-{% assign tradition5_description = traditions.Tradition5Description.Text %}
-
-<section id="traditions" class="section-shell">
+<section class="section-shell">
     <div class="section-inner max-w-2xl">
         <div class="mb-14 text-center">
-            <h2 class="section-heading">{{ heading }}</h2>
+            <h2 class="section-heading">{{ title }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -30,43 +20,25 @@
         </div>
 
         <div class="space-y-10 text-center">
-            {% if tradition1_title %}
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition1_title }}</h3>
-                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition1_description }}</p>
-                </div>
-            {% endif %}
+            {% if tradition_items %}
+                {% for tradition_item in tradition_items %}
+                    {% assign tradition = tradition_item.HungarianTraditionItem %}
+                    {% assign tradition_title = tradition_item.DisplayText %}
+                    {% assign tradition_description = tradition.Description.Text %}
 
-            {% if tradition2_title %}
-                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition2_title }}</h3>
-                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition2_description }}</p>
-                </div>
-            {% endif %}
+                    {% if forloop.index > 1 %}
+                        <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
+                    {% endif %}
 
-            {% if tradition3_title %}
-                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition3_title }}</h3>
-                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition3_description }}</p>
-                </div>
-            {% endif %}
-
-            {% if tradition4_title %}
-                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition4_title }}</h3>
-                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition4_description }}</p>
-                </div>
-            {% endif %}
-
-            {% if tradition5_title %}
-                <div class="flex justify-center" aria-hidden="true"><div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div></div>
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition5_title }}</h3>
-                    <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition5_description }}</p>
-                </div>
+                    {% if tradition_title != blank %}
+                        <div>
+                            <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ tradition_title }}</h3>
+                            {% if tradition_description != blank %}
+                                <p class="section-body mx-auto mt-3 max-w-xl">{{ tradition_description }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </div>
     </div>

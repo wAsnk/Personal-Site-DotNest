@@ -1,23 +1,10 @@
-{% assign details = Model.ContentItem.Content.WhenWhereSection %}
-{% assign heading = details.Heading.Text %}
-{% assign ceremony_title = details.CeremonyTitle.Text %}
-{% assign ceremony_venue = details.CeremonyVenue.Text %}
-{% assign ceremony_datetime = details.CeremonyDateTime.Text %}
-{% assign ceremony_address = details.CeremonyAddress.Text %}
-{% assign ceremony_map_label = details.CeremonyMapLabel.Text %}
-{% assign ceremony_map_url = details.CeremonyMapUrl.Text %}
-{% assign reception_title = details.ReceptionTitle.Text %}
-{% assign reception_venue = details.ReceptionVenue.Text %}
-{% assign reception_address = details.ReceptionAddress.Text %}
-{% assign reception_region = details.ReceptionRegion.Text %}
-{% assign reception_map_label = details.ReceptionMapLabel.Text %}
-{% assign reception_map_url = details.ReceptionMapUrl.Text %}
-{% assign reception_note = details.ReceptionNote.Text %}
+{% assign title = Model.ContentItem.DisplayText %}
+{% assign detail_items = Model.ContentItem.Content.Details.ContentItems %}
 
-<section id="details" class="section-shell">
+<section class="section-shell">
     <div class="section-inner max-w-2xl">
         <div class="mb-14 text-center">
-            <h2 class="section-heading">{{ heading }}</h2>
+            <h2 class="section-heading">{{ title }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -30,37 +17,42 @@
 
         <div class="section-card">
             <div class="space-y-12 text-center">
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ ceremony_title }}</h3>
-                    <p class="section-body mt-3">{{ ceremony_venue }}</p>
-                    <p class="section-muted mt-1 not-italic">{{ ceremony_datetime }}</p>
-                    <p class="section-muted mt-1 not-italic">{{ ceremony_address }}</p>
-                    <a class="map-link mt-4" href="{{ ceremony_map_url }}" target="_blank" rel="noopener noreferrer">
-                        <i data-lucide="map-pin" class="h-4 w-4" aria-hidden="true"></i>
-                        {{ ceremony_map_label }}
-                    </a>
-                </div>
+                {% if detail_items %}
+                    {% for detail_item in detail_items %}
+                        {% assign detail = detail_item.WhenWhereDetail %}
+                        {% assign detail_title = detail_item.DisplayText %}
+                        {% assign place_name = detail.PlaceName.Text %}
+                        {% assign date_time = detail.DateTime.Text %}
+                        {% assign address = detail.Address.Text %}
+                        {% assign map_label = detail.MapLabel.Text %}
+                        {% assign map_url = detail.MapUrl.Text %}
 
-                <div class="flex justify-center" aria-hidden="true">
-                    <div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div>
-                </div>
+                        <div>
+                            <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ detail_title }}</h3>
+                            {% if place_name != blank %}
+                                <p class="section-body mt-3">{{ place_name }}</p>
+                            {% endif %}
+                            {% if date_time != blank %}
+                                <p class="section-muted mt-1 not-italic">{{ date_time }}</p>
+                            {% endif %}
+                            {% if address != blank %}
+                                <p class="section-muted mt-1 not-italic">{{ address }}</p>
+                            {% endif %}
+                            {% if map_url != blank and map_label != blank %}
+                                <a class="map-link mt-4" href="{{ map_url }}" target="_blank" rel="noopener noreferrer">
+                                    <i data-lucide="map-pin" class="h-4 w-4" aria-hidden="true"></i>
+                                    {{ map_label }}
+                                </a>
+                            {% endif %}
+                        </div>
 
-                <div>
-                    <h3 class="font-display text-2xl font-normal uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ reception_title }}</h3>
-                    <p class="section-body mt-3">{{ reception_venue }}</p>
-                    <p class="section-muted mt-1 not-italic">{{ reception_address }}</p>
-                    <p class="section-faint mt-1">{{ reception_region }}</p>
-                    <a class="map-link mt-4" href="{{ reception_map_url }}" target="_blank" rel="noopener noreferrer">
-                        <i data-lucide="map-pin" class="h-4 w-4" aria-hidden="true"></i>
-                        {{ reception_map_label }}
-                    </a>
-                </div>
-
-                <div class="flex justify-center" aria-hidden="true">
-                    <div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div>
-                </div>
-
-                <p class="section-body italic">{{ reception_note }}</p>
+                        {% unless forloop.last %}
+                            <div class="flex justify-center" aria-hidden="true">
+                                <div class="h-2 w-2 rotate-45 border theme-light:border-gold theme-light:bg-gold/25 theme-dark:border-gold-light theme-dark:bg-gold-light/35"></div>
+                            </div>
+                        {% endunless %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

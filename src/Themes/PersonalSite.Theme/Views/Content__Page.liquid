@@ -12,6 +12,7 @@
 
         {% assign theme_key = "light" %}
         {% assign theme_value = item.BlockCommon.Theme.Text | downcase %}
+        {% assign section_anchor = item.DisplayText | slugify %}
 
         {% if item.ContentType == "Hero" %}
             {% assign theme_key = "dark" %}
@@ -19,7 +20,7 @@
             {% assign theme_key = "dark" %}
         {% endif %}
 
-        <div data-theme="{{ theme_key }}" data-section="{{ item.ContentType | downcase }}">
+        <div{% if section_anchor != blank %} id="{{ section_anchor }}"{% endif %} data-theme="{{ theme_key }}" data-section="{{ item.ContentType | downcase }}">
             {{ item | shape_build_display: "Detail" | shape_render }}
         </div>
     {% endfor %}

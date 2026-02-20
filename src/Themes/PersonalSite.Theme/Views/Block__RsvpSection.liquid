@@ -1,5 +1,5 @@
 {% assign rsvp = Model.ContentItem.Content.RsvpSection %}
-{% assign heading = rsvp.Heading.Text %}
+{% assign title = Model.ContentItem.DisplayText %}
 {% assign response_by = rsvp.ResponseByText.Text %}
 {% assign email_label = rsvp.EmailLabel.Text %}
 {% assign attend_question = rsvp.AttendQuestion.Text %}
@@ -12,10 +12,10 @@
 {% assign note_placeholder = rsvp.NotePlaceholder.Text %}
 {% assign submit_text = rsvp.SubmitButtonText.Text %}
 
-<section id="rsvp" class="section-shell">
+<section class="section-shell">
     <div class="section-inner max-w-xl">
         <div class="mb-14 text-center">
-            <h2 class="section-heading">{{ heading }}</h2>
+            <h2 class="section-heading">{{ title }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>

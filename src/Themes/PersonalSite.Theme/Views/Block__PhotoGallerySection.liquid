@@ -1,18 +1,16 @@
 {% assign gallery = Model.ContentItem.Content.PhotoGallerySection %}
-{% assign heading = gallery.Heading.Text %}
+{% assign title = Model.ContentItem.DisplayText %}
 {% assign caption = gallery.Caption.Text %}
-{% assign primary_image_raw = gallery.PrimaryImageUrl.Text %}
-{% assign primary_image = primary_image_raw %}
-{% assign image_prefix = primary_image_raw | slice: 0, 2 %}
-{% if image_prefix == "~/" %}
-    {% assign primary_image = primary_image_raw | href %}
+{% assign photo_items = Model.ContentItem.Content.Photos.ContentItems %}
+{% assign photo_count = 0 %}
+{% if photo_items %}
+    {% assign photo_count = photo_items | size %}
 {% endif %}
-{% assign primary_image_alt = gallery.PrimaryImageAlt.Text %}
 
-<section id="gallery" class="section-shell">
+<section class="section-shell">
     <div class="section-inner max-w-5xl">
         <div class="mb-16 text-center">
-            <h2 class="section-heading">{{ heading }}</h2>
+            <h2 class="section-heading">{{ title }}</h2>
 
             <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
                 <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
@@ -24,26 +22,50 @@
         </div>
 
         <div class="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
-            <div class="break-inside-avoid">
-                <img src="{{ primary_image }}" alt="{{ primary_image_alt }}" class="aspect-[3/4] w-full rounded-sm border object-cover theme-light:border-gold/20 theme-dark:border-gold-light/20">
-            </div>
-            <div class="break-inside-avoid">
-                <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-bronze/20 via-gold/15 to-paper-dark/30 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
-            </div>
-            <div class="break-inside-avoid">
-                <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-gold-dark/25 via-bronze/15 to-gold-light/20 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
-            </div>
-            <div class="break-inside-avoid">
-                <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-paper-dark/30 via-gold/20 to-bronze/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
-            </div>
-            <div class="break-inside-avoid">
-                <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-gold-light/25 via-gold-dark/20 to-bronze/10 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
-            </div>
-            <div class="break-inside-avoid">
-                <div class="aspect-[3/4] w-full rounded-sm border bg-gradient-to-br from-bronze/15 via-gold/25 to-gold-light/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
-            </div>
+            {% if photo_items %}
+                {% for photo_item in photo_items %}
+                    {% assign photo = photo_item.PhotoGalleryItem %}
+                    {% assign image_paths = photo.Image.Paths %}
+                    {% assign image_path = image_paths | first %}
+                    {% assign image_alt = photo_item.DisplayText %}
+
+                    {% if image_path != blank %}
+                        <div class="break-inside-avoid">
+                            <img src="{{ image_path | asset_url }}" alt="{{ image_alt }}" class="aspect-[3/4] w-full rounded-sm border object-cover theme-light:border-gold/20 theme-dark:border-gold-light/20">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if photo_count < 2 %}
+                <div class="break-inside-avoid">
+                    <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-bronze/20 via-gold/15 to-paper-dark/30 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+                </div>
+            {% endif %}
+            {% if photo_count < 3 %}
+                <div class="break-inside-avoid">
+                    <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-gold-dark/25 via-bronze/15 to-gold-light/20 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+                </div>
+            {% endif %}
+            {% if photo_count < 4 %}
+                <div class="break-inside-avoid">
+                    <div class="aspect-[4/3] w-full rounded-sm border bg-gradient-to-br from-paper-dark/30 via-gold/20 to-bronze/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+                </div>
+            {% endif %}
+            {% if photo_count < 5 %}
+                <div class="break-inside-avoid">
+                    <div class="aspect-square w-full rounded-sm border bg-gradient-to-br from-gold-light/25 via-gold-dark/20 to-bronze/10 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+                </div>
+            {% endif %}
+            {% if photo_count < 6 %}
+                <div class="break-inside-avoid">
+                    <div class="aspect-[3/4] w-full rounded-sm border bg-gradient-to-br from-bronze/15 via-gold/25 to-gold-light/15 theme-light:border-gold/20 theme-dark:border-gold-light/20"></div>
+                </div>
+            {% endif %}
         </div>
 
-        <p class="section-faint mt-12 text-center italic">{{ caption }}</p>
+        {% if caption != blank %}
+            <p class="section-faint mt-12 text-center italic">{{ caption }}</p>
+        {% endif %}
     </div>
 </section>

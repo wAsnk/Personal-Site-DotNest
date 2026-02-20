@@ -203,6 +203,55 @@
                   "Position": "2"
                 }
               }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Details",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Details",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "WhenWhereDetail"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "WhenWhereDetail",
+          "DisplayName": "When and Where Detail",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "WhenWhereDetail",
+              "Name": "WhenWhereDetail",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
             }
           ]
         },
@@ -244,6 +293,55 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "GiftItems",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Gift Items",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "GiftRegistryItem"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GiftRegistryItem",
+          "DisplayName": "Gift Registry Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "GiftRegistryItem",
+              "Name": "GiftRegistryItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
                 }
               }
             }
@@ -289,6 +387,55 @@
                   "Position": "2"
                 }
               }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Milestones",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Milestones",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "OurStoryMilestone"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "OurStoryMilestone",
+          "DisplayName": "Our Story Milestone",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "OurStoryMilestone",
+              "Name": "OurStoryMilestone",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
             }
           ]
         },
@@ -332,6 +479,55 @@
                   "Position": "2"
                 }
               }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Photos",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Photos",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "PhotoGalleryItem"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PhotoGalleryItem",
+          "DisplayName": "Photo Gallery Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "PhotoGalleryItem",
+              "Name": "PhotoGalleryItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
             }
           ]
         },
@@ -373,6 +569,55 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "Traditions",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Traditions",
+                  "Position": "3"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "HungarianTraditionItem"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HungarianTraditionItem",
+          "DisplayName": "Hungarian Tradition Item",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HungarianTraditionItem",
+              "Name": "HungarianTraditionItem",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
                 }
               }
             }
@@ -537,16 +782,6 @@
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
               "Name": "ResponseByText",
               "Settings": {
                 "ContentPartFieldSettings": {
@@ -661,145 +896,69 @@
         {
           "Name": "WhenWhereSection",
           "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "WhenWhereDetail",
+          "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
+              "Name": "PlaceName",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
+                  "DisplayName": "Place Name",
                   "Position": "0"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "CeremonyTitle",
+              "Name": "DateTime",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Title",
+                  "DisplayName": "Date and Time",
                   "Position": "1"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "CeremonyVenue",
+              "Name": "Address",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Venue",
+                  "DisplayName": "Address",
                   "Position": "2"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "CeremonyDateTime",
+              "Name": "MapLabel",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Date and Time",
+                  "DisplayName": "Map Label",
                   "Position": "3"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "CeremonyAddress",
+              "Name": "MapUrl",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Address",
+                  "DisplayName": "Map Url",
                   "Position": "4"
                 }
               }
             },
             {
-              "FieldName": "TextField",
-              "Name": "CeremonyMapLabel",
+              "FieldName": "GeoPointField",
+              "Name": "Location",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Map Label",
+                  "DisplayName": "Location",
                   "Position": "5"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "CeremonyMapUrl",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Ceremony Map Url",
-                  "Position": "6"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionTitle",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Title",
-                  "Position": "7"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionVenue",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Venue",
-                  "Position": "8"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionAddress",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Address",
-                  "Position": "9"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionRegion",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Region",
-                  "Position": "10"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionMapLabel",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Map Label",
-                  "Position": "11"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionMapUrl",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Map Url",
-                  "Position": "12"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "ReceptionNote",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Reception Note",
-                  "Position": "13",
-                  "Editor": "TextArea"
                 }
               }
             }
@@ -808,24 +967,19 @@
         {
           "Name": "GiftRegistrySection",
           "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "GiftRegistryItem",
+          "Settings": {},
           "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Heading",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
-                  "Position": "0"
-                }
-              }
-            },
             {
               "FieldName": "TextField",
               "Name": "LeadText",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Lead Text",
-                  "Position": "1",
+                  "Position": "0",
                   "Editor": "TextArea"
                 }
               }
@@ -836,7 +990,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Body Text",
-                  "Position": "2",
+                  "Position": "1",
                   "Editor": "TextArea"
                 }
               }
@@ -846,168 +1000,29 @@
         {
           "Name": "OurStorySection",
           "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "OurStoryMilestone",
+          "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
+              "Name": "Year",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
+                  "DisplayName": "Year",
                   "Position": "0"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "Milestone1Year",
+              "Name": "Description",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 1 Year",
-                  "Position": "1"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone1Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 1 Title",
-                  "Position": "2"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone1Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 1 Description",
-                  "Position": "3",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone2Year",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 2 Year",
-                  "Position": "4"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone2Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 2 Title",
-                  "Position": "5"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone2Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 2 Description",
-                  "Position": "6",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone3Year",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 3 Year",
-                  "Position": "7"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone3Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 3 Title",
-                  "Position": "8"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone3Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 3 Description",
-                  "Position": "9",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone4Year",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 4 Year",
-                  "Position": "10"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone4Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 4 Title",
-                  "Position": "11"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone4Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 4 Description",
-                  "Position": "12",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone5Year",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 5 Year",
-                  "Position": "13"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone5Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 5 Title",
-                  "Position": "14"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Milestone5Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Milestone 5 Description",
-                  "Position": "15",
+                  "DisplayName": "Description",
+                  "Position": "1",
                   "Editor": "TextArea"
                 }
               }
@@ -1020,41 +1035,31 @@
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
               "Name": "Caption",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Caption",
-                  "Position": "1"
+                  "Position": "0"
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "Name": "PhotoGalleryItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
             {
-              "FieldName": "TextField",
-              "Name": "PrimaryImageUrl",
+              "FieldName": "MediaField",
+              "Name": "Image",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Primary Image Url",
-                  "Position": "2"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "PrimaryImageAlt",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Primary Image Alt",
-                  "Position": "3"
+                  "DisplayName": "Image",
+                  "Position": "0"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false,
+                  "AllowAnchors": true
                 }
               }
             }
@@ -1066,126 +1071,28 @@
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
               "Name": "IntroText",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Intro Text",
-                  "Position": "1",
+                  "Position": "0",
                   "Editor": "TextArea"
                 }
               }
-            },
+            }
+          ]
+        },
+        {
+          "Name": "HungarianTraditionItem",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Tradition1Title",
+              "Name": "Description",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 1 Title",
-                  "Position": "2"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition1Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 1 Description",
-                  "Position": "3",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition2Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 2 Title",
-                  "Position": "4"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition2Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 2 Description",
-                  "Position": "5",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition3Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 3 Title",
-                  "Position": "6"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition3Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 3 Description",
-                  "Position": "7",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition4Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 4 Title",
-                  "Position": "8"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition4Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 4 Description",
-                  "Position": "9",
-                  "Editor": "TextArea"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition5Title",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 5 Title",
-                  "Position": "10"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "Tradition5Description",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tradition 5 Description",
-                  "Position": "11",
+                  "DisplayName": "Description",
+                  "Position": "0",
                   "Editor": "TextArea"
                 }
               }
@@ -1198,21 +1105,11 @@
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "TextField",
-              "Name": "Heading",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Heading",
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "FieldName": "TextField",
               "Name": "IntroText",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Intro Text",
-                  "Position": "1",
+                  "Position": "0",
                   "Editor": "TextArea"
                 }
               }
@@ -1223,7 +1120,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Details Text",
-                  "Position": "2",
+                  "Position": "1",
                   "Editor": "TextArea"
                 }
               }
@@ -1271,7 +1168,7 @@
                 "Latest": true,
                 "Published": true,
                 "LinkMenuItemPart": {
-                  "Url": "/#details",
+                  "Url": "/#when-and-where",
                   "Target": null
                 }
               },
@@ -1283,7 +1180,7 @@
                 "Latest": true,
                 "Published": true,
                 "LinkMenuItemPart": {
-                  "Url": "/#story",
+                  "Url": "/#our-story",
                   "Target": null
                 }
               },
@@ -1295,7 +1192,7 @@
                 "Latest": true,
                 "Published": true,
                 "LinkMenuItemPart": {
-                  "Url": "/#traditions",
+                  "Url": "/#hungarian-traditions",
                   "Target": null
                 }
               }
@@ -1394,9 +1291,6 @@
                   "GuestCountLabel": {
                     "Text": "Number of guests"
                   },
-                  "Heading": {
-                    "Text": "R.S.V.P."
-                  },
                   "NotePlaceholder": {
                     "Text": "Share your well wishes..."
                   },
@@ -1429,49 +1323,73 @@
                     "Text": "light"
                   }
                 },
-                "WhenWhereSection": {
-                  "ReceptionRegion": {
-                    "Text": "Budakeszi District, Hungary"
-                  },
-                  "CeremonyDateTime": {
-                    "Text": "Saturday, 03 July 2027 at 3:00 PM"
-                  },
-                  "CeremonyMapLabel": {
-                    "Text": "View map"
-                  },
-                  "ReceptionMapLabel": {
-                    "Text": "View map"
-                  },
-                  "ReceptionTitle": {
-                    "Text": "Reception"
-                  },
-                  "CeremonyTitle": {
-                    "Text": "Ceremony"
-                  },
-                  "ReceptionAddress": {
-                    "Text": "1029 Budapest, Feketefej utca 2."
-                  },
-                  "CeremonyMapUrl": {
-                    "Text": "https://www.google.com/maps/search/?api=1&query=47.56082341824489,18.945057936598808"
-                  },
-                  "ReceptionMapUrl": {
-                    "Text": "https://www.google.com/maps/search/?api=1&query=47.541447915110226,18.93606702217123"
-                  },
-                  "Heading": {
-                    "Text": "The Details"
-                  },
-                  "ReceptionNote": {
-                    "Text": "Dinner, dancing, and celebration into the night"
-                  },
-                  "CeremonyAddress": {
-                    "Text": "1029 Budapest, Templom kert 1."
-                  },
-                  "ReceptionVenue": {
-                    "Text": "Csillagkert Budapest"
-                  },
-                  "CeremonyVenue": {
-                    "Text": "Mariaremete Kisboldogasszony Bazilika Plebania"
-                  }
+                "Details": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "WhenWhereDetail",
+                      "DisplayText": "Ceremony",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Ceremony"
+                      },
+                      "WhenWhereDetail": {
+                        "PlaceName": {
+                          "Text": "Mariaremete Kisboldogasszony Bazilika Plebania"
+                        },
+                        "DateTime": {
+                          "Text": "Saturday, 03 July 2027 at 3:00 PM"
+                        },
+                        "Address": {
+                          "Text": "1029 Budapest, Templom kert 1."
+                        },
+                        "MapLabel": {
+                          "Text": "View map"
+                        },
+                        "MapUrl": {
+                          "Text": "https://www.google.com/maps/search/?api=1&query=47.56082341824489,18.945057936598808"
+                        },
+                        "Location": {
+                          "Latitude": 47.56082341824489,
+                          "Longitude": 18.945057936598808
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "WhenWhereDetail",
+                      "DisplayText": "Reception",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Reception"
+                      },
+                      "WhenWhereDetail": {
+                        "PlaceName": {
+                          "Text": "Csillagkert Budapest"
+                        },
+                        "DateTime": {
+                          "Text": ""
+                        },
+                        "Address": {
+                          "Text": "1029 Budapest, Feketefej utca 2."
+                        },
+                        "MapLabel": {
+                          "Text": "View map"
+                        },
+                        "MapUrl": {
+                          "Text": "https://www.google.com/maps/search/?api=1&query=47.541447915110226,18.93606702217123"
+                        },
+                        "Location": {
+                          "Latitude": 47.541447915110226,
+                          "Longitude": 18.93606702217123
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1489,16 +1407,28 @@
                     "Text": "dark"
                   }
                 },
-                "GiftRegistrySection": {
-                  "LeadText": {
-                    "Text": "Your presence at our celebration is the most meaningful gift we could receive."
-                  },
-                  "Heading": {
-                    "Text": "Gifts"
-                  },
-                  "BodyText": {
-                    "Text": "If you would like to give us a gift, we would be truly grateful for a monetary contribution towards our future together."
-                  }
+                "GiftItems": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "GiftRegistryItem",
+                      "DisplayText": "Gift Note",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Gift Note"
+                      },
+                      "GiftRegistryItem": {
+                        "LeadText": {
+                          "Text": "Your presence at our celebration is the most meaningful gift we could receive."
+                        },
+                        "BodyText": {
+                          "Text": "If you would like to give us a gift, we would be truly grateful for a monetary contribution towards our future together."
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1516,55 +1446,104 @@
                     "Text": "light"
                   }
                 },
-                "OurStorySection": {
-                  "Milestone1Description": {
-                    "Text": "A chance encounter that neither of us expected, but one that changed everything."
-                  },
-                  "Milestone3Title": {
-                    "Text": "A New Chapter"
-                  },
-                  "Milestone2Year": {
-                    "Text": "2020"
-                  },
-                  "Milestone5Description": {
-                    "Text": "The day we say \"I do\" surrounded by the people we love most."
-                  },
-                  "Milestone5Title": {
-                    "Text": "Forever Begins"
-                  },
-                  "Milestone3Description": {
-                    "Text": "Building a home together and learning what it truly means to be a team."
-                  },
-                  "Milestone4Description": {
-                    "Text": "A question asked, a joyful yes, and the beginning of forever."
-                  },
-                  "Milestone2Title": {
-                    "Text": "First Adventure Together"
-                  },
-                  "Milestone1Title": {
-                    "Text": "First Met"
-                  },
-                  "Heading": {
-                    "Text": "Our Story"
-                  },
-                  "Milestone4Title": {
-                    "Text": "The Proposal"
-                  },
-                  "Milestone2Description": {
-                    "Text": "We discovered that the best journeys are the ones shared with someone special."
-                  },
-                  "Milestone3Year": {
-                    "Text": "2023"
-                  },
-                  "Milestone1Year": {
-                    "Text": "2019"
-                  },
-                  "Milestone4Year": {
-                    "Text": "2025"
-                  },
-                  "Milestone5Year": {
-                    "Text": "2027"
-                  }
+                "Milestones": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "OurStoryMilestone",
+                      "DisplayText": "First Met",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "First Met"
+                      },
+                      "OurStoryMilestone": {
+                        "Year": {
+                          "Text": "2019"
+                        },
+                        "Description": {
+                          "Text": "A chance encounter that neither of us expected, but one that changed everything."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "OurStoryMilestone",
+                      "DisplayText": "First Adventure Together",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "First Adventure Together"
+                      },
+                      "OurStoryMilestone": {
+                        "Year": {
+                          "Text": "2020"
+                        },
+                        "Description": {
+                          "Text": "We discovered that the best journeys are the ones shared with someone special."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "OurStoryMilestone",
+                      "DisplayText": "A New Chapter",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "A New Chapter"
+                      },
+                      "OurStoryMilestone": {
+                        "Year": {
+                          "Text": "2023"
+                        },
+                        "Description": {
+                          "Text": "Building a home together and learning what it truly means to be a team."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "OurStoryMilestone",
+                      "DisplayText": "The Proposal",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "The Proposal"
+                      },
+                      "OurStoryMilestone": {
+                        "Year": {
+                          "Text": "2025"
+                        },
+                        "Description": {
+                          "Text": "A question asked, a joyful yes, and the beginning of forever."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "OurStoryMilestone",
+                      "DisplayText": "Forever Begins",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Forever Begins"
+                      },
+                      "OurStoryMilestone": {
+                        "Year": {
+                          "Text": "2027"
+                        },
+                        "Description": {
+                          "Text": "The day we say \"I do\" surrounded by the people we love most."
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1583,18 +1562,40 @@
                   }
                 },
                 "PhotoGallerySection": {
-                  "PrimaryImageAlt": {
-                    "Text": "Engagement photo"
-                  },
-                  "Heading": {
-                    "Text": "Moments"
-                  },
-                  "PrimaryImageUrl": {
-                    "Text": "~/media/Site/IMG_1283.jpg"
-                  },
                   "Caption": {
                     "Text": "Your photos will appear here"
                   }
+                },
+                "Photos": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "PhotoGalleryItem",
+                      "DisplayText": "Engagement photo",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Engagement photo"
+                      },
+                      "PhotoGalleryItem": {
+                        "Image": {
+                          "Anchors": [
+                            {
+                              "X": 0.5,
+                              "Y": 0.5
+                            }
+                          ],
+                          "Paths": [
+                            "Site/IMG_1283.jpg"
+                          ],
+                          "MediaTexts": [
+                            ""
+                          ]
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1613,42 +1614,93 @@
                   }
                 },
                 "HungarianTraditionsSection": {
-                  "Tradition3Description": {
-                    "Text": "The bride tosses her bouquet to unmarried women, and the one who catches it is said to be the next to marry."
-                  },
-                  "Tradition5Description": {
-                    "Text": "The couple cuts the wedding cake together, hand over hand, symbolizing their first shared act as husband and wife."
-                  },
-                  "Tradition3Title": {
-                    "Text": "The Bouquet Toss"
-                  },
-                  "Tradition4Description": {
-                    "Text": "When guests clink and tap in unison, the newlyweds must kiss. The louder the clinking, the longer the kiss."
-                  },
                   "IntroText": {
                     "Text": "A glimpse into the customs that make a Hungarian wedding truly unforgettable"
-                  },
-                  "Heading": {
-                    "Text": "Hungarian Traditions"
-                  },
-                  "Tradition4Title": {
-                    "Text": "Clinking Glasses and Tapping Plates"
-                  },
-                  "Tradition2Title": {
-                    "Text": "The Stealing of the Bride"
-                  },
-                  "Tradition1Description": {
-                    "Text": "Guests queue to dance with the bride for a brief moment, each placing money into a basket to wish the couple prosperity."
-                  },
-                  "Tradition5Title": {
-                    "Text": "Cutting the Cake"
-                  },
-                  "Tradition2Description": {
-                    "Text": "Friends playfully \"kidnap\" the bride, and the groom must complete humorous tasks or pay a ransom to win her back."
-                  },
-                  "Tradition1Title": {
-                    "Text": "The Bride's Dance"
                   }
+                },
+                "Traditions": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "HungarianTraditionItem",
+                      "DisplayText": "The Bride's Dance",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "The Bride's Dance"
+                      },
+                      "HungarianTraditionItem": {
+                        "Description": {
+                          "Text": "Guests queue to dance with the bride for a brief moment, each placing money into a basket to wish the couple prosperity."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "HungarianTraditionItem",
+                      "DisplayText": "The Stealing of the Bride",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "The Stealing of the Bride"
+                      },
+                      "HungarianTraditionItem": {
+                        "Description": {
+                          "Text": "Friends playfully \"kidnap\" the bride, and the groom must complete humorous tasks or pay a ransom to win her back."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "HungarianTraditionItem",
+                      "DisplayText": "The Bouquet Toss",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "The Bouquet Toss"
+                      },
+                      "HungarianTraditionItem": {
+                        "Description": {
+                          "Text": "The bride tosses her bouquet to unmarried women, and the one who catches it is said to be the next to marry."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "HungarianTraditionItem",
+                      "DisplayText": "Clinking Glasses and Tapping Plates",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Clinking Glasses and Tapping Plates"
+                      },
+                      "HungarianTraditionItem": {
+                        "Description": {
+                          "Text": "When guests clink and tap in unison, the newlyweds must kiss. The louder the clinking, the longer the kiss."
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "[js:uuid()]",
+                      "ContentItemVersionId": "[js:uuid()]",
+                      "ContentType": "HungarianTraditionItem",
+                      "DisplayText": "Cutting the Cake",
+                      "Latest": true,
+                      "Published": true,
+                      "TitlePart": {
+                        "Title": "Cutting the Cake"
+                      },
+                      "HungarianTraditionItem": {
+                        "Description": {
+                          "Text": "The couple cuts the wedding cake together, hand over hand, symbolizing their first shared act as husband and wife."
+                        }
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -1667,9 +1719,6 @@
                   }
                 },
                 "FurtherDetailsSection": {
-                  "Heading": {
-                    "Text": "Further Details"
-                  },
                   "IntroText": {
                     "Text": "More details about the day will follow in due course."
                   },
@@ -1694,3 +1743,4 @@
     }
   ]
 }
+
