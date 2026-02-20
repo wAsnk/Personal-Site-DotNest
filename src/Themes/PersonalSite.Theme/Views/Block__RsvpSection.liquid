@@ -7,11 +7,16 @@
 {% assign accept_text = rsvp.AcceptOptionText.Text %}
 {% assign decline_text = rsvp.DeclineOptionText.Text %}
 {% assign guest_count_label = rsvp.GuestCountLabel.Text %}
-{% assign guest_details_label = rsvp.GuestDetailsLabel.Text %}
-{% assign guest_details_placeholder = rsvp.GuestDetailsPlaceholder.Text %}
+{% assign guest_names_label = rsvp.GuestNamesLabel.Text | default: rsvp.GuestDetailsLabel.Text %}
+{% assign guest_names_placeholder = rsvp.GuestNamesPlaceholder.Text | default: rsvp.GuestDetailsPlaceholder.Text %}
+{% assign dietary_label = rsvp.DietaryLabel.Text %}
+{% assign dietary_placeholder = rsvp.DietaryPlaceholder.Text %}
 {% assign note_label = rsvp.NoteLabel.Text %}
 {% assign note_placeholder = rsvp.NotePlaceholder.Text %}
 {% assign submit_text = rsvp.SubmitButtonText.Text %}
+{% assign notification_emails = rsvp.NotificationEmails.Text %}
+{% assign success_message = rsvp.SuccessMessage.Text | default: "Thank you, your RSVP has been received." %}
+{% assign error_message = rsvp.ErrorMessage.Text | default: "Your RSVP could not be submitted. Please check the form and try again." %}
 
 <section class="section-shell">
     <div class="section-inner max-w-xl">
@@ -30,7 +35,13 @@
         </div>
 
         <div class="section-card">
-            <form class="space-y-8" method="post"{% if post_url != blank %} action="{{ post_url }}"{% endif %} data-rsvp-form>
+            <div class="mb-6 hidden rounded-sm border px-4 py-3 text-sm" data-rsvp-status role="status" aria-live="polite"></div>
+
+            <form class="space-y-8" method="post"{% if post_url != blank %} action="{{ post_url }}"{% endif %}
+                  data-rsvp-form
+                  data-success-message="{{ success_message | escape }}"
+                  data-error-message="{{ error_message | escape }}">
+                {% antiforgerytoken %}
                 <div>
                     <label for="rsvp-email" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ email_label }}</label>
                     <input id="rsvp-email" name="email" type="email" required placeholder="your@email.com" class="wedding-input">
@@ -41,14 +52,18 @@
                         {{ attend_question }}
                     </legend>
                     <div class="flex flex-wrap items-center justify-center gap-6">
-                        <label class="wedding-radio">
-                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light"><span class="wedding-radio-dot"></span></span>
-                            <input type="radio" name="attending" value="yes" class="sr-only" checked>
+                        <label class="wedding-radio cursor-pointer" for="rsvp-attending-yes">
+                            <input id="rsvp-attending-yes" type="radio" name="attending" value="yes" class="sr-only" checked data-attending-radio>
+                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light">
+                                <span class="wedding-radio-dot hidden" data-attending-mark></span>
+                            </span>
                             <span>{{ accept_text }}</span>
                         </label>
-                        <label class="wedding-radio">
-                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light"></span>
-                            <input type="radio" name="attending" value="no" class="sr-only">
+                        <label class="wedding-radio cursor-pointer" for="rsvp-attending-no">
+                            <input id="rsvp-attending-no" type="radio" name="attending" value="no" class="sr-only" data-attending-radio>
+                            <span class="flex h-4 w-4 items-center justify-center border theme-light:border-gold theme-dark:border-gold-light">
+                                <span class="wedding-radio-dot hidden" data-attending-mark></span>
+                            </span>
                             <span>{{ decline_text }}</span>
                         </label>
                     </div>
@@ -56,19 +71,28 @@
 
                 <div>
                     <label for="guest-count" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_count_label }}</label>
-                    <input id="guest-count" name="guestCount" type="number" max="10" value="1" class="wedding-input" data-guest-count>
+                    <input id="guest-count" name="guestCount" type="number" min="0" max="10" value="1" class="wedding-input" data-guest-count>
                 </div>
 
-                <div>
-                    <p class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_details_label }}</p>
-                    <div class="space-y-3" data-guest-inputs data-placeholder="{{ guest_details_placeholder | escape }}"></div>
+                <div data-guest-section>
+                    <p class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ guest_names_label }}</p>
+                    <p class="mb-3 text-xs uppercase tracking-[0.08em] theme-light:text-bronze/70 theme-dark:text-paper/70">{{ dietary_label }}</p>
+                    <div class="space-y-4" data-guest-inputs data-placeholder="{{ guest_names_placeholder | escape }}" data-dietary-placeholder="{{ dietary_placeholder | escape }}" data-dietary-label="{{ dietary_label | escape }}"></div>
                     <input type="hidden" name="guestDetails" value="" data-guest-details-hidden>
+                    <input type="hidden" name="dietaryRequirements" value="" data-guest-dietary-hidden>
                 </div>
 
                 <div>
                     <label for="rsvp-message" class="mb-2 block font-display text-sm uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light">{{ note_label }}</label>
                     <textarea id="rsvp-message" name="message" rows="2" class="wedding-textarea" placeholder="{{ note_placeholder }}"></textarea>
                 </div>
+
+                <div class="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                    <label for="rsvp-honeypot">Leave this empty</label>
+                    <input id="rsvp-honeypot" type="text" name="honeypot" tabindex="-1" autocomplete="new-password" />
+                </div>
+                <input type="hidden" name="clientSubmittedAt" value="" data-client-submitted-at>
+                <input type="hidden" name="notifyEmails" value="{{ notification_emails | escape }}">
 
                 <div class="pt-4 text-center">
                     <button type="submit" class="inline-flex items-center gap-2 border px-10 py-3 font-display text-sm uppercase tracking-[0.16em] transition-colors theme-light:border-gold/70 theme-light:text-gold-dark theme-light:hover:bg-gold/10 theme-dark:border-gold-light/60 theme-dark:text-gold-light theme-dark:hover:bg-gold-light/10">
@@ -91,23 +115,124 @@
         const guestCountInput = form.querySelector("[data-guest-count]");
         const guestInputsContainer = form.querySelector("[data-guest-inputs]");
         const guestDetailsHidden = form.querySelector("[data-guest-details-hidden]");
+        const guestDietaryHidden = form.querySelector("[data-guest-dietary-hidden]");
+        const guestSection = form.querySelector("[data-guest-section]");
+        const clientSubmittedAtInput = form.querySelector("[data-client-submitted-at]");
+        const statusElement = document.querySelector("[data-rsvp-status]");
+        const attendingInputs = Array.from(form.querySelectorAll("[data-attending-radio]"));
+        const submitButton = form.querySelector('button[type="submit"]');
+        const antiForgeryInput = form.querySelector('input[name="__RequestVerificationToken"]');
 
-        if (!guestCountInput || !guestInputsContainer || !guestDetailsHidden) {
+        if (!guestCountInput || !guestInputsContainer || !guestDetailsHidden || !guestDietaryHidden || !clientSubmittedAtInput || attendingInputs.length === 0) {
             return;
         }
 
         const placeholder = guestInputsContainer.getAttribute("data-placeholder") || "";
+        const dietaryPlaceholder = guestInputsContainer.getAttribute("data-dietary-placeholder") || "";
+        const dietaryLabelText = guestInputsContainer.getAttribute("data-dietary-label") || "Dietary requirements";
         const minGuests = 1;
         const maxGuests = 10;
+        let lastRenderedGuestCount = minGuests;
+        let isSubmitting = false;
 
-        const normalizeCount = (value) => {
-            const parsed = Number.parseInt(value, 10);
+        const showStatus = (message, isSuccess) => {
+            if (!statusElement || !message) {
+                return;
+            }
+
+            statusElement.classList.remove("hidden");
+            statusElement.textContent = message;
+
+            if (isSuccess) {
+                statusElement.classList.remove("border-red-500/50", "bg-red-500/10", "text-red-200", "text-red-800");
+                statusElement.classList.add("border-gold/60", "bg-gold/10", "theme-light:text-bronze", "theme-dark:text-gold-light");
+            }
+            else {
+                statusElement.classList.remove("border-gold/60", "bg-gold/10", "theme-light:text-bronze", "theme-dark:text-gold-light");
+                statusElement.classList.add("border-red-500/50", "bg-red-500/10", "theme-light:text-red-800", "theme-dark:text-red-200");
+            }
+        };
+        const showSubmittedState = (message) => {
+            showStatus(message, true);
+            form.classList.add("hidden");
+            form.setAttribute("aria-hidden", "true");
+
+            if (statusElement) {
+                statusElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        };
+        const showEditableState = () => {
+            form.classList.remove("hidden");
+            form.removeAttribute("aria-hidden");
+        };
+        const setSubmitting = (value) => {
+            isSubmitting = value;
+            if (submitButton) {
+                submitButton.disabled = value;
+                submitButton.classList.toggle("opacity-60", value);
+            }
+        };
+        const getStatusFromResponseUrl = (urlValue) => {
+            if (!urlValue) {
+                return null;
+            }
+
+            try {
+                const parsed = new URL(urlValue, window.location.origin);
+                return parsed.searchParams.get("status");
+            }
+            catch (_error) {
+                return null;
+            }
+        };
+
+        const status = new URLSearchParams(window.location.search).get("status");
+        const successMessage = form.getAttribute("data-success-message") || "";
+        const errorMessage = form.getAttribute("data-error-message") || "";
+
+        if (status === "submitted") {
+            showSubmittedState(successMessage);
+        }
+        else if (status === "invalid" || status === "blocked" || status === "error") {
+            showEditableState();
+            showStatus(errorMessage, false);
+        }
+        else {
+            showEditableState();
+        }
+
+        clientSubmittedAtInput.value = Date.now().toString();
+
+        const parseGuestCount = (value) => {
+            const trimmed = (value || "").toString().trim();
+
+            if (!trimmed) {
+                return null;
+            }
+
+            const parsed = Number.parseInt(trimmed, 10);
 
             if (Number.isNaN(parsed)) {
-                return minGuests;
+                return null;
             }
 
             return Math.min(maxGuests, Math.max(minGuests, parsed));
+        };
+
+        const isAttending = () => {
+            const selected = form.querySelector('input[name="attending"]:checked');
+
+            return selected && selected.value === "yes";
+        };
+
+        const syncAttendingMarks = () => {
+            attendingInputs.forEach((input) => {
+                const marker = input.parentElement.querySelector("[data-attending-mark]");
+
+                if (marker) {
+                    marker.classList.toggle("hidden", !input.checked);
+                }
+            });
         };
 
         const syncGuestDetails = () => {
@@ -117,16 +242,40 @@
 
             guestDetailsHidden.value = values.join("\n");
         };
+        const syncGuestDietary = () => {
+            const values = Array.from(guestInputsContainer.querySelectorAll("[data-guest-dietary]"))
+                .map((input, index) => {
+                    const guestNameInput = guestInputsContainer.querySelector('#rsvp-guest-' + (index + 1));
+                    const guestName = guestNameInput ? guestNameInput.value.trim() : "";
+                    const dietary = input.value.trim();
 
-        const renderGuestInputs = () => {
-            const count = normalizeCount(guestCountInput.value);
-            guestCountInput.value = count;
+                    if (!dietary) {
+                        return "";
+                    }
+
+                    return guestName ? (guestName + ": " + dietary) : ("Guest " + (index + 1) + ": " + dietary);
+                })
+                .filter((value) => value.length > 0);
+
+            guestDietaryHidden.value = values.join("\n");
+        };
+
+        const renderGuestInputs = (count, preserveValues) => {
+            const existingValues = preserveValues
+                ? {
+                    names: Array.from(guestInputsContainer.querySelectorAll("input[data-guest-name]")).map((input) => input.value),
+                    dietary: Array.from(guestInputsContainer.querySelectorAll("[data-guest-dietary]")).map((input) => input.value),
+                }
+                : { names: [], dietary: [] };
+
             guestInputsContainer.innerHTML = "";
 
             for (let index = 1; index <= count; index++) {
                 const wrapper = document.createElement("div");
                 const label = document.createElement("label");
                 const input = document.createElement("input");
+                const dietaryLabel = document.createElement("label");
+                const dietaryInput = document.createElement("textarea");
 
                 label.setAttribute("for", "rsvp-guest-" + index);
                 label.className = "mb-2 block font-display text-xs uppercase tracking-[0.12em] theme-light:text-gold-dark theme-dark:text-gold-light";
@@ -136,22 +285,209 @@
                 input.type = "text";
                 input.className = "wedding-input";
                 input.placeholder = placeholder;
-                input.required = true;
                 input.setAttribute("data-guest-name", "true");
+                input.value = existingValues.names[index - 1] || "";
 
-                input.addEventListener("input", syncGuestDetails);
+                input.addEventListener("input", () => {
+                    input.setCustomValidity("");
+                    syncGuestDetails();
+                });
+
+                dietaryLabel.setAttribute("for", "rsvp-guest-dietary-" + index);
+                dietaryLabel.className = "mb-2 mt-3 block font-display text-[10px] uppercase tracking-[0.12em] theme-light:text-gold-dark/80 theme-dark:text-gold-light/90";
+                dietaryLabel.textContent = dietaryLabelText;
+
+                dietaryInput.id = "rsvp-guest-dietary-" + index;
+                dietaryInput.rows = 2;
+                dietaryInput.className = "wedding-textarea";
+                dietaryInput.placeholder = dietaryPlaceholder;
+                dietaryInput.setAttribute("data-guest-dietary", "true");
+                dietaryInput.value = existingValues.dietary[index - 1] || "";
+                dietaryInput.addEventListener("input", syncGuestDietary);
+
                 wrapper.appendChild(label);
                 wrapper.appendChild(input);
+                wrapper.appendChild(dietaryLabel);
+                wrapper.appendChild(dietaryInput);
                 guestInputsContainer.appendChild(wrapper);
             }
 
+            lastRenderedGuestCount = count;
             syncGuestDetails();
+            syncGuestDietary();
         };
 
-        guestCountInput.addEventListener("change", renderGuestInputs);
-        guestCountInput.addEventListener("input", renderGuestInputs);
-        form.addEventListener("submit", syncGuestDetails);
+        const syncAttendingState = () => {
+            const attendingYes = isAttending();
 
-        renderGuestInputs();
+            syncAttendingMarks();
+
+            if (!attendingYes) {
+                guestCountInput.value = "0";
+                guestInputsContainer.innerHTML = "";
+                guestDetailsHidden.value = "";
+                guestDietaryHidden.value = "";
+                guestCountInput.disabled = true;
+
+                if (guestSection) {
+                    guestSection.classList.add("opacity-60");
+                }
+
+                return;
+            }
+
+            guestCountInput.disabled = false;
+
+            if (guestSection) {
+                guestSection.classList.remove("opacity-60");
+            }
+
+            const parsed = parseGuestCount(guestCountInput.value);
+            const nextCount = parsed === null ? minGuests : parsed;
+
+            guestCountInput.value = nextCount.toString();
+            renderGuestInputs(nextCount, true);
+        };
+
+        const validateForm = () => {
+            const honeypotInput = form.querySelector('input[name="honeypot"]');
+
+            if (honeypotInput && honeypotInput.value.trim() !== "") {
+                return false;
+            }
+
+            const now = Date.now();
+            const submittedAt = Number.parseInt(clientSubmittedAtInput.value || "0", 10);
+
+            if (Number.isNaN(submittedAt) || now - submittedAt < 2000) {
+                showStatus(errorMessage, false);
+                return false;
+            }
+
+            guestCountInput.setCustomValidity("");
+
+            const guestNameInputs = Array.from(guestInputsContainer.querySelectorAll("input[data-guest-name]"));
+            guestNameInputs.forEach((input) => input.setCustomValidity(""));
+
+            if (isAttending()) {
+                const parsed = parseGuestCount(guestCountInput.value);
+
+                if (parsed === null || parsed < minGuests || parsed > maxGuests) {
+                    guestCountInput.setCustomValidity("Please enter a guest count between 1 and 10.");
+                }
+
+                guestNameInputs.forEach((input) => {
+                    if (!input.value.trim()) {
+                        input.setCustomValidity("Please enter each guest name.");
+                    }
+                });
+            }
+            else {
+                guestCountInput.value = "0";
+                guestDetailsHidden.value = "";
+                guestDietaryHidden.value = "";
+            }
+
+            if (!form.checkValidity()) {
+                showStatus(errorMessage, false);
+                form.reportValidity();
+                return false;
+            }
+
+            syncGuestDetails();
+            syncGuestDietary();
+
+            return true;
+        };
+        const submitAsync = async () => {
+            const formAction = form.getAttribute("action") || window.location.pathname;
+            const formData = new FormData(form);
+            const headers = {};
+            const antiForgeryToken = antiForgeryInput ? antiForgeryInput.value : "";
+
+            if (antiForgeryToken) {
+                headers["RequestVerificationToken"] = antiForgeryToken;
+            }
+
+            const response = await fetch(formAction, {
+                method: "POST",
+                body: formData,
+                headers: headers,
+                credentials: "same-origin",
+                redirect: "follow",
+            });
+            const asyncStatus = getStatusFromResponseUrl(response.url);
+
+            if (!response.ok || asyncStatus === "invalid" || asyncStatus === "error" || asyncStatus === "blocked") {
+                showStatus(errorMessage, false);
+                return false;
+            }
+
+            showStatus(successMessage, true);
+            return true;
+        };
+
+        guestCountInput.addEventListener("input", () => {
+            guestCountInput.setCustomValidity("");
+
+            if (!isAttending()) {
+                return;
+            }
+
+            const parsed = parseGuestCount(guestCountInput.value);
+
+            if (parsed !== null && parsed !== lastRenderedGuestCount) {
+                renderGuestInputs(parsed, true);
+            }
+        });
+
+        guestCountInput.addEventListener("change", () => {
+            guestCountInput.setCustomValidity("");
+
+            if (!isAttending()) {
+                guestCountInput.value = "0";
+                return;
+            }
+
+            const parsed = parseGuestCount(guestCountInput.value);
+            const nextCount = parsed === null ? minGuests : parsed;
+
+            guestCountInput.value = nextCount.toString();
+
+            if (nextCount !== lastRenderedGuestCount) {
+                renderGuestInputs(nextCount, true);
+            }
+        });
+
+        attendingInputs.forEach((input) => input.addEventListener("change", syncAttendingState));
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (isSubmitting) {
+                return;
+            }
+
+            if (!validateForm()) {
+                return;
+            }
+
+            setSubmitting(true);
+
+            try {
+                const success = await submitAsync();
+
+                if (success) {
+                    showSubmittedState(successMessage);
+                }
+            }
+            catch (_error) {
+                showStatus(errorMessage, false);
+            }
+            finally {
+                setSubmitting(false);
+            }
+        });
+
+        syncAttendingState();
     })();
 </script>

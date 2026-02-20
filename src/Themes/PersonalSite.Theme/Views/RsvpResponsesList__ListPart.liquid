@@ -1,0 +1,45 @@
+{% if Model.ContentItems and Model.ContentItems.size > 0 %}
+    <section class="section-shell">
+        <div class="section-inner max-w-6xl">
+            <h2 class="section-heading text-center">RSVP Overview</h2>
+            <div class="mt-8 overflow-x-auto rounded-sm border theme-light:border-gold/30 theme-dark:border-gold-light/40">
+                <table class="min-w-full border-collapse text-left text-sm">
+                    <thead class="theme-light:bg-gold/10 theme-dark:bg-gold-light/10">
+                        <tr>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Submitted</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Email</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Attending</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Guests</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Guest Names</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Dietary</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Message</th>
+                            <th class="px-4 py-3 font-display uppercase tracking-[0.12em]">Spam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for response in Model.ContentItems %}
+                            {% assign fields = response.Content.RsvpResponse %}
+                            <tr class="border-t theme-light:border-gold/20 theme-dark:border-gold-light/30">
+                                <td class="px-4 py-3 align-top">{{ fields.SubmittedAt.Text }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.Email.Text }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.Attending.Text }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.GuestCount.Value }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.GuestDetails.Text | newline_to_br | raw }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.DietaryRequirements.Text | newline_to_br | raw }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.Message.Text | newline_to_br | raw }}</td>
+                                <td class="px-4 py-3 align-top">{{ fields.IsSpam.Text }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% else %}
+    <section class="section-shell">
+        <div class="section-inner max-w-4xl text-center">
+            <h2 class="section-heading">RSVP Overview</h2>
+            <p class="section-muted mt-6">No RSVPs have been submitted yet.</p>
+        </div>
+    </section>
+{% endif %}

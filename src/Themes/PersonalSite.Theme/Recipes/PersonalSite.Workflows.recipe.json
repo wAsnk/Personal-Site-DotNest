@@ -32,22 +32,149 @@
                 },
                 "HttpMethod": "POST",
                 "Url": "/workflows/Invoke?token=replace-on-import",
-                "ValidateAntiforgeryToken": false,
-                "TokenLifeSpan": 0,
+                "ValidateAntiforgeryToken": true,
+                "TokenLifeSpan": 365,
                 "FormLocationKey": ""
+              }
+            },
+            {
+              "ActivityId": "4rsvpbindmodelstatetask00",
+              "Name": "BindModelStateTask",
+              "X": 300,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Bind Form Model State"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpforkvalidation00000",
+              "Name": "ForkTask",
+              "X": 560,
+              "Y": 60,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate RSVP Fields"
+                },
+                "Forks": [
+                  "Email",
+                  "Attending",
+                  "GuestCount",
+                  "ClientSubmittedAt"
+                ]
+              }
+            },
+            {
+              "ActivityId": "4rsvpvalidateemail0000000",
+              "Name": "ValidateFormFieldTask",
+              "X": 380,
+              "Y": 230,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate Email"
+                },
+                "FieldName": "email",
+                "ErrorMessage": "Please enter a valid email address."
+              }
+            },
+            {
+              "ActivityId": "4rsvpvalidateattend000000",
+              "Name": "ValidateFormFieldTask",
+              "X": 620,
+              "Y": 230,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate Attending"
+                },
+                "FieldName": "attending",
+                "ErrorMessage": "Please choose whether you are attending."
+              }
+            },
+            {
+              "ActivityId": "4rsvpvalidateguestcount000",
+              "Name": "ValidateFormFieldTask",
+              "X": 860,
+              "Y": 230,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate Guest Count"
+                },
+                "FieldName": "guestCount",
+                "ErrorMessage": "Please provide the number of guests."
+              }
+            },
+            {
+              "ActivityId": "4rsvpvalidateclientts0000",
+              "Name": "ValidateFormFieldTask",
+              "X": 1100,
+              "Y": 230,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Validate Client Timestamp"
+                },
+                "FieldName": "clientSubmittedAt",
+                "ErrorMessage": "Submission metadata is missing. Please try again."
+              }
+            },
+            {
+              "ActivityId": "4rsvpjoinvalidation000000",
+              "Name": "JoinTask",
+              "X": 700,
+              "Y": 390,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Join Validation"
+                },
+                "Mode": "WaitAll"
+              }
+            },
+            {
+              "ActivityId": "4rsvpvalidateformtask0000",
+              "Name": "ValidateFormTask",
+              "X": 700,
+              "Y": 550,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Evaluate Validation"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpredirectinvalid000000",
+              "Name": "HttpRedirectTask",
+              "X": 420,
+              "Y": 700,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Redirect Invalid"
+                },
+                "Location": {
+                  "Expression": "/#rsvp?status=invalid"
+                },
+                "Permanent": false
               }
             },
             {
               "ActivityId": "4rsvpcreatecontenttask0000",
               "Name": "CreateContentTask",
-              "X": 360,
-              "Y": 60,
+              "X": 980,
+              "Y": 550,
               "IsStart": false,
               "Properties": {
                 "ContentType": "RsvpResponse",
                 "Publish": true,
                 "ContentProperties": {
-                  "Expression": "{\"DisplayText\": \"RSVP from {{ Request.Form.email | default: '' | escape }}\", \"TitlePart\": {\"Title\": \"RSVP from {{ Request.Form.email | default: '' | escape }}\"}, \"ContainedPart\": {\"ListContentItemId\": \"4rsvpresponseslistitem0000\", \"ListContentType\": \"RsvpResponsesList\"}, \"RsvpResponse\": {\"Email\": {\"Text\": \"{{ Request.Form.email | default: '' | escape }}\"}, \"Attending\": {\"Text\": \"{{ Request.Form.attending | default: '' | escape }}\"}, \"GuestCount\": {\"Value\": {{ Request.Form.guestCount | default: 1 | plus: 0 }}}, \"GuestDetails\": {\"Text\": \"{{ Request.Form.guestDetails | default: '' | escape }}\"}, \"Message\": {\"Text\": \"{{ Request.Form.message | default: '' | escape }}\"}, \"SubmittedAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}}}"
+                  "Expression": "{\"DisplayText\": \"RSVP from {{ Request.Form.email | first | default: '' | replace: '\"', \"'\" }}\", \"TitlePart\": {\"Title\": \"RSVP from {{ Request.Form.email | first | default: '' | replace: '\"', \"'\" }}\"}, \"ContainedPart\": {\"ListContentItemId\": \"4rsvpresponseslistitem0000\", \"ListContentType\": \"RsvpResponsesList\"}, \"RsvpResponse\": {\"Email\": {\"Text\": \"{{ Request.Form.email | first | default: '' | replace: '\"', \"'\" }}\"}, \"Attending\": {\"Text\": \"{{ Request.Form.attending | first | default: '' | replace: '\"', \"'\" }}\"}, \"GuestCount\": {\"Value\": {{ Request.Form.guestCount | first | default: 1 | plus: 0 }}}, \"GuestDetails\": {\"Text\": \"{{ Request.Form.guestDetails | first | default: '' | strip_newlines | replace: '\"', \"'\" }}\"}, \"DietaryRequirements\": {\"Text\": \"{{ Request.Form.dietaryRequirements | first | default: '' | strip_newlines | replace: '\"', \"'\" }}\"}, \"Message\": {\"Text\": \"{{ Request.Form.message | first | default: '' | strip_newlines | replace: '\"', \"'\" }}\"}, \"Honeypot\": {\"Text\": \"{{ Request.Form.honeypot | first | default: '' | replace: '\"', \"'\" }}\"}, \"ClientSubmittedAt\": {\"Text\": \"{{ Request.Form.clientSubmittedAt | first | default: '' | replace: '\"', \"'\" }}\"}, \"IsSpam\": {\"Text\": \"{% assign hp = Request.Form.honeypot | first | default: '' | strip %}{% if hp != '' %}Yes{% else %}No{% endif %}\"}, \"SubmittedAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}}}"
                 },
                 "ActivityMetadata": {
                   "Title": "Create RSVP Response"
@@ -57,8 +184,8 @@
             {
               "ActivityId": "4rsvpupdatecontenttask0000",
               "Name": "UpdateContentTask",
-              "X": 690,
-              "Y": 60,
+              "X": 1240,
+              "Y": 550,
               "IsStart": false,
               "Properties": {
                 "Publish": true,
@@ -66,7 +193,7 @@
                   "Expression": "'4rsvpresponseslistitem0000'"
                 },
                 "ContentProperties": {
-                  "Expression": "{\"DisplayText\": \"RSVP Responses\", \"TitlePart\": {\"Title\": \"RSVP Responses\"}, \"RsvpResponsesList\": {\"LastSubmissionAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}, \"LastSubmissionBy\": {\"Text\": \"{{ Request.Form.email | default: '' | escape }}\"}}}"
+                  "Expression": "{\"DisplayText\": \"RSVP Responses\", \"TitlePart\": {\"Title\": \"RSVP Responses\"}, \"RsvpResponsesList\": {\"LastSubmissionAt\": {\"Text\": \"{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}\"}, \"LastSubmissionBy\": {\"Text\": \"{{ Request.Form.email | first | default: '' | replace: '\"', \"'\" }}\"}}}"
                 },
                 "ActivityMetadata": {
                   "Title": "Update RSVP Collector"
@@ -74,17 +201,91 @@
               }
             },
             {
-              "ActivityId": "4rsvpredirecttask000000000",
+              "ActivityId": "4rsvpemailorganizers000000",
+              "Name": "EmailTask",
+              "X": 1510,
+              "Y": 460,
+              "IsStart": false,
+              "Properties": {
+                "Sender": {},
+                "Author": {},
+                "Recipients": {
+                  "Expression": "{{ Request.Form.notifyEmails | default: '' | strip }}"
+                },
+                "ReplyTo": {
+                  "Expression": "{{ Request.Form.email | first | default: '' | escape }}"
+                },
+                "Subject": {
+                  "Expression": "New RSVP from {{ Request.Form.email | first | default: '' | escape }}"
+                },
+                "Body": {
+                  "Expression": "<p>A new RSVP has been submitted.</p><p>Email: {{ Request.Form.email | first | default: '' | escape }}</p><p>Attending: {{ Request.Form.attending | first | default: '' | escape }}</p><p>Guests: {{ Request.Form.guestCount | first | default: 1 | plus: 0 }}</p><p>Guest names:</p><p>{{ Request.Form.guestDetails | first | default: '' | escape | newline_to_br }}</p><p>Dietary requirements:</p><p>{{ Request.Form.dietaryRequirements | first | default: '' | escape | newline_to_br }}</p><p>Message:</p><p>{{ Request.Form.message | first | default: '' | escape | newline_to_br }}</p>"
+                },
+                "IsHtmlBody": true,
+                "Bcc": {},
+                "Cc": {},
+                "ActivityMetadata": {
+                  "Title": "Email Organizers"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpemailsubmitter000000",
+              "Name": "EmailTask",
+              "X": 1510,
+              "Y": 660,
+              "IsStart": false,
+              "Properties": {
+                "Sender": {},
+                "Author": {},
+                "Recipients": {
+                  "Expression": "{{ Request.Form.email | first | default: '' | strip }}"
+                },
+                "ReplyTo": {
+                  "Expression": "{{ Request.Form.notifyEmails | default: '' | strip }}"
+                },
+                "Subject": {
+                  "Expression": "We received your RSVP"
+                },
+                "Body": {
+                  "Expression": "<p>Thank you for your RSVP.</p><p>We have recorded your response and look forward to celebrating with you.</p>"
+                },
+                "IsHtmlBody": true,
+                "Bcc": {},
+                "Cc": {},
+                "ActivityMetadata": {
+                  "Title": "Email Submitter"
+                }
+              }
+            },
+            {
+              "ActivityId": "4rsvpredirectsuccess00000",
               "Name": "HttpRedirectTask",
-              "X": 1010,
-              "Y": 60,
+              "X": 1780,
+              "Y": 560,
               "IsStart": false,
               "Properties": {
                 "ActivityMetadata": {
-                  "Title": "Redirect to RSVP"
+                  "Title": "Redirect Result"
                 },
                 "Location": {
-                  "Expression": "/#rsvp"
+                  "Expression": "/#rsvp?status=submitted"
+                },
+                "Permanent": false
+              }
+            },
+            {
+              "ActivityId": "4rsvpredirecterror0000000",
+              "Name": "HttpRedirectTask",
+              "X": 1260,
+              "Y": 760,
+              "IsStart": false,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Redirect Error"
+                },
+                "Location": {
+                  "Expression": "/#rsvp?status=error"
                 },
                 "Permanent": false
               }
@@ -95,6 +296,78 @@
               "Id": 0,
               "SourceActivityId": "4rsvphttprequestactivity00",
               "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpbindmodelstatetask00"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpbindmodelstatetask00",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpforkvalidation00000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpforkvalidation00000",
+              "SourceOutcomeName": "Email",
+              "DestinationActivityId": "4rsvpvalidateemail0000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpforkvalidation00000",
+              "SourceOutcomeName": "Attending",
+              "DestinationActivityId": "4rsvpvalidateattend000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpforkvalidation00000",
+              "SourceOutcomeName": "GuestCount",
+              "DestinationActivityId": "4rsvpvalidateguestcount000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpforkvalidation00000",
+              "SourceOutcomeName": "ClientSubmittedAt",
+              "DestinationActivityId": "4rsvpvalidateclientts0000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateemail0000000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpjoinvalidation000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateattend000000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpjoinvalidation000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateguestcount000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpjoinvalidation000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateclientts0000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpjoinvalidation000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpjoinvalidation000000",
+              "SourceOutcomeName": "Joined",
+              "DestinationActivityId": "4rsvpvalidateformtask0000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateformtask0000",
+              "SourceOutcomeName": "Invalid",
+              "DestinationActivityId": "4rsvpredirectinvalid000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpvalidateformtask0000",
+              "SourceOutcomeName": "Valid",
               "DestinationActivityId": "4rsvpcreatecontenttask0000"
             },
             {
@@ -107,19 +380,43 @@
               "Id": 0,
               "SourceActivityId": "4rsvpcreatecontenttask0000",
               "SourceOutcomeName": "Failed",
-              "DestinationActivityId": "4rsvpredirecttask000000000"
+              "DestinationActivityId": "4rsvpredirecterror0000000"
             },
             {
               "Id": 0,
               "SourceActivityId": "4rsvpupdatecontenttask0000",
               "SourceOutcomeName": "Done",
-              "DestinationActivityId": "4rsvpredirecttask000000000"
+              "DestinationActivityId": "4rsvpemailorganizers000000"
             },
             {
               "Id": 0,
               "SourceActivityId": "4rsvpupdatecontenttask0000",
               "SourceOutcomeName": "Failed",
-              "DestinationActivityId": "4rsvpredirecttask000000000"
+              "DestinationActivityId": "4rsvpredirecterror0000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpemailorganizers000000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpemailsubmitter000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpemailorganizers000000",
+              "SourceOutcomeName": "Failed",
+              "DestinationActivityId": "4rsvpredirecterror0000000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpemailsubmitter000000",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4rsvpredirectsuccess00000"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4rsvpemailsubmitter000000",
+              "SourceOutcomeName": "Failed",
+              "DestinationActivityId": "4rsvpredirecterror0000000"
             }
           ],
           "Properties": {}

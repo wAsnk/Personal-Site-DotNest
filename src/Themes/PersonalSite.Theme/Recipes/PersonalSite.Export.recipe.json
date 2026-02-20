@@ -186,11 +186,25 @@
               }
             },
             {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "rsvp-responses-overview",
+                  "ShowHomepageOption": false
+                }
+              }
+            },
+            {
               "PartName": "ListPart",
               "Name": "ListPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1"
+                  "Position": "2"
                 },
                 "ListPartSettings": {
                   "PageSize": 100,
@@ -207,7 +221,7 @@
               "Name": "RsvpResponsesList",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "2"
+                  "Position": "3"
                 }
               }
             }
@@ -750,6 +764,49 @@
           ]
         },
         {
+          "Name": "GeneralSection",
+          "DisplayName": "General Section",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false,
+              "Stereotype": "Block"
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BlockCommon",
+              "Name": "BlockCommon",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "GeneralSection",
+              "Name": "GeneralSection",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
           "Name": "FooterSection",
           "DisplayName": "Footer Section",
           "Settings": {
@@ -1005,22 +1062,42 @@
             },
             {
               "FieldName": "TextField",
-              "Name": "GuestDetailsLabel",
+              "Name": "GuestNamesLabel",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Guest Details Label",
+                  "DisplayName": "Guest Names Label",
                   "Position": "7"
                 }
               }
             },
             {
               "FieldName": "TextField",
-              "Name": "GuestDetailsPlaceholder",
+              "Name": "GuestNamesPlaceholder",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Guest Details Placeholder",
+                  "DisplayName": "Guest Names Placeholder",
                   "Position": "8",
                   "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DietaryLabel",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Dietary Label",
+                  "Position": "9"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DietaryPlaceholder",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Dietary Placeholder",
+                  "Position": "10"
                 }
               }
             },
@@ -1030,7 +1107,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Note Label",
-                  "Position": "9"
+                  "Position": "11"
                 }
               }
             },
@@ -1040,7 +1117,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Note Placeholder",
-                  "Position": "10"
+                  "Position": "12"
                 }
               }
             },
@@ -1050,7 +1127,38 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Submit Button Text",
-                  "Position": "11"
+                  "Position": "13"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "NotificationEmails",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Notification Emails",
+                  "Position": "14",
+                  "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "SuccessMessage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Success Message",
+                  "Position": "15"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ErrorMessage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Error Message",
+                  "Position": "16"
                 }
               }
             }
@@ -1140,11 +1248,52 @@
             },
             {
               "FieldName": "TextField",
+              "Name": "DietaryRequirements",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Dietary Requirements",
+                  "Position": "5",
+                  "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
               "Name": "SubmittedAt",
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Submitted At",
-                  "Position": "5"
+                  "Position": "6"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Honeypot",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Honeypot",
+                  "Position": "7"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "ClientSubmittedAt",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Client Submitted At",
+                  "Position": "8"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "IsSpam",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Is Spam",
+                  "Position": "9"
                 }
               }
             }
@@ -1395,6 +1544,34 @@
           ]
         },
         {
+          "Name": "GeneralSection",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "IntroText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Intro Text",
+                  "Position": "0",
+                  "Editor": "TextArea"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "BodyText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Body Text",
+                  "Position": "1",
+                  "Editor": "TextArea"
+                }
+              }
+            }
+          ]
+        },
+        {
           "Name": "FooterSection",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
@@ -1511,6 +1688,13 @@
           "Published": true,
           "TitlePart": {
             "Title": "RSVP Responses"
+          },
+          "AutoroutePart": {
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false,
+            "Path": "rsvp-responses-overview"
           },
           "ListPart": {},
           "RsvpResponsesList": {
@@ -1637,8 +1821,8 @@
                   "NotePlaceholder": {
                     "Text": "Share your well wishes..."
                   },
-                  "GuestDetailsPlaceholder": {
-                    "Text": "Names and allergies (if any)"
+                  "GuestNamesPlaceholder": {
+                    "Text": "Full name of each guest"
                   },
                   "SubmitButtonText": {
                     "Text": "Send reply"
@@ -1646,8 +1830,23 @@
                   "AttendQuestion": {
                     "Text": "Will you be attending?"
                   },
-                  "GuestDetailsLabel": {
-                    "Text": "Guest details and dietary requirements"
+                  "GuestNamesLabel": {
+                    "Text": "Guest names"
+                  },
+                  "DietaryLabel": {
+                    "Text": "Dietary requirements"
+                  },
+                  "DietaryPlaceholder": {
+                    "Text": "Allergies or dietary notes"
+                  },
+                  "NotificationEmails": {
+                    "Text": "you@example.com"
+                  },
+                  "SuccessMessage": {
+                    "Text": "Thank you, your RSVP has been received."
+                  },
+                  "ErrorMessage": {
+                    "Text": "Your RSVP could not be submitted. Please check the form and try again."
                   },
                   "PostUrl": {
                     "Text": ""
@@ -2071,7 +2270,7 @@
               {
                 "ContentItemId": "[js:uuid()]",
                 "ContentItemVersionId": "[js:uuid()]",
-                "ContentType": "FurtherDetailsSection",
+                "ContentType": "GeneralSection",
                 "DisplayText": "Further Details",
                 "Latest": true,
                 "Published": true,
@@ -2086,11 +2285,11 @@
                     "Value": true
                   }
                 },
-                "FurtherDetailsSection": {
+                "GeneralSection": {
                   "IntroText": {
                     "Text": "More details about the day will follow in due course."
                   },
-                  "DetailsText": {
+                  "BodyText": {
                     "Text": "Information regarding accommodation, transport, and the evening programme will be shared closer to the date."
                   }
                 }
@@ -2127,6 +2326,60 @@
               }
             ]
           }
+        }
+      ]
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "rsvpadminmenu0000000000000001",
+          "Name": "RSVP",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
+              "LinkText": "RSVP",
+              "IconClass": "fas fa-calendar-check",
+              "PermissionNames": [],
+              "UniqueId": "rsvpadminparent000000000001",
+              "Enabled": true,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Items": [
+                {
+                  "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+                  "LinkText": "Responses Overview",
+                  "LinkUrl": "~/rsvp-responses-overview",
+                  "IconClass": "far fa-list-alt",
+                  "PermissionNames": [],
+                  "UniqueId": "rsvpadminoverview0000000001",
+                  "Enabled": true,
+                  "Priority": 0,
+                  "LinkToFirstChild": false,
+                  "LocalNav": false,
+                  "Items": [],
+                  "Classes": []
+                },
+                {
+                  "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
+                  "LinkText": "Responses Collector",
+                  "LinkUrl": "~/Admin/Contents/ContentItems/4rsvpresponseslistitem0000/Edit",
+                  "IconClass": "far fa-edit",
+                  "PermissionNames": [],
+                  "UniqueId": "rsvpadmincollector000000001",
+                  "Enabled": true,
+                  "Priority": 1,
+                  "LinkToFirstChild": false,
+                  "LocalNav": false,
+                  "Items": [],
+                  "Classes": []
+                }
+              ],
+              "Classes": []
+            }
+          ]
         }
       ]
     },

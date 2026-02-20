@@ -1,0 +1,32 @@
+{% assign section = Model.ContentItem.Content.GeneralSection %}
+{% assign title = Model.ContentItem.DisplayText %}
+{% assign intro_text = section.IntroText.Text %}
+{% assign body_text = section.BodyText.Text %}
+
+<section class="section-shell">
+    <div class="section-inner max-w-2xl text-center">
+        <h2 class="section-heading">{{ title }}</h2>
+
+        <svg viewBox="0 0 300 10" class="mx-auto mt-5 w-full max-w-xs" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+            <line x1="0" y1="5" x2="138" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+            <line x1="162" y1="5" x2="300" y2="5" class="theme-light:stroke-gold/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></line>
+            <path d="M 140 3 L 142 5 L 140 7 L 138 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+            <path d="M 150 2.5 L 152.5 5 L 150 7.5 L 147.5 5 Z" class="theme-light:fill-gold/40 theme-light:stroke-gold/60 theme-dark:fill-gold-light/60 theme-dark:stroke-gold-light/90" stroke-width="0.7"></path>
+            <path d="M 160 3 L 162 5 L 160 7 L 158 5 Z" class="theme-light:fill-gold/25 theme-light:stroke-gold/40 theme-dark:fill-gold-light/40 theme-dark:stroke-gold-light/70" stroke-width="0.6"></path>
+        </svg>
+
+        <div class="mt-8 flex justify-center" aria-hidden="true">
+            <i data-lucide="clock-3" class="h-5 w-5 theme-light:text-gold theme-dark:text-gold-light"></i>
+        </div>
+
+        <p class="section-body mx-auto mt-8 max-w-lg italic">
+            {{ intro_text }}
+        </p>
+
+        <div class="mx-auto mt-6 h-px w-8 theme-light:bg-gold/30 theme-dark:bg-gold-light/60" aria-hidden="true"></div>
+
+        <p class="section-muted mx-auto mt-6 max-w-md not-italic">
+            {{ body_text }}
+        </p>
+    </div>
+</section>
